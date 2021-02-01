@@ -8,4 +8,8 @@ class SurveyPolicy < ApplicationPolicy
   def create?
     user.user_type == "A"
   end
+
+  def show?
+    record.user == user
+  end
 end
