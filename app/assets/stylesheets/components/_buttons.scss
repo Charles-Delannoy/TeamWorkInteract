@@ -1,0 +1,25 @@
+.twi-btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.grape-btn {
+  background-color: $grape;
+  color: white;
+  &:hover {
+    background-color: $deep-grape;
+    color: white;
+  }
+}
+
+.green-btn {
+  background-color: $twi-green;
+  color: white;
+  &:hover {
+    background-color: $deep-twi-green;
+    color: white;
+  }
+}

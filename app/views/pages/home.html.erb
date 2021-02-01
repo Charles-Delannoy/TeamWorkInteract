@@ -1,5 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<%= link_to 'Inscription', new_user_registration_path %>
-<%= link_to 'Connexion', new_user_session_path %>
+<div class="twi-navbar">
+  <div class="navbar-msg">
+  </div>
+  <ul class="menu">
+  </ul>
+  <div class="actions">
+    <%= link_to 'Connexion', new_user_session_path, class: 'twi-btn green-btn' %>
+    <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn grape-btn' %>
+  </div>
+</div>
