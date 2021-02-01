@@ -12,9 +12,11 @@
 }
 
 .twi-navbar {
+  margin-bottom: 40px;
   height: 80px;
   display: flex;
   align-items: center;
+  border-bottom: thin solid $twi-gray;
   ul {
     flex-grow: 1;
   }
