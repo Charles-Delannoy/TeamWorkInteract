@@ -10,3 +10,20 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.twi-navbar {
+  margin-bottom: 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: thin solid $twi-gray;
+  ul {
+    flex-grow: 1;
+  }
+  .actions {
+    min-width: 300px;
+    padding: 0 15px;
+    justify-content: space-between;
+    display: flex;
+  }
+}

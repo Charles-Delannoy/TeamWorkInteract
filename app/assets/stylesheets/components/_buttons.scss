@@ -1,0 +1,39 @@
+.twi-btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: all 0.5s ease-out;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.grape-btn {
+  background-color: $grape;
+  color: white;
+  &:hover {
+    background-color: $deep-grape;
+    color: white;
+  }
+}
+
+.green-btn {
+  background-color: $twi-green;
+  color: white;
+  &:hover {
+    background-color: $deep-twi-green;
+    color: white;
+  }
+}
+
+.cta-btn {
+  background-color: #fff;
+  color: $deep-twi-green;
+  font-size: 20px;
+  border: thin solid $deep-twi-green;
+  &:hover {
+    background-color: $twi-gray;
+    color: $deep-twi-green;
+    border: thin solid $twi-gray;
+
+  }
+}
