@@ -1,20 +1,23 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :first_survey?, only: [:new, :create]
 
   def new
-    @survey = Survey.new
-    authorize @survey
+    if first_survey?
+      @survey = Survey.new
+      authorize @survey
+    end
   end
 
   def create
-    @survey =Survey.new(surveys_params)
-    @survey.user = current_user
-    authorize @survey
-    if @survey.save
-      redirect_to survey_path(@survey)
-    else
-      render :new
+    if first_survey?
+      @survey =Survey.new(surveys_params)
+      @survey.user = current_user
+      authorize @survey
+      if @survey.save
+        redirect_to survey_path(@survey)
+      else
+        render :new
+      end
     end
   end
 
@@ -25,7 +28,7 @@ class SurveysController < ApplicationController
   
   def first_survey?
     surveys = Survey.all
-    if surveys
+    unless surveys.empty?
       surveys.each do |survey|
         if survey.user == current_user
           return false
