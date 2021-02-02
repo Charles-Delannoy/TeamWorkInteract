@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_140033) do
+ActiveRecord::Schema.define(version: 2021_02_02_112314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,22 @@ ActiveRecord::Schema.define(version: 2021_02_01_140033) do
     t.index ["user_id"], name: "index_axes_on_user_id"
   end
 
+  create_table "campaigns", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "survey_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.index ["group_id"], name: "index_campaigns_on_group_id"
+    t.index ["survey_id"], name: "index_campaigns_on_survey_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "start_date"
+    t.date "end_date"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -73,8 +84,6 @@ ActiveRecord::Schema.define(version: 2021_02_01_140033) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.date "start_date"
-    t.date "end_date"
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
@@ -105,6 +114,8 @@ ActiveRecord::Schema.define(version: 2021_02_01_140033) do
   add_foreign_key "answers", "propositions"
   add_foreign_key "answers", "users"
   add_foreign_key "axes", "users"
+  add_foreign_key "campaigns", "groups"
+  add_foreign_key "campaigns", "surveys"
   add_foreign_key "groups", "users"
   add_foreign_key "propositions", "questions"
   add_foreign_key "questions", "axes", column: "axe_id"
