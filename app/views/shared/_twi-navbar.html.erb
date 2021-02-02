@@ -1,0 +1,23 @@
+<div class="twi-navbar">
+  <% if current_user %>
+  <div class="navbar-msg">
+    <h2>Bienvenue <%= current_user.first_name %></h2>
+  </div>
+  <ul class="menu">
+
+    <% if policy(Survey).index? %>
+      <li><%= link_to 'Questionnaires', surveys_path %></li>
+    <% end %>
+
+    <% if policy(Axe).index? %>
+      <li><%= link_to 'Axes', axes_path %></li>
+    <% end %>
+
+    <li><%= link_to 'Groupes', groups_path %></li>
+  </ul>
+
+  <div class="actions one-action">
+    <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn grape-btn' %>
+  </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_112314) do
+ActiveRecord::Schema.define(version: 2021_02_02_154355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_112314) do
     t.datetime "updated_at", precision: 6, null: false
     t.date "start_date"
     t.date "end_date"
+    t.text "description"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
@@ -118,9 +119,9 @@ ActiveRecord::Schema.define(version: 2021_02_02_112314) do
   add_foreign_key "campaigns", "surveys"
   add_foreign_key "groups", "users"
   add_foreign_key "propositions", "questions"
-  add_foreign_key "questions", "axes", column: "axe_id"
+  add_foreign_key "questions", "axes"
   add_foreign_key "questions", "surveys"
-  add_foreign_key "recommandations", "axes", column: "axe_id"
+  add_foreign_key "recommandations", "axes"
   add_foreign_key "surveys", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"

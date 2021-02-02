@@ -1,4 +1,12 @@
 .twi-container {
   min-height: calc(100vh - 80px - 80px);
   width: 100%;
+  padding: 0 5%;
+
+  h1 {
+    color: $deep-twi-green;
+    margin-bottom: 25px;
+    font-weight: 400;
+    text-align: center;
+  }
 }

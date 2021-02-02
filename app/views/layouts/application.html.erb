@@ -13,7 +13,17 @@
 
   <body>
     <%= render 'shared/header' %>
+    <% unless current_page?('/')%>
+      <%= render 'shared/twi-navbar' %>
+      <div class="twi-container">
+    <% end %>
+
     <%= yield %>
+
+    <% unless current_page?('/')%>
+      </div>
+    <% end %>
+
     <%= render 'shared/flashes' %>
 
     <%= javascript_pack_tag 'application' %> <!-- à ajouter! -->

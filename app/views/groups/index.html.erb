@@ -1,14 +1,19 @@
 <h1>Mes groupes projet</h1>
 
-<ul>
+<ul class='group-cards'>
   <% @groups.each do |group| %>
-    <li><%= group.name %> -
-        Du <%= group.start_date %>
-        au <%= group.end_date %>
-        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-        <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
-            method: :delete,
-            data: { confirm: "Etes vous sur de vouloir supprimer le group #{group.name} ?" } %>
+    <% ref = group.users.where(user_type: 'R').first %>
+    <li class="group-card">
+      <div class="group-head">
+      <h2><%= group.name %></h2>
+      <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+      <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
+          method: :delete,
+          data: { confirm: "Etes vous sur de vouloir supprimer le group #{group.name} ?" } %>
+      </div>
+      <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
+      <p><%= group.description %></p>
+      <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
     </li>
   <% end %>
 </ul>
