@@ -12,3 +12,7 @@
   <% end %>
 
 <% end %>
+
+<% if policy(Survey).create? %>
+  <%= link_to 'Créer un questionnaire', new_survey_path %>
+<% end %>
