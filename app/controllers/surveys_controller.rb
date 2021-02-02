@@ -20,6 +20,18 @@ class SurveysController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @survey.update(surveys_params)
+    if @survey.save
+      redirect_to survey_path(@survey)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_survey
