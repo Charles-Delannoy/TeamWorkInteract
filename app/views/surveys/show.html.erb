@@ -1,0 +1,13 @@
+<h1>Survey Show</h1>
+<%= @survey.title %>
+<%= @survey.start_date %>
+<%= @survey.end_date %>
+<%= @survey.user.email %>
+
+<% if policy(@survey).edit? %>
+  <%= link_to "Edit", edit_survey_path(@survey) %>
+<% end %>
+
+<% if policy(@survey).destroy? %>
+  <%= link_to "Delete", survey_path(@survey), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
