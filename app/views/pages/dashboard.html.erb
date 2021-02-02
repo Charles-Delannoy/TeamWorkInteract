@@ -10,10 +10,9 @@
     <% if policy(Survey).index? %>
       <li><%= link_to 'Mes questionnaires', surveys_path %></li>
     <% end %>
+    <li><%= link_to 'Groupes', groups_path %></li>
   </ul>
   <div class="actions one-action">
     <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn grape-btn' %>
   </div>
 </div>
-
-
