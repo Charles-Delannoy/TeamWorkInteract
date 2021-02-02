@@ -7,3 +7,7 @@
 <% if policy(@survey).edit? %>
   <%= link_to "Edit", edit_survey_path(@survey) %>
 <% end %>
+
+<% if policy(@survey).destroy? %>
+  <%= link_to "Delete", survey_path(@survey), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

@@ -32,6 +32,11 @@ class SurveysController < ApplicationController
     end
   end
 
+  def destroy
+    @survey.destroy
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_survey
