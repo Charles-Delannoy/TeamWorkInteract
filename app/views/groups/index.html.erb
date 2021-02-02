@@ -1,0 +1,16 @@
+<h1>Mes groupes projet</h1>
+
+<ul>
+  <% @groups.each do |group| %>
+    <li><%= group.name %> -
+        Du <%= group.start_date %>
+        au <%= group.end_date %>
+        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+        <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
+            method: :delete,
+            data: { confirm: "Etes vous sur de vouloir supprimer le group #{group.name} ?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Créer un groupe', new_group_path %>

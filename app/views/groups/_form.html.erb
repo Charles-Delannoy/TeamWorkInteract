@@ -1,0 +1,6 @@
+<%= simple_form_for [group] do |f| %>
+  <%= f.input :name, label: "Nom du groupe" %>
+  <%= f.input :start_date, label: "Début du projet" %>
+  <%= f.input :end_date, label: "Fin du projet" %>
+  <%= f.submit label%>
+<% end %>
