@@ -6,12 +6,22 @@
     <% if policy(Survey).create? %>
       <li><%= link_to 'Créer un questionnaire', new_survey_path %></li>
     <% end %>
-
+    
     <% if policy(Survey).index? %>
       <li><%= link_to 'Mes questionnaires', surveys_path %></li>
     <% end %>
-    <li><%= link_to 'Groupes', groups_path %></li>
+  
+    <% if policy(Axe).create? %>
+      <li><%= link_to 'Créer un axe', new_axe_path %></li>
+    <% end %>
+
+    <% if policy(Axe).index? %>
+      <li><%= link_to 'Mes Axes', axes_path %></li>
+    <% end %>
+ 
+    <li><%= link_to 'Groupes', groups_path %></li>  
   </ul>
+  
   <div class="actions one-action">
     <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn grape-btn' %>
   </div>
