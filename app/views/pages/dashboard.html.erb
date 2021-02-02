@@ -4,4 +4,8 @@
   <%= link_to 'Créer un questionnaire', new_survey_path %>
 <% end %>
 
+<% if policy(Survey).index? %>
+  <%= link_to 'Mes questionnaires', surveys_path %>
+<% end %>
+
 <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>

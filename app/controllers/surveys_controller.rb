@@ -1,6 +1,11 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @surveys = policy_scope(Survey).order(created_at: :desc)
+    authorize @surveys
+  end
+
   def new
     @survey = Survey.new
     authorize @survey

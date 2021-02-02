@@ -1,8 +1,12 @@
 class SurveyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
+  end
+
+  def index?
+    user.user_type == "A"
   end
 
   def create?
