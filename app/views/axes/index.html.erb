@@ -1,0 +1,13 @@
+<h1>Axes Index</h1>
+<% @axes.each do |axe| %>
+  <%= axe.title %>
+
+  <% if policy(axe).edit? %>
+    <%= link_to "Edit", edit_axe_path(axe) %>
+  <% end %>
+
+  <% if policy(axe).destroy? %>
+    <%= link_to "Delete", axe_path(axe), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+<% end %>

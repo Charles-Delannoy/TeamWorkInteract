@@ -5,3 +5,7 @@
 <% end %>
 
 <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>
+
+<% if policy(Axe).index? %>
+  <%= link_to 'Mes Axes', axes_path %>
+<% end %>
