@@ -15,5 +15,7 @@
     <%= render 'shared/header' %>
     <%= yield %>
     <%= render 'shared/flashes' %>
+
+    <%= javascript_pack_tag 'application' %> <!-- à ajouter! -->
   </body>
 </html>
