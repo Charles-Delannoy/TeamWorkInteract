@@ -1,16 +1,28 @@
-<h1>Bienvenue <%= current_user.first_name %></h1>
+<div class="twi-navbar">
+  <div class="navbar-msg">
+    <h2>Bienvenue <%= current_user.first_name %></h2>
+  </div>
+  <ul class="menu">
+    <% if policy(Survey).create? %>
+      <li><%= link_to 'Créer un questionnaire', new_survey_path %></li>
+    <% end %>
+    
+    <% if policy(Survey).index? %>
+      <li><%= link_to 'Mes questionnaires', surveys_path %></li>
+    <% end %>
+  
+    <% if policy(Axe).create? %>
+      <li><%= link_to 'Créer un axe', new_axe_path %></li>
+    <% end %>
 
-<% if policy(Survey).create? %>
-  <%= link_to 'Créer un questionnaire', new_survey_path %>
-<% end %>
-
-<%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>
-
-<% if policy(Axe).create? %>
-  <%= link_to 'Créer un axe', new_axe_path %>
-<% end %>
-
-
-<% if policy(Axe).index? %>
-  <%= link_to 'Mes Axes', axes_path %>
-<% end %>
+    <% if policy(Axe).index? %>
+      <li><%= link_to 'Mes Axes', axes_path %></li>
+    <% end %>
+ 
+    <li><%= link_to 'Groupes', groups_path %></li>  
+  </ul>
+  
+  <div class="actions one-action">
+    <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn grape-btn' %>
+  </div>
+</div>

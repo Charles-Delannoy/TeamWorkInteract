@@ -17,13 +17,38 @@
   display: flex;
   align-items: center;
   border-bottom: thin solid $twi-gray;
+  .navbar-msg {
+    h2 {
+      font-size: 25px;
+      margin-left: 15px;
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+  }
   ul {
+    margin: 0;
     flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    li {
+      display: inline;
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight: 200;
+      a {
+        color: #000;
+      }
+    }
   }
   .actions {
     min-width: 300px;
     padding: 0 15px;
     justify-content: space-between;
     display: flex;
+  }
+
+  .one-action {
+    min-width: 200px;
+    justify-content: flex-end;
   }
 }
