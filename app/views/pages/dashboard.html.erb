@@ -6,6 +6,11 @@
 
 <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>
 
+<% if policy(Axe).create? %>
+  <%= link_to 'Créer un axe', new_axe_path %>
+<% end %>
+
+
 <% if policy(Axe).index? %>
   <%= link_to 'Mes Axes', axes_path %>
 <% end %>

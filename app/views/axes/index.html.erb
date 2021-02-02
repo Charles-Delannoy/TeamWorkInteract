@@ -1,6 +1,6 @@
 <h1>Axes Index</h1>
 <% @axes.each do |axe| %>
-  <%= axe.title %>
+  <%= link_to axe.title, axe_path(axe) %>
 
   <% if policy(axe).edit? %>
     <%= link_to "Edit", edit_axe_path(axe) %>
