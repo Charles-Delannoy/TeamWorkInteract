@@ -1,5 +1,7 @@
 <h1>Survey Show</h1>
 <%= @survey.title %>
+<%= @survey.description %>
+<%= @survey.icon %>
 <%= @survey.user.email %>
 
 <% if policy(@survey).edit? %>
