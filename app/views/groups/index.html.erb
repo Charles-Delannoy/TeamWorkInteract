@@ -1,4 +1,7 @@
-<h1>Mes groupes projet <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_group_path, class: 'add-icon' %></h1>
+<h1>Mes groupes projet 
+<% if policy(Group).create? %>
+  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_group_path, class: 'add-icon' %>
+<% end %></h1>
 
 <ul class='group-cards'>
   <% @groups.each do |group| %>
