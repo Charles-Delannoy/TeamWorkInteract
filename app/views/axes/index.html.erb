@@ -16,8 +16,10 @@
         </div>
         <p><%= axe.description %></p>
       </div>
-      <i class="fas fa-random axe-img"></i>
+      <% if axe.icon %>
+        <%= axe.icon.html_safe %>
+      <% end %>
     </li>
-    
+
   <% end %>
 </ul>

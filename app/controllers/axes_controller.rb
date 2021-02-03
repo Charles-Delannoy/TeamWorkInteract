@@ -50,6 +50,6 @@ class AxesController < ApplicationController
   end
 
   def axes_params
-    params.require(:axe).permit(:title, :description)
+    params.require(:axe).permit(:title, :description, :icon)
   end
 end
