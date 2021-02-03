@@ -11,3 +11,7 @@
   <% end %>
 
 <% end %>
+
+<% if policy(Axe).create? %>
+  <%= link_to 'Créer un axe', new_axe_path %>
+<% end %>

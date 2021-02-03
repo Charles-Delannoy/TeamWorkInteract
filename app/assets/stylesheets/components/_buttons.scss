@@ -37,3 +37,11 @@
 
   }
 }
+
+.add-icon {
+  font-size: 30px;
+  color: $deep-twi-green;
+  &:hover {
+    color: $twi-green;
+  }
+}
