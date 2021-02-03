@@ -1,0 +1,10 @@
+ul.survey-cards {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  li.survey-card {
+
+  }
+}

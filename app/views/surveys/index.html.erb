@@ -13,11 +13,14 @@
             <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_survey_path(survey) %>
           <% end %>
           <% if policy(survey).destroy? %>
-            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.name} ?" } %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.title} ?" } %>
           <% end %>
         </div>
         <p><%= survey.description %></p>
       </div>
+      <% if survey.icon %>
+        <%= survey.icon.html_safe %>
+      <% end %>
 
     </li>
   <% end %>
