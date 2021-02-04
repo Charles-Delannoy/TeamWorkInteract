@@ -1,9 +1,11 @@
 class QuestionsController < ApplicationController
 
   def index
-    
+    @survey = Survey.find(params[:survey_id])
+    @questions = Question.all
+    authorize @questions
   end
-  
+
   def new
     @survey = Survey.find(params[:survey_id])
     @question = Question.new
