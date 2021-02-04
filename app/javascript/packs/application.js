@@ -27,11 +27,11 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import "../plugins/flatpickr"
-import { typedTitle } from '../plugins/typed';
+import { typed } from '../plugins/typed';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  typedTitle();
+  typed();
 });

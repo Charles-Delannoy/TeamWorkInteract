@@ -1,4 +1,8 @@
 class GroupPolicy < ApplicationPolicy
+  def index?
+    admin?
+  end
+
   def create?
     admin?
   end

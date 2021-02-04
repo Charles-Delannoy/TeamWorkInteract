@@ -2,6 +2,8 @@ class GroupsController < ApplicationController
 
   def index
     @groups = policy_scope(Group).where(user: current_user)
+    # @current_groups = @groups.where()
+    new
   end
 
   def new
@@ -14,7 +16,7 @@ class GroupsController < ApplicationController
     authorize @group
     @group.user = current_user
     if @group.save
-      redirect_to groups_path
+      redirect_to groups_path(anchor: "group-#{@group.id}")
     else
       render :new
     end

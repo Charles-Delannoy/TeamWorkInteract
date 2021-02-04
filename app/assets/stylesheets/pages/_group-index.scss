@@ -1,0 +1,27 @@
+.group-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  align-items: start;
+}
+
+.group-form {
+  padding: 30px;
+  border-radius: 15px;
+  border: thin solid $twi-gray;
+  position: sticky;
+  top: 20px;
+  .flatpickr-calendar {
+    box-shadow: none;
+    margin: 0 auto;
+  }
+  input, textarea, .flatpickr-calendar  {
+    border: thin solid $twi-gray;
+  }
+  textarea {
+    height: 38px;
+  }
+  input.twi-btn {
+    width: 100%;
+  }
+}

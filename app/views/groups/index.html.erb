@@ -1,30 +1,39 @@
-<h1>Mes groupes projet 
+<h1>Mes groupes projet
 <% if policy(Group).create? %>
   <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_group_path, class: 'add-icon' %>
 <% end %></h1>
 
-<ul class='group-cards'>
-  <% @groups.each do |group| %>
-    <% ref = group.users.where(user_type: 'R').first %>
-    <li class="group-card">
-      <div class="group-info">
-        <div class="group-head">
-          <h2><%= group.name %></h2>
-          <% if policy(group).edit? %>
-            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-          <% end %>
-          <% if policy(group).destroy? %>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
-              method: :delete,
-              data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" } %>
-          <% end %>
+<div class="group-grid">
+
+  <ul class='group-cards'>
+    <% @groups.each do |group| %>
+      <% ref = group.users.where(user_type: 'R').first %>
+      <li class="group-card" id=<%= "group-#{group.id}" %>>
+        <div class="group-info">
+          <div class="group-head">
+            <h2><%= group.name %></h2>
+            <% if policy(group).edit? %>
+              <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+            <% end %>
+            <% if policy(group).destroy? %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
+                method: :delete,
+                data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
+                remote: true
+              %>
+            <% end %>
+          </div>
+          <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
+          <p><%= group.description %></p>
+          <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
         </div>
-        <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
-        <p><%= group.description %></p>
-        <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
-      </div>
-      <%= image_tag 'group.svg' %>
-    </li>
-  <% end %>
-</ul>
+        <%= image_tag 'group.svg' %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="group-form">
+    <%= render "form", group: @group, label: 'Créer' %>
+  </div>
+
+</div>
 
