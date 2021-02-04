@@ -1,5 +1,6 @@
 <%= simple_form_for [ @survey, @question] do |f| %>
-  <% f.input :title %>
-  <% f.association :axe, input_html: { class: "bg-info border-warning text-warning" } %>
-  <% f.input :coef %>
+  <%= f.input :title %>
+  <%= f.association :axe %>
+  <%= f.input :coef %>
+  <%= f.button :submit %>
 <% end %>

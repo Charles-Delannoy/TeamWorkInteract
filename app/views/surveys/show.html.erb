@@ -1,5 +1,5 @@
-<h1>Survey Show</h1>
-<%= @survey.title %>
+<h1><%= @survey.title %></h1>
+
 <%= @survey.description %>
 <%= @survey.icon %>
 <%= @survey.user.email %>
@@ -10,4 +10,8 @@
 
 <% if policy(@survey).destroy? %>
   <%= link_to "Delete", survey_path(@survey), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<% if policy(@survey).create? %>
+  <%= link_to "Add a question to this survey", new_survey_question_path(@survey) %>
 <% end %>

@@ -10,7 +10,6 @@ class QuestionsController < ApplicationController
     @question = Question.new(questions_params)
     @survey = Survey.find(params[:survey_id])
     @question.survey = @survey
-    @question.user = current_user
     authorize @question
     if @question.save
       redirect_to questions_path

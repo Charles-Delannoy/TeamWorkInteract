@@ -12,7 +12,7 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey =Survey.new(surveys_params)
+    @survey = Survey.new(surveys_params)
     @survey.user = current_user
     authorize @survey
     if @survey.save
