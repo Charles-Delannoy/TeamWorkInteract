@@ -1,0 +1,6 @@
+<%= simple_form_for [ @survey, @question] do |f| %>
+  <%= f.input :title %>
+  <%= f.association :axe %>
+  <%= f.input :coef %>
+  <%= f.button :submit %>
+<% end %>
