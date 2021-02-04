@@ -1,18 +1,27 @@
-<h1>Survey Index</h1>
-<% @surveys.each do |survey| %>
-  <%= survey.title %>
-  <%= survey.user.email %>
-
-  <% if policy(survey).edit? %>
-    <%= link_to "Edit", edit_survey_path(survey) %>
-  <% end %>
-
-  <% if policy(survey).destroy? %>
-    <%= link_to "Delete", survey_path(survey), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-
-<% end %>
-
+<h1>Mes questionnaires 
 <% if policy(Survey).create? %>
-  <%= link_to 'Créer un questionnaire', new_survey_path %>
-<% end %>
+  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_survey_path, class: "add-icon" %>
+<% end %></h1>
+
+<ul class="survey-cards">
+  <% @surveys.each do |survey| %>
+    <li class="survey-card">
+      <div class="survey-info">
+        <div class="survey-head">
+          <h2><%= survey.title %></h2>
+          <% if policy(survey).edit? %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_survey_path(survey) %>
+          <% end %>
+          <% if policy(survey).destroy? %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.title} ?" } %>
+          <% end %>
+        </div>
+        <p><%= survey.description %></p>
+      </div>
+      <% if survey.icon %>
+        <%= survey.icon.html_safe %>
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>

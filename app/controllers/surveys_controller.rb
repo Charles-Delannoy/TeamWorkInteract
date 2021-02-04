@@ -16,7 +16,7 @@ class SurveysController < ApplicationController
     @survey.user = current_user
     authorize @survey
     if @survey.save
-      redirect_to survey_path(@survey)
+      redirect_to surveys_path
     else
       render :new
     end
@@ -31,7 +31,7 @@ class SurveysController < ApplicationController
   def update
     @survey.update(surveys_params)
     if @survey.save
-      redirect_to survey_path(@survey)
+      redirect_to surveys_path
     else
       render :edit
     end
@@ -50,6 +50,6 @@ class SurveysController < ApplicationController
   end
 
   def surveys_params
-    params.require(:survey).permit(:title)
+    params.require(:survey).permit(:title, :description, :icon)
   end
 end
