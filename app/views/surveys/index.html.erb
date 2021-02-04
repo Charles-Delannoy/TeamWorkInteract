@@ -8,7 +8,7 @@
     <li class="survey-card">
       <div class="survey-info">
         <div class="survey-head">
-          <h2><%= survey.title %></h2>
+          <h2><%= link_to survey.title, survey_path(survey) %></h2>
           <% if policy(survey).edit? %>
             <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_survey_path(survey) %>
           <% end %>

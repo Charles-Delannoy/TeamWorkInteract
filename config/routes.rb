@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :questions, only: [:new, :create]
   end
-  
+
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show]
 
