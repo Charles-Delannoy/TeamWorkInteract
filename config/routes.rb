@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
 
-  resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show]
+  resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
+    resources :questions, only: [:new, :create]
+  end
+  
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show]
 
