@@ -1,17 +1,28 @@
-<h1>Axes Index</h1>
-<% @axes.each do |axe| %>
-  <%= link_to axe.title, axe_path(axe) %>
-
-  <% if policy(axe).edit? %>
-    <%= link_to "Edit", edit_axe_path(axe) %>
-  <% end %>
-
-  <% if policy(axe).destroy? %>
-    <%= link_to "Delete", axe_path(axe), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-
-<% end %>
-
+<h1>Mes axes d'analyse 
 <% if policy(Axe).create? %>
-  <%= link_to 'Créer un axe', new_axe_path %>
-<% end %>
+  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_axe_path, class: 'add-icon' %>
+<% end %></h1>
+
+<ul class="axe-cards">
+  <% @axes.each do |axe| %>
+
+    <li class="axe-card">
+      <div class="axe-info">
+        <div class="axe-head">
+          <h2><%= link_to axe.title, axe_path(axe) %></h2>
+          <% if policy(axe).edit? %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_axe_path(axe) %>
+          <% end %>
+          <% if policy(axe).destroy? %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, axe_path(axe), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer l'axe #{axe.title} ?" } %>
+          <% end %>
+        </div>
+        <p><%= axe.description %></p>
+      </div>
+      <% if axe.icon %>
+        <%= axe.icon.html_safe %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>

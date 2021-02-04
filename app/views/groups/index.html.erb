@@ -1,4 +1,7 @@
-<h1>Mes groupes projet <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_group_path, class: 'add-icon' %></h1>
+<h1>Mes groupes projet 
+<% if policy(Group).create? %>
+  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_group_path, class: 'add-icon' %>
+<% end %></h1>
 
 <ul class='group-cards'>
   <% @groups.each do |group| %>
@@ -6,11 +9,15 @@
     <li class="group-card">
       <div class="group-info">
         <div class="group-head">
-        <h2><%= group.name %></h2>
-        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-        <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
-            method: :delete,
-            data: { confirm: "Etes vous sur de vouloir supprimer le group #{group.name} ?" } %>
+          <h2><%= group.name %></h2>
+          <% if policy(group).edit? %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+          <% end %>
+          <% if policy(group).destroy? %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group),
+              method: :delete,
+              data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" } %>
+          <% end %>
         </div>
         <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
         <p><%= group.description %></p>
