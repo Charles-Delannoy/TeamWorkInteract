@@ -1,0 +1,44 @@
+ul.axe-cards {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+  li.axe-card {
+    border-radius: 16px;
+    padding: 16px;
+    text-decoration: none;
+    background-color: $twi-light-green;
+    margin-bottom: 20px;
+    position: relative;
+    h2 {
+      font-size: 25px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #0E0000;
+    }
+    i {
+      margin-left: 5px;
+      color: $grape;
+      padding-top: 8px;
+      &:hover {
+        color: $deep-grape;
+      }
+    }
+    >i {
+      position: absolute;
+      top: 5px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+  }
+  .axe-head {
+    display: flex;
+    align-items: bottom;
+  }
+}
