@@ -5,10 +5,6 @@ class QuestionPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.user_type == "A"
-  end
-
   def create?
     user.user_type == "A"
   end
