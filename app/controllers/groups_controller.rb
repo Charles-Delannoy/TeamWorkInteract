@@ -35,7 +35,6 @@ class GroupsController < ApplicationController
   def destroy
     catch_and_authorize_group
     @group.destroy
-    redirect_to groups_path
   end
 
   private
