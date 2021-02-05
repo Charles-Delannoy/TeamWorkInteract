@@ -1,7 +1,8 @@
 import Typed from 'typed.js';
 
 const typed = () => {
-  if (document.getElementById('#home-typed-text')) {
+  const homeTitle = document.getElementById('home-typed-text');
+  if (homeTitle) {
     new Typed('#home-typed-text', {
       strings: ["TeamWorkInteract", "Suivez les équipes", "Améliorer leur cohésion"],
       typeSpeed: 120,

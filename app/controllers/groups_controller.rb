@@ -35,7 +35,8 @@ class GroupsController < ApplicationController
   def destroy
     catch_and_authorize_group
     @group.destroy
-    redirect_to groups_path
+    @groups = Group.where(user: current_user)
+
   end
 
   private
