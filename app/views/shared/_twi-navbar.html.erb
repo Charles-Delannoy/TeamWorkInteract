@@ -6,7 +6,7 @@
   <ul class="menu">
 
     <% if policy(User).index? %>
-      <li><%= link_to 'Users', users_path %></li>
+      <li><%= link_to 'Users', admin_users_path %></li>
     <% end %>
 
     <% if policy(Survey).index? %>

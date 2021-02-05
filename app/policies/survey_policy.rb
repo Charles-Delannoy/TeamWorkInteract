@@ -6,22 +6,22 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def index?
-    user.user_type == "A"
+    admin?
   end
 
   def create?
-    user.user_type == "A"
+    admin?
   end
 
   def show?
-    record.user == user
+    owner?
   end
 
   def update?
-    record.user == user
+    owner?
   end
 
   def destroy?
-    record.user == user    
+    owner?
   end
 end
