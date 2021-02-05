@@ -16,10 +16,10 @@
               <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
             <% end %>
             <% if policy(group).destroy? %>
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
+              <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
                 method: :delete,
                 data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
-                remote: true
+                remote: true, id: "delete-group-#{group.id}")
               %>
             <% end %>
           </div>
