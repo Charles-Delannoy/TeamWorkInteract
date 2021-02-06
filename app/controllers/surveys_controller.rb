@@ -23,6 +23,7 @@ class SurveysController < ApplicationController
   end
 
   def show
+    @questions = @survey.questions
   end
 
   def edit
