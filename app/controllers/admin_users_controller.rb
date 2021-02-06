@@ -47,10 +47,10 @@ class AdminUsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :user_type, :password, :password_confirmation, :encrypted_password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :encrypted_password)
   end
 
-  def group_id
-    params.require(:user).permit(:groups)
+  def user_group_params
+    params.require(:user).permit(:groups, :user_type)
   end
 end
