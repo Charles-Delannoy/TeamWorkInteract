@@ -1,11 +1,8 @@
-<%= simple_form_for :user, url: admin_users_path do |f| %>
+<%= simple_form_for :admin_user, url: admin_users_path do |f| %>
   <%= f.input :email %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :user_type %>
+  <%= f.input :admin, :as => :hidden, :input_html => { :value => false }%>
   <%= f.input :password, :as => :hidden, :input_html => { :value => @pwd }%>
-
-  <%= f.input :password_confirmation, :as => :hidden, :input_html => { :value => @pwd }%>
-  <%= f.input :groups, as: :select, collection: Group.where(user: current_user), prompt: 'Choisir un groupe projet', label: 'Groupe' %>
+  <%= f.input :groups, as: :select, collection: Group.where(user: current_user), selected: 1, label: 'Groupe' %>
+  <%= f.input :role, as: :select, collection: {"Membre": "M", "Référent": "R"}, selected: 1, label: 'Role' %>
   <%= f.button :submit %>
 <% end %>

@@ -15,34 +15,46 @@ class AdminUsersController < ApplicationController
   end
 
   def create
-    @group = Group.find(group_id[:groups].to_i)
-    @existing_user = User.where(email: user_params[:email])
-    if @existing_user.empty?
-      @user = User.new(user_params)
-      if @user.save
-        @user_group = UserGroup.create(user: @user, group: @group)
-        redirect_to admin_users_path
-      else
-        render :new
-      end
+    @group = Group.find(user_group_params[:groups].to_i)
+    @existing_user = User.where(email: user_params[:email])[0]
+    if @existing_user
+      add_user_to_group
     else
-      if UserGroup.where(user: @existing_user, group: @group).empty?
-        UserGroup.create(user: @user, group: @group)
-        flash.alert = "Cet utilisateur a été ajouté au groupe"
-      else
-        flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
-      end
-      redirect_to admin_users_path
+      create_user
     end
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :user_type, :password, :password_confirmation, :encrypted_password)
+  def create_user
+    @user = User.new(user_params)
+    if @user.save
+      create_user_group
+      redirect_to admin_users_path
+    else
+      render :new
+    end
   end
 
-  def group_id
-    params.require(:user).permit(:groups)
+  def add_user_to_group
+    if UserGroup.where(user: @existing_user, group: @group).empty?
+      create_user_group
+      flash.alert = "Cet utilisateur a été ajouté au groupe"
+    else
+      flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
+    end
+    redirect_to admin_users_path
+  end
+
+  def create_user_group
+    @user_group = UserGroup.create(user: @user, group: @group, role: user_group_params[:role])
+  end
+
+  def user_params
+    params.require(:admin_user).permit(:email, :admin, :password, :encrypted_password)
+  end
+
+  def user_group_params
+    params.require(:admin_user).permit(:groups, :role)
   end
 end
