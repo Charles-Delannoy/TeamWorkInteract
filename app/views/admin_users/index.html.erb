@@ -2,3 +2,9 @@
 <% if policy(Group).create? %>
   <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_admin_user_path, class: 'add-icon' %>
 <% end %></h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>

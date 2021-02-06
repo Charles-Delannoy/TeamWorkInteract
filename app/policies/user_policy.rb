@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.includes(:user_groups).includes(:groups).where(groups: {user: user})
     end
   end
 end
