@@ -28,14 +28,4 @@ class GroupPolicy < ApplicationPolicy
       scope.all
     end
   end
-
-  private
-
-  def owner?
-    record.user == user
-  end
-
-  def admin?
-    user.user_type == 'A'
-  end
 end

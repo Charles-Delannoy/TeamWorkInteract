@@ -6,6 +6,6 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def create?
-    user.user_type == "A"
+    admin?
   end
 end
