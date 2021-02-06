@@ -12,6 +12,7 @@ ul.group-cards {
     background-color: $twi-light-green;
     margin-bottom: 20px;
     position: relative;
+    min-height: 130px;
     h2 {
       font-size: 25px;
       font-weight: 500;
@@ -45,9 +46,15 @@ ul.group-cards {
       margin-right: 35px;
     }
   }
+  li.fade-card {
+    opacity: 0;
+    transition: all ease 500ms;
+  }
+  li.no-diplay {
+    display: none;
+  }
   .group-head {
     display: flex;
     align-items: center;
   }
 }
-

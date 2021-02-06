@@ -1,1 +1,11 @@
-document.getElementById(`group-${<%= @group.id %>}`).style.display = "none";
+// let card = document.getElementById(`group-${<%= @group.id %>}`);
+card = document.getElementById(`group-${<%= @group.id %>}`)
+card.classList.add('fade-card');
+
+noDisplay = (element) => {
+  card.classList.add('no-diplay');
+}
+
+setTimeout(noDisplay, 1000);
+
+
