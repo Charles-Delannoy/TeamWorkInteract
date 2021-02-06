@@ -16,27 +16,35 @@ class AdminUsersController < ApplicationController
 
   def create
     @group = Group.find(group_id[:groups].to_i)
-    @existing_user = User.where(email: user_params[:email])
-    if @existing_user.empty?
-      @user = User.new(user_params)
-      if @user.save
-        @user_group = UserGroup.create(user: @user, group: @group)
-        redirect_to admin_users_path
-      else
-        render :new
-      end
+    @existing_user = User.where(email: user_params[:email])[0]
+    if @existing_user
+      add_user_to_group
     else
-      if UserGroup.where(user: @existing_user, group: @group).empty?
-        UserGroup.create(user: @user, group: @group)
-        flash.alert = "Cet utilisateur a été ajouté au groupe"
-      else
-        flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
-      end
-      redirect_to admin_users_path
+      create_user
     end
   end
 
   private
+
+  def create_user
+    @user = User.new(user_params)
+    if @user.save
+      @user_group = UserGroup.create(user: @user, group: @group)
+      redirect_to admin_users_path
+    else
+      render :new
+    end
+  end
+
+  def add_user_to_group
+    if UserGroup.where(user: @existing_user, group: @group).empty?
+      UserGroup.create(user: @existing_user, group: @group)
+      flash.alert = "Cet utilisateur a été ajouté au groupe"
+    else
+      flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
+    end
+    redirect_to admin_users_path
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :user_type, :password, :password_confirmation, :encrypted_password)
