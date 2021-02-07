@@ -22,8 +22,15 @@
 
 <div class="survey-grid">
 
-  <div class="questions-list">
-  </div>
+  <ul class="question-cards">
+    <% @questions.each do |question| %>
+      <li class="questions-card" id=<%= "question-#{question.id}" %>>
+        <div class="question-head">
+          <h2><%= question.title %></h2>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 
   <div class="survey-question-form">
     <%= render "questions/form", label: "Ajouter la question" %>
