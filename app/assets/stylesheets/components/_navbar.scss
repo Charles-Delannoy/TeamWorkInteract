@@ -37,6 +37,10 @@
       font-weight: 200;
       a {
         color: #000;
+        &:hover {
+          text-decoration: none;
+          color: $deep-twi-green;
+        }
       }
     }
   }
