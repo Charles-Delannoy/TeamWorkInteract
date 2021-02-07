@@ -10,3 +10,17 @@
     padding-top: 8px;
   }
 }
+
+.profile-pic {
+  position: absolute;
+  top: 2.5px;
+  right: 2.5px;
+  img {
+    vertical-align: middle;
+    border-style: none;
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
