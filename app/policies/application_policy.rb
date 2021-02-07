@@ -54,6 +54,6 @@ class ApplicationPolicy
   end
 
   def admin?
-    user.admin == true
+    user.admin == 'Y'
   end
 end
