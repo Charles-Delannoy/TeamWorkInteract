@@ -1,22 +1,5 @@
-<h1><%= @survey.title %></h1>
-
-<%= @survey.description %>
-<%= @survey.icon %>
-<%= @survey.user.email %>
-
-<% if policy(@survey).edit? %>
-  <%= link_to "Edit", edit_survey_path(@survey) %>
-<% end %>
-
-<% if policy(@survey).destroy? %>
-  <%= link_to "Delete", survey_path(@survey), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
-
-<% if policy(@survey).create? %>
-  <%= link_to "Add a question to this survey", new_survey_question_path(@survey) %>
-<% end %>
-
 <ul class="survey-cards">
+  <li></li>
   <li class="survey-card">
     <div class="survey-info">
       <div class="survey-head">
@@ -33,6 +16,22 @@
     <% if @survey.icon %>
       <%= @survey.icon.html_safe %>
     <% end %>
-
   </li>
+  <li></li>
 </ul>
+
+<div class="survey-grid">
+
+  <div class="questions-list">
+  </div>
+
+  <div class="survey-question-form">
+    <%= render "questions/form", label: "Ajouter la question" %>
+  </div>
+
+</div>
+
+
+<% if policy(@survey).create? %>
+  <%= link_to "Add a question to this survey", new_survey_question_path(@survey) %>
+<% end %>

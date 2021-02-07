@@ -24,6 +24,7 @@ class SurveysController < ApplicationController
 
   def show
     @questions = @survey.questions
+    @question = Question.new
   end
 
   def edit
