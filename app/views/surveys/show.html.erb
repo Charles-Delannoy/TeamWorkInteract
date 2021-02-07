@@ -1,16 +1,47 @@
-<h1><%= @survey.title %></h1>
+<ul class="survey-cards">
+  <li></li>
+  <li class="survey-card">
+    <div class="survey-info">
+      <div class="survey-head">
+        <h2><%= @survey.title %></h2>
+        <% if policy(@survey).edit? %>
+          <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_survey_path(@survey) %>
+        <% end %>
+        <% if policy(@survey).destroy? %>
+          <%= link_to '<i class="fas fa-trash"></i>'.html_safe, survey_path(@survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{@survey.title} ?" } %>
+        <% end %>
+      </div>
+      <p><%= @survey.description %></p>
+    </div>
+    <% if @survey.icon %>
+      <%= @survey.icon.html_safe %>
+    <% end %>
+  </li>
+  <li></li>
+</ul>
 
-<%= @survey.description %>
-<%= @survey.icon %>
-<%= @survey.user.email %>
+<div class="survey-grid">
 
-<% if policy(@survey).edit? %>
-  <%= link_to "Edit", edit_survey_path(@survey) %>
-<% end %>
+  <ul class="question-cards">
+    <% @questions.each do |question| %>
+      <li class="question-card" id=<%= "question-#{question.id}" %>>
+        <div class="question-head">
+          <h2><%= question.title %></h2>
+        </div>
+        <h3>
+          <strong>Axe : </strong><%= question.axe.title %><br>
+          <strong>Coef : </strong><%= question.coef %><br>
+        </h3>
+      </li>
+    <% end %>
+  </ul>
 
-<% if policy(@survey).destroy? %>
-  <%= link_to "Delete", survey_path(@survey), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+  <div class="survey-question-form">
+    <%= render "questions/form", label: "Ajouter la question" %>
+  </div>
+
+</div>
+
 
 <% if policy(@survey).create? %>
   <%= link_to "Add a question to this survey", new_survey_question_path(@survey) %>
