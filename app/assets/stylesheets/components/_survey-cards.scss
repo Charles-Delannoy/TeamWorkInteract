@@ -1,9 +1,10 @@
 ul.survey-cards {
   list-style-type: none;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr;
+  // grid-gap: 16px;
+  margin-bottom: 32px;
   li.survey-card {
     border-radius: 16px;
     padding: 16px;

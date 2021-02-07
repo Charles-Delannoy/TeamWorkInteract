@@ -37,12 +37,8 @@
   </ul>
 
   <div class="survey-question-form">
+    <h3>Ajoutez une question</h3>
     <%= render "questions/form", label: "Ajouter la question" %>
   </div>
 
 </div>
-
-
-<% if policy(@survey).create? %>
-  <%= link_to "Add a question to this survey", new_survey_question_path(@survey) %>
-<% end %>
