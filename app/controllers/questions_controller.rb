@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     @question.survey = @survey
     authorize @question
     if @question.save
-      redirect_to survey_path(@survey)
+      redirect_to survey_path(@survey, anchor: "question-#{@question.id}")
     else
       render "surveys/show"
     end
