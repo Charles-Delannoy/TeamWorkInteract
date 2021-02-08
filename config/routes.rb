@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :admin_users, only: [:index, :new, :create]
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
+  get 'validation', to: 'pages#validate_account_edit'
+  patch 'validation', to: 'pages#validate_account'
 
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :questions, only: [:new, :create ]

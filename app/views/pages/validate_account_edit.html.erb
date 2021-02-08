@@ -1,0 +1,6 @@
+<%= simple_form_for current_user, url: validation_path do |f| %>
+  <%= f.input :email %>
+  <%= f.input :first_name, label: 'Prénom' %>
+  <%= f.input :last_name, label: 'Nom'%>
+  <%= f.button :submit, 'Validez vos informations' %>
+<% end %>
