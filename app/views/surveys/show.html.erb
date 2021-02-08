@@ -26,7 +26,11 @@
     <% @questions.each do |question| %>
       <li class="question-card" id=<%= "question-#{question.id}" %>>
         <div class="question-head">
-          <h2><%= question.title %></h2>
+          <% if policy(question).show? %>
+            <h2><%= link_to question.title, question_path(question) %></h2>
+            <% else %>
+            <h2><%= question.title %></h2>
+          <% end %>
         </div>
         <div class="question-info">
           <div class="question-icons">
