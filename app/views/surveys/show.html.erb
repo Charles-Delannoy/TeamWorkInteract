@@ -34,7 +34,7 @@
               <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_question_path(question) %>
             <% end %>
             <% if policy(question).destroy? %>
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, question_path(question), method: :delete, data: { confirm: "Etes-vous sûr de vouloir supprimer cette question ?" } %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, question_path(question), method: :delete, remote: true, data: { confirm: "Etes-vous sûr de vouloir supprimer cette question ?" } %>
             <% end %>
           </div>
           <h3>

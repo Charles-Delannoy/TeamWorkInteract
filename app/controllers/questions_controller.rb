@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
   def destroy
     @survey = @question.survey
     @question.destroy
-    redirect_to survey_path(@survey)
+    # redirect_to survey_path(@survey)
   end
 
   private
