@@ -29,12 +29,14 @@
           <h2><%= question.title %></h2>
         </div>
         <div class="question-info">
-          <% if policy(question).edit? %>
-            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_question_path(question) %>
-          <% end %>
-          <% if policy(question).destroy? %>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, question_path(question), method: :delete, data: { confirm: "Etes-vous sûr de vouloir supprimer cette question ?" } %>
-          <% end %>
+          <div class="question-icons">
+            <% if policy(question).edit? %>
+              <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_question_path(question) %>
+            <% end %>
+            <% if policy(question).destroy? %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, question_path(question), method: :delete, data: { confirm: "Etes-vous sûr de vouloir supprimer cette question ?" } %>
+            <% end %>
+          </div>
           <h3>
             <strong>Axe : </strong><%= question.axe.title %><br>
             <strong>Coef : </strong><%= question.coef %>
