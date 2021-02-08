@@ -6,7 +6,6 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def first_welcome(user, group, role, reset_pwd_url)
-    @greeting = "Hi"
     @user = user
     @group = group
     @role = role
