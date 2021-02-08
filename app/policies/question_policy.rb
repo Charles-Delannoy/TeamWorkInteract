@@ -8,4 +8,12 @@ class QuestionPolicy < ApplicationPolicy
   def create?
     admin?
   end
+
+  def update?
+    record.survey.user == user
+  end
+
+  def destroy?
+    record.survey.user == user
+  end
 end

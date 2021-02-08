@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :set_question, only: [ :edit, :update, :destroy ]
 
   def new
     @survey = Survey.find(params[:survey_id])
@@ -19,7 +20,22 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    
+  end
+  
+  def update
+    @survey = @question.survey
+    @question.update(questions_params)
+    if @question.save
+      redirect_to survey_path(@survey, anchor: "question-#{@question.id}")
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @survey = @question.survey
+    @question.destroy
+    redirect_to survey_path(@survey)
   end
 
   private
