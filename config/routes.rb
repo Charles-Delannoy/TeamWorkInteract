@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
 
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
-    resources :questions, only: [:new, :create]
+    resources :questions, only: [:new, :create, :edit, :update]
   end
 
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]

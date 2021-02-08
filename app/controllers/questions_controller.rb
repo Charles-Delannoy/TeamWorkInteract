@@ -18,7 +18,16 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit
+    
+  end
+
   private
+
+  def set_question
+    @question = Question.find(params[:id])
+    authorize @question
+  end
 
   def questions_params
     params.require(:question).permit(:title, :coef, :axe_id)
