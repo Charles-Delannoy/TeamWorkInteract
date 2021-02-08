@@ -1,0 +1,25 @@
+<style>
+  body {
+    font-family: 'sans-serif';
+  }
+  strong {
+    font-weight: 600;
+  }
+  p {
+    font-weight: 100;
+  }
+</style>
+<strong>Bienvenue,</strong>
+
+<p>
+  Vous avez été invité sur l'application TeamWorkInteract
+</p>
+<p>
+  Votre administrateur vous a ajouté au groupe <%= @group %> en tant que <%= @role %>
+</p>
+<p>Choisissez votre mot de passe et accèdez à l'application : <%= link_to 'je choisi mon mot de passe', @reset_pwd_url %></p>
+
+<br/>
+
+<p>L'équipe de TeamWorkInteract</p>
+<%= mail_to "teamworkinteract@gmail.com", "teamworkinteract@gmail.com" %>

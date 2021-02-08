@@ -1,0 +1,26 @@
+<style>
+  body {
+    font-family: 'sans-serif';
+  }
+  strong {
+    font-weight: 600;
+  }
+  p {
+    font-weight: 100;
+  }
+</style>
+<% if @user.first_name %>
+  <strong>Bonjour <%= @user.first_name %> <%= @user.last_name %>,</strong>
+<% else %>
+  <strong>Bonjour <%= @user.email %>,</strong>
+<% end %>
+
+<p>
+  Votre administrateur vous a ajouté au groupe <%= @group %> en tant que <%= @role %>
+</p>
+<p>J'accède à l'application : <%= link_to "j'y vais", root_url %> </p>
+
+<br/>
+
+<p>L'équipe de TeamWorkInteract</p>
+<%= mail_to "teamworkinteract@gmail.com", "teamworkinteract@gmail.com" %>

@@ -17,6 +17,7 @@ class AdminUsersController < ApplicationController
   def create
     @group = Group.find(user_group_params[:groups].to_i)
     @existing_user = User.where(email: user_params[:email])[0]
+    @role = user_group_params[:role] == "R" ? 'référent' : 'membre'
     if @existing_user
       add_user_to_group
     else
@@ -29,8 +30,14 @@ class AdminUsersController < ApplicationController
   def create_user
     @user = User.new(user_params)
     if @user.save
-      create_user_group
+      create_user_group(@user)
       redirect_to admin_users_path
+      raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
+      @user.reset_password_token = hashed
+      @user.reset_password_sent_at = Time.now.utc
+      @user.save
+      reset_pwd_url = "http://localhost:3000/users/password/edit?reset_password_token=#{raw}"
+      UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_now
     else
       render :new
     end
@@ -38,7 +45,8 @@ class AdminUsersController < ApplicationController
 
   def add_user_to_group
     if UserGroup.where(user: @existing_user, group: @group).empty?
-      create_user_group
+      create_user_group(@existing_user)
+      UserMailer.welcome_to_group(@existing_user, @group.name, @role).deliver_now
       flash.alert = "Cet utilisateur a été ajouté au groupe"
     else
       flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
@@ -46,8 +54,8 @@ class AdminUsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  def create_user_group
-    @user_group = UserGroup.create(user: @user, group: @group, role: user_group_params[:role])
+  def create_user_group(user)
+    @user_group = UserGroup.create(user: user, group: @group, role: user_group_params[:role])
   end
 
   def user_params
