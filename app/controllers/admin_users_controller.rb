@@ -37,7 +37,7 @@ class AdminUsersController < ApplicationController
       @user.reset_password_sent_at = Time.now.utc
       @user.save
       reset_pwd_url = "http://localhost:3000/users/password/edit?reset_password_token=#{raw}"
-      UserMailer.first_welcome(@user, @group, @role, reset_pwd_url).deliver_now
+      UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_now
     else
       render :new
     end
