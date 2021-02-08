@@ -17,6 +17,7 @@ class AdminUsersController < ApplicationController
   def create
     @group = Group.find(user_group_params[:groups].to_i)
     @existing_user = User.where(email: user_params[:email])[0]
+    @role = user_group_params[:role] == "R" ? 'référent' : 'membre'
     if @existing_user
       add_user_to_group
     else
@@ -31,6 +32,12 @@ class AdminUsersController < ApplicationController
     if @user.save
       create_user_group
       redirect_to admin_users_path
+      raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
+      @user.reset_password_token = hashed
+      @user.reset_password_sent_at = Time.now.utc
+      @user.save
+      reset_pwd_url = "http://localhost:3000/users/password/edit?reset_password_token=#{raw}"
+      UserMailer.first_welcome(@user, @group, @role, reset_pwd_url).deliver_now
     else
       render :new
     end
