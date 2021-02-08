@@ -41,7 +41,7 @@ class SurveysController < ApplicationController
 
   def destroy
     @survey.destroy
-    redirect_to dashboard_path
+    redirect_to surveys_path
   end
 
   private
