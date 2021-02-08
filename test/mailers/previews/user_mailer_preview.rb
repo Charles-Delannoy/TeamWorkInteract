@@ -14,4 +14,13 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.first_welcome(user, group, role, reset_pwd_url)
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome_to_group
+  def welcome_to_group
+    user = User.last
+    group = Group.first.name
+    role = 'référent'
+
+    UserMailer.welcome_to_group(user, group, role)
+  end
+
 end

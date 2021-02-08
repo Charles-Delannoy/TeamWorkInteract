@@ -14,4 +14,13 @@ class UserMailer < ApplicationMailer
 
     mail to: user.email, subject: 'Vous avez été invité sur teamworkinteact'
   end
+
+  def welcome_to_group(user, group, role)
+    @greeting = "Hi"
+    @user = user
+    @group = group
+    @role = role
+
+    mail to: user.email, subject: 'Teamworkinteact : vous avez été invité à un groupe'
+  end
 end

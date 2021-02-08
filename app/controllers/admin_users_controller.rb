@@ -46,6 +46,7 @@ class AdminUsersController < ApplicationController
   def add_user_to_group
     if UserGroup.where(user: @existing_user, group: @group).empty?
       create_user_group
+      UserMailer.welcome_to_group(@existing_user, @group, @role).deliver_now
       flash.alert = "Cet utilisateur a été ajouté au groupe"
     else
       flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
@@ -54,7 +55,7 @@ class AdminUsersController < ApplicationController
   end
 
   def create_user_group
-    @user_group = UserGroup.create(user: @user, group: @group, role: user_group_params[:role])
+    @user_group = UserGroup.create(user: @existing_user, group: @group, role: user_group_params[:role])
   end
 
   def user_params
