@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_125220) do
+ActiveRecord::Schema.define(version: 2021_02_09_145349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_125220) do
     t.bigint "survey_id", null: false
     t.date "start_date"
     t.date "end_date"
+    t.string "title"
     t.index ["survey_id"], name: "index_campaigns_on_survey_id"
   end
 
