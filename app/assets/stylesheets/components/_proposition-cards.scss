@@ -1,7 +1,7 @@
-ul.question-cards {
+ul.proposition-cards {
   list-style-type: none;
   padding: 0;
-  li.question-card {
+  li.proposition-card {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -25,9 +25,9 @@ ul.question-cards {
       font-size: 10px;
       font-weight: 100;
     }
-    .question-info {
+    .proposition-info {
       min-width: 120px;
-      .question-icons {
+      .proposition-icons {
         text-align: right;
       }
       strong {

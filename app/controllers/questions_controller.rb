@@ -1,5 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [ :edit, :update, :destroy ]
+  before_action :set_question, only: [ :show, :edit, :update, :destroy ]
+
+  def show
+    @propositions = @question.propositions
+    @proposition = Proposition.new
+  end
 
   def new
     @survey = Survey.find(params[:survey_id])
@@ -15,13 +20,14 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to survey_path(@survey, anchor: "question-#{@question.id}")
     else
+      @questions = @survey.questions
       render "surveys/show"
     end
   end
 
   def edit
   end
-  
+
   def update
     @survey = @question.survey
     @question.update(questions_params)
@@ -33,9 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @survey = @question.survey
     @question.destroy
-    # redirect_to survey_path(@survey)
   end
 
   private

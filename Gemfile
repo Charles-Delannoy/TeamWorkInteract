@@ -44,6 +44,9 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
 #ferrum
 gem "ferrum"
 
+gem 'turbolinks_render'
+
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'

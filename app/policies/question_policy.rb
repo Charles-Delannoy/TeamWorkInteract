@@ -5,6 +5,10 @@ class QuestionPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    record.survey.user == user
+  end
+
   def create?
     admin?
   end

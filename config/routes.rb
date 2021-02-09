@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   patch 'validation', to: 'pages#validate_account'
 
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
-    resources :questions, only: [:new, :create ]
+    resources :questions, only: [:new, :create ] 
   end
-  resources :questions, only: [ :edit, :update, :destroy ]
+  resources :questions, only: [ :show, :edit, :update, :destroy ] do
+    resources :propositions, only: [:create]
+  end
+  resources :propositions, only: [ :edit, :update, :destroy ]
 
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show]
