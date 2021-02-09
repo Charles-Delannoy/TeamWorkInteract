@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to survey_path(@survey, anchor: "question-#{@question.id}")
     else
+      @questions = @survey.questions
       render "surveys/show"
     end
   end
@@ -38,7 +39,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @survey = @question.survey
     @question.destroy
   end
 

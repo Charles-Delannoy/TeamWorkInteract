@@ -38,15 +38,14 @@
             <% end %>
           </div>
           <h3>
-            <strong>Axe : </strong><%= proposition.axe.title %><br>
-            <strong>Coef : </strong><%= proposition.coef %>
+            <strong>Value : </strong><%= proposition.value %><br>
           </h3>
         </div>
       </li>
     <% end %>
   </ul>
 
-  <div class="survey-proposition-form">
+  <div class="question-proposition-form">
     <h3>Ajoutez une proposition</h3>
     <%= render "propositions/form", label: "Ajouter la proposition" %>
   </div>
