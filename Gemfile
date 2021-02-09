@@ -39,6 +39,10 @@ gem 'devise'
 gem 'pundit'
 # Cloudinary
 gem 'cloudinary', '~> 1.16.0'
+# Nokogiri
+gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'
+#ferrum
+gem "ferrum"
 
 group :development, :test do
   gem 'pry-byebug'

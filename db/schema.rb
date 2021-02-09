@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_224800) do
+ActiveRecord::Schema.define(version: 2021_02_09_002442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 2021_02_07_224800) do
     t.date "end_date"
     t.text "description"
     t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "icons", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "family"
   end
 
   create_table "propositions", force: :cascade do |t|
