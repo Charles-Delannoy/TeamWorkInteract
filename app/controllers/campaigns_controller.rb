@@ -1,5 +1,11 @@
 class CampaignsController < ApplicationController
 
+  def index
+    @campaigns = policy_scope(Campaign).order(end_date: :asc)
+    authorize @campaigns
+    new
+  end
+
   def new
     @campaign = Campaign.new
     authorize @campaign

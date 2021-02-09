@@ -1,0 +1,38 @@
+<h1>Mes campagnes
+<% if policy(Group).create? %>
+  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_campaign_path, class: 'add-icon' %>
+<% end %></h1>
+
+<div class="campaign-grid">
+
+  <ul class="campaign-cards">
+    <% @campaigns.each do |campaign| %>
+      <li class="campaign-card">
+        <div class="campaign-head">
+          <% if policy(campaign).show? %>
+            <h2><%= link_to campaign.title, campaign_path(campaign) %></h2>
+          <% else %>
+            <h2><%= campaign.title %></h2>
+          <% end %>
+          <% if policy(campaign).edit? %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_campaign_path(campaign) %>
+          <% end %>
+          <% if policy(campaign).destroy? %>
+            <%= link_to('<i class="fas fa-trash"></i>'.html_safe, campaign_path(campaign), class:'no-scroll-btn',
+              method: :delete,
+              data: { confirm: "Etes vous sur de vouloir supprimer la campagne #{campaign.title} ?" },
+              remote: true, id: "delete-campaign-#{campaign.id}")
+            %>
+          <% end %>
+        </div>
+        <h3><strong>Questionnaire :</strong> <%= campaign.survey %></h3>
+        <p class='campaign-date'>Du <%= campaign.start_date %> au <%= campaign.end_date %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="campaign-form">
+    <%= render "form", campaign: @campaign, label: "Créer" %>
+  </div>
+
+</div>

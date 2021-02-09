@@ -5,6 +5,10 @@ class CampaignPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    admin?
+  end
+
   def create?
     admin?
   end
