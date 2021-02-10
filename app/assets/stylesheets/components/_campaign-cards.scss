@@ -9,6 +9,10 @@ ul.campaign-cards {
     margin-bottom: 20px;
     position: relative;
   }
+  .campaign-head {
+    display: flex;
+    align-items: center;
+  }
   h2 {
     font-size: 25px;
     font-weight: 500;
