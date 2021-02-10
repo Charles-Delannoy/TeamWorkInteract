@@ -18,13 +18,13 @@
   </li>
 </ul>
 
-<div class="campaign-grid">
+<div class="campaign-grid group">
 
   <div class="group-cards">
-    <ul class='group-cards'>
+    <ul class='group-cards group-col'>
       <% @groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
-        <li class="group-card" id=<%= "group-#{group.id}" %>>
+        <li class="group-card group-col-item" id=<%= "group-#{group.id}" %>>
           <div class="group-info">
             <div class="group-head">
               <h2><%= group.name %></h2>
@@ -50,10 +50,10 @@
   </div>
 
   <div class="group-cards">
-    <ul class='group-cards'>
+    <ul class='group-cards group-col'>
       <% @campaign_groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
-        <li class="group-card" id=<%= "group-#{group.id}" %>>
+        <li class="group-card group-col-item" id=<%= "group-#{group.id}" %>>
           <div class="group-info">
             <div class="group-head">
               <h2><%= group.name %></h2>

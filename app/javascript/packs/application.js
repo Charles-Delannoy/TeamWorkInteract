@@ -28,6 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 import { typed } from '../plugins/typed';
 import { initFlatpicker } from "../plugins/flatpickr" ;
+import { initGroupSortable } from "../plugins/initSortable";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -35,4 +36,9 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   typed();
   initFlatpicker();
+  
+  const groupUls = document.querySelectorAll(".group .group-col");
+  if (groupUls) {
+    initGroupSortable(groupUls);
+  }
 });
