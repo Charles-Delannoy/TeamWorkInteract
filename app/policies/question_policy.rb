@@ -6,7 +6,7 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def show?
-    record.survey.user == user
+    owner?(record.survey)
   end
 
   def create?
@@ -14,10 +14,10 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.survey.user == user
+    owner?(record.survey)
   end
 
   def destroy?
-    record.survey.user == user
+    owner?(record.survey)
   end
 end

@@ -10,10 +10,10 @@ class PropositionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.question.survey.user == user
+    owner?(record.question.survey)
   end
 
   def destroy?
-    record.question.survey.user == user
+    owner?(record.question.survey)
   end
 end

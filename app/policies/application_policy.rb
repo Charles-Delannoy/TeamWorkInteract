@@ -49,8 +49,8 @@ class ApplicationPolicy
 
   private
 
-  def owner?
-    record.user == user
+  def owner?(element)
+    element.user == user
   end
 
   def admin?

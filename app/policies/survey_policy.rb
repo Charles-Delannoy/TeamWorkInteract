@@ -14,14 +14,14 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def show?
-    owner?
+    owner?(record)
   end
 
   def update?
-    owner?
+    owner?(record)
   end
 
   def destroy?
-    owner?
+    owner?(record)
   end
 end
