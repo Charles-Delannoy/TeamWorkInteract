@@ -12,15 +12,15 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def edit?
-    owner?
+    owner?(record)
   end
 
   def update?
-    owner?
+    owner?(record)
   end
 
   def destroy?
-    owner?
+    owner?(record)
   end
 
   class Scope < Scope

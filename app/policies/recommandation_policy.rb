@@ -1,23 +1,15 @@
 class RecommandationPolicy < ApplicationPolicy
 
-  def new?
+  def create?
     admin?
   end
 
-  def create?
-    record.axe.user = user
-  end
-
-  def edit?
-    record.axe.user = user
-  end
-
   def update?
-    record.axe.user = user
+    owner?(record.axe)
   end
 
   def destroy?
-    record.axe.user = user
+    owner?(record.axe)
   end
 
   class Scope < Scope

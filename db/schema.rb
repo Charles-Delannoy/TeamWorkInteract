@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_02_10_104237) do
   create_table "group_campaigns", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "campaign_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["campaign_id"], name: "index_group_campaigns_on_campaign_id"
     t.index ["group_id"], name: "index_group_campaigns_on_group_id"
   end
