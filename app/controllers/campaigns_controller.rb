@@ -1,10 +1,15 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: [:edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
 
   def index
     @campaigns = policy_scope(Campaign).order(end_date: :asc)
     authorize @campaigns
     new
+  end
+
+  def show
+    @groups = Group.where(user: current_user)
+    @campaign_groups = @campaign.groups
   end
 
   def new

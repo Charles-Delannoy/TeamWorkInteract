@@ -9,6 +9,10 @@ class CampaignPolicy < ApplicationPolicy
     admin?
   end
 
+  def show?
+    owner?(record.survey)
+  end
+
   def create?
     admin?
   end
