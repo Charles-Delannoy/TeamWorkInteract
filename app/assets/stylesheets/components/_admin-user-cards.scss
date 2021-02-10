@@ -1,0 +1,60 @@
+.user-cards {
+  display: grid;
+  color: $deep-grape;
+  grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+  grid-gap: 20px;
+  .user-card {
+    width: 300px;
+    border: thin solid #d2d1d1;
+    img {
+      border-bottom: thin solid $twi-gray;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    h3 {
+      font-size: 20px;
+      margin: 0;
+      overflow: hidden;
+    }
+    h5 {
+      font-size: 18px;
+    }
+  }
+}
+
+.user-infos, .user-groups {
+  padding: 10px;
+}
+
+.user-groups {
+  border-top: thin solid $twi-gray;
+  ul {
+    list-style: none;
+    padding: 0;
+    font-size: 14px;
+    font-style: italic;
+    color: $deep-twi-green;
+    strong {
+      font-style: normal;
+      font-weight: 500;
+    }
+  }
+}
+
+.user-status {
+  font-size: 12px;
+  color: $deep-twi-green;
+}
+
+.valid-user {
+  i {
+    color: green;
+  }
+}
+
+.pending-user {
+  i {
+    color: #ffc106;
+  }
+}

@@ -1,6 +1,7 @@
 class AdminUsersController < ApplicationController
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).order(:first_name)
+    new
   end
 
   def new
@@ -39,7 +40,8 @@ class AdminUsersController < ApplicationController
       reset_pwd_url = "http://localhost:3000/users/password/edit?reset_password_token=#{raw}"
       UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_now
     else
-      render :new
+      @users = policy_scope(User)
+      render :index
     end
   end
 
@@ -59,10 +61,10 @@ class AdminUsersController < ApplicationController
   end
 
   def user_params
-    params.require(:admin_user).permit(:email, :admin, :password, :encrypted_password)
+    params.require(:user).permit(:email, :admin, :password, :encrypted_password)
   end
 
   def user_group_params
-    params.require(:admin_user).permit(:groups, :role)
+    params.require(:user).permit(:groups, :role)
   end
 end
