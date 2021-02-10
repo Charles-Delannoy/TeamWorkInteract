@@ -42,4 +42,11 @@ ul.survey-cards {
     display: flex;
     align-items: bottom;
   }
+  li.fade-card {
+    opacity: 0;
+    transition: all ease 500ms;
+  }
+  li.no-diplay {
+    display: none;
+  }
 }

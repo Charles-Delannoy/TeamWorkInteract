@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: %i[edit update destroy]
 
   def index
     @groups = policy_scope(Group).where(user: current_user)
@@ -15,31 +16,24 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     authorize @group
     @group.user = current_user
-    if @group.save
-      redirect_to groups_path(anchor: "group-#{@group.id}")
-    else
-      render :new
-    end
+    @group.save ? (redirect_to groups_path(anchor: "group-#{@group.id}")) : (render :new)
   end
 
   def edit
-    catch_and_authorize_group
   end
 
   def update
-    catch_and_authorize_group
     @group.update(group_params)
     @group.save ? (redirect_to groups_path) : (render :new)
   end
 
   def destroy
-    catch_and_authorize_group
     @group.destroy
   end
 
   private
 
-  def catch_and_authorize_group
+  def set_group
     @group = Group.find(params[:id])
     authorize @group
   end

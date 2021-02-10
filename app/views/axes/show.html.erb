@@ -1,10 +1,23 @@
-<h1>Axe Show</h1>
-<%= @axe.title %>
+<h1>Axe <%= @axe.title.downcase %></h1>
 
-<% if policy(@axe).edit? %>
-  <%= link_to "Edit", edit_axe_path(@axe) %>
-<% end %>
+<ul class='survey-cards'>
+  <% @axe.recommandations.each do |reco| %>
+    <li class="survey-card" id=<%= "reco-#{reco.id}" %>>
+      <div class="survey-info">
+        <div class="survey-head">
+          <h2><%= reco.title %></h2>
+          <% if policy(reco).edit? %>
+            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_recommandation_path(reco) %>
+          <% end %>
+          <% if policy(reco).destroy? %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, recommandation_path(reco), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{reco.title} ?" }, remote: true %>
+          <% end %>
+        </div>
+        <p><%= reco.description %></p>
+      </div>
 
-<% if policy(@axe).destroy? %>
-  <%= link_to "Delete", axe_path(@axe), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Ajouter une recommandation', new_axe_recommandation_path(@axe), class: 'twi-btn green-btn' %>

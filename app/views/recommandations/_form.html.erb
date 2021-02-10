@@ -1,0 +1,5 @@
+<%= simple_form_for [@axe, @recommandation], remote: true do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.submit label, class: 'twi-btn' %>
+<% end %>
