@@ -56,12 +56,18 @@ ActiveRecord::Schema.define(version: 2021_02_10_104237) do
   end
 
   create_table "campaigns", force: :cascade do |t|
-    t.bigint "group_id", null: false
     t.bigint "survey_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.index ["group_id"], name: "index_campaigns_on_group_id"
+    t.string "title"
     t.index ["survey_id"], name: "index_campaigns_on_survey_id"
+  end
+
+  create_table "group_campaigns", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "campaign_id", null: false
+    t.index ["campaign_id"], name: "index_group_campaigns_on_campaign_id"
+    t.index ["group_id"], name: "index_group_campaigns_on_group_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -149,8 +155,9 @@ ActiveRecord::Schema.define(version: 2021_02_10_104237) do
   add_foreign_key "answers", "propositions"
   add_foreign_key "answers", "users"
   add_foreign_key "axes", "users"
-  add_foreign_key "campaigns", "groups"
   add_foreign_key "campaigns", "surveys"
+  add_foreign_key "group_campaigns", "campaigns"
+  add_foreign_key "group_campaigns", "groups"
   add_foreign_key "groups", "users"
   add_foreign_key "propositions", "questions"
   add_foreign_key "questions", "axes"

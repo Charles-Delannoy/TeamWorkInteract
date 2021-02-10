@@ -1,0 +1,7 @@
+<%= simple_form_for([campaign], remote: true) do |f| %>
+  <%= f.association :survey %>
+  <%= f.input :title %>
+  <%= f.input :start_date, label: "Dates de la campagne", as: :string, required: false, input_html: {id: "range_start", class: "d-none"} %>
+  <%= f.input :end_date, label: false, as: :string, required: false, input_html: {id: "range_end", class: "d-none"} %>
+  <%= f.submit label, class: "twi-btn" %>
+<% end %>
