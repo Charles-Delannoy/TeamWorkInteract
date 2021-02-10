@@ -1,10 +1,3 @@
-<h1>Axe Show</h1>
-<%= @axe.title %>
+<h1>Axe <%= @axe.title.downcase %></h1>
 
-<% if policy(@axe).edit? %>
-  <%= link_to "Edit", edit_axe_path(@axe) %>
-<% end %>
-
-<% if policy(@axe).destroy? %>
-  <%= link_to "Delete", axe_path(@axe), method: :delete, data: { confirm: "Are you sure?" } %>
-<% end %>
+<%= link_to 'Ajouter un axe', new_axe_recommandation_path(@axe), class: 'twi-btn green-btn' %>
