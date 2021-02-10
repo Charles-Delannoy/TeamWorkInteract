@@ -1,0 +1,8 @@
+card = document.getElementById(`campaign-${<%= @campaign.id %>}`)
+card.classList.add('fade-card');
+
+noDisplay = (element) => {
+  card.classList.add('no-diplay');
+}
+
+setTimeout(noDisplay, 1000);

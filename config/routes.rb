@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
   resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show]
+  resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
