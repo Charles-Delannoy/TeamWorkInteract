@@ -6,7 +6,7 @@
     <% full_name = "#{user.first_name} #{user.last_name}" %>
       <div class='user-card'>
         <% if user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, alt: "profile pic"%>
+          <%= cl_image_tag user.photo.key, alt: "profile pic"%>
         <% else %>
           <%= image_tag 'profile.svg', alt: "profile pic" %>
         <% end %>
