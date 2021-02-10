@@ -1,26 +1,4 @@
-.survey-question-form {
-  padding: 30px;
-  border-radius: 15px;
-  border: thin solid $twi-gray;
-  position: sticky;
-  top: 20px;
-  input, textarea {
-    border: thin solid $twi-gray;
-  }
-  textarea {
-    height: 38px;
-  }
-  input.twi-btn {
-    width: 100%;
-  }
-  h3 {
-      text-align: center;
-      font-weight: 400;
-      margin-bottom: 30px;
-    }
-}
-
-.group-form {
+.twi-form {
   padding: 30px;
   border-radius: 15px;
   border: thin solid $twi-gray;
@@ -30,24 +8,7 @@
     box-shadow: none;
     margin: 0 auto;
   }
-  input, textarea, .flatpickr-calendar  {
-    border: thin solid $twi-gray;
-  }
-  textarea {
-    height: 38px;
-  }
-  input.twi-btn {
-    width: 100%;
-  }
-}
-
-.question-proposition-form {
-  padding: 30px;
-  border-radius: 15px;
-  border: thin solid $twi-gray;
-  position: sticky;
-  top: 20px;
-  input, textarea {
+  input, textarea, .flatpickr-calendar, select  {
     border: thin solid $twi-gray;
   }
   textarea {
@@ -57,29 +18,8 @@
     width: 100%;
   }
   h3 {
-      text-align: center;
-      font-weight: 400;
-      margin-bottom: 30px;
-    }
-}
-
-.campaign-form {
-  padding: 30px;
-  border-radius: 15px;
-  border: thin solid $twi-gray;
-  // position: sticky;
-  // top: 20px;
-  .flatpickr-calendar {
-    box-shadow: none;
-    margin: 0 auto;
-  }
-  input, textarea, .flatpickr-calendar  {
-    border: thin solid $twi-gray;
-  }
-  textarea {
-    height: 38px;
-  }
-  input.twi-btn {
-    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 30px;
   }
 }
