@@ -16,11 +16,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     authorize @group
     @group.user = current_user
-    if @group.save
-      redirect_to groups_path(anchor: "group-#{@group.id}")
-    else
-      render :new
-    end
+    @group.save ? (redirect_to groups_path(anchor: "group-#{@group.id}")) : (render :new)
   end
 
   def edit

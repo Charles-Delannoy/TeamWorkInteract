@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :recommandations, only: [:new, :create]
   end
+  resources :recommandations, only: [:edit, :update, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
