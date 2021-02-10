@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :admin_users, only: [:index, :new, :create]
+  resources :admin_users, only: [:index, :create]
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
   get 'validation', to: 'pages#validate_account_edit'
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :recommandations, only: [:new, :create]
   end
   resources :recommandations, only: [:edit, :update, :destroy]
-  
+
   resources :campaigns, only: [:index, :new, :create, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

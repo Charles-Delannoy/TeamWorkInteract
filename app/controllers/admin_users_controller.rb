@@ -1,6 +1,6 @@
 class AdminUsersController < ApplicationController
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).order(:first_name)
     new
   end
 
