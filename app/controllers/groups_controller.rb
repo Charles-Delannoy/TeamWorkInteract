@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :catch_and_authorize_group, only: %i[edit update destroy]
 
   def index
     @groups = policy_scope(Group).where(user: current_user)
@@ -23,17 +24,14 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    catch_and_authorize_group
   end
 
   def update
-    catch_and_authorize_group
     @group.update(group_params)
     @group.save ? (redirect_to groups_path) : (render :new)
   end
 
   def destroy
-    catch_and_authorize_group
     @group.destroy
   end
 
