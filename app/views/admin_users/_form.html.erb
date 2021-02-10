@@ -1,4 +1,4 @@
-<%= simple_form_for @user, url: admin_users_path do |f| %>
+<%= simple_form_for @user, remote: true, url: admin_users_path do |f| %>
   <%= f.input :email %>
   <%= f.input :admin, :as => :hidden, :input_html => { :value => 'N' }%>
   <%= f.input :password, :as => :hidden, :input_html => { :value => @pwd }%>
