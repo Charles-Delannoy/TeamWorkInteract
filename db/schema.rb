@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_104237) do
+ActiveRecord::Schema.define(version: 2021_02_10_130414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_02_10_104237) do
     t.date "start_date"
     t.date "end_date"
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_campaigns_on_survey_id"
   end
 
@@ -87,6 +89,8 @@ ActiveRecord::Schema.define(version: 2021_02_10_104237) do
     t.string "code"
     t.string "name"
     t.string "family"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "propositions", force: :cascade do |t|
