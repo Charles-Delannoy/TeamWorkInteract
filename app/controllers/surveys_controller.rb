@@ -8,6 +8,8 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
+    @question = @survey.questions.build
+    @proposition = @question.propositions.build
     authorize @survey
   end
 
