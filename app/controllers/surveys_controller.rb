@@ -8,12 +8,15 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
+    @questions = @survey.questions.build
+    @propositions = @questions.propositions.build
     authorize @survey
   end
 
   def create
     @survey = Survey.new(surveys_params)
     @survey.user = current_user
+    @question = @survey.questions.build(params[:question])
     authorize @survey
     if @survey.save
       redirect_to surveys_path

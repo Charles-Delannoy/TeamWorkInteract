@@ -2,5 +2,16 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :icon %>
+  <h4>Questions</h4>
+  <%= f.simple_fields_for @questions do |q| %>
+    <%= q.input :title %>
+    <%= q.association :axe%>
+    <%= q.input :coef %>
+    <h5>Propositions</h5>
+    <%= q.simple_fields_for @propositions do |prop| %>
+      <%= prop.input :title %>
+      <%= prop.input :value %>
+    <% end %>
+  <% end %>
   <%= f.button :submit %>
 <% end %>
