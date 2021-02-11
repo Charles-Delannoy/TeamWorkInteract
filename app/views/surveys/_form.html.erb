@@ -1,11 +1,11 @@
 <%= simple_form_for @survey do |f| %>
-  <div class="survey-form">
+  <div class="twi-form">
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :icon %>
   </div>
   <h4>Questions</h4>
-  <div id="questions" class='twi-form'>
+  <div id="questions" class='create-survey-grid'>
     <%= f.simple_fields_for :questions do |question| %>
       <%= render 'question_fields', :f => question %>
     <% end %>
