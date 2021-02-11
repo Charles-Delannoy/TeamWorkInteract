@@ -4,7 +4,7 @@
   <%= f.association :axe%>
   <%= f.input :coef %>
   <h5>Propositions</h5>
-  <div class="propositions">
+  <div id="propositions" class='twi-form'>
     <%= f.simple_fields_for :propositions do |prop| %>
       <%= render 'proposition_fields', :f => prop %>
     <% end %>
