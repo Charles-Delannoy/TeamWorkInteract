@@ -1,0 +1,16 @@
+<div class="nested-fields">
+  <p><strong>Question</strong></p>
+  <%= f.input :title %>
+  <%= f.association :axe%>
+  <%= f.input :coef %>
+  <h5>Propositions</h5>
+  <div class="propositions">
+    <%= f.simple_fields_for :propositions do |prop| %>
+      <%= render 'proposition_fields', :f => prop %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'ajouter proposition', f, :propositions %>
+    </div>
+  </div>
+  <%= link_to_remove_association "supprimer question", f %>
+</div>

@@ -3,15 +3,13 @@
   <%= f.input :description %>
   <%= f.input :icon %>
   <h4>Questions</h4>
-  <%= f.simple_fields_for @questions do |q| %>
-    <%= q.input :title %>
-    <%= q.association :axe%>
-    <%= q.input :coef %>
-    <h5>Propositions</h5>
-    <%= q.simple_fields_for @propositions do |prop| %>
-      <%= prop.input :title %>
-      <%= prop.input :value %>
+  <div id="questions">
+    <%= f.simple_fields_for :questions do |question| %>
+      <%= render 'question_fields', :f => question %>
     <% end %>
-  <% end %>
-  <%= f.button :submit %>
+    <div class='links'>
+      <%= link_to_add_association 'ajouter question', f, :questions %>
+    </div>
+  </div>
+  <%= f.submit %>
 <% end %>
