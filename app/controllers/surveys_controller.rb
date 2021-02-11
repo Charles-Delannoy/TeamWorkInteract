@@ -16,7 +16,8 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(surveys_params)
     @survey.user = current_user
-    @question = @survey.questions.build(params[:question])
+    @question = @survey.questions.build(surveys_params[:question])
+    raise
     authorize @survey
     if @survey.save
       redirect_to surveys_path
@@ -55,6 +56,6 @@ class SurveysController < ApplicationController
   end
 
   def surveys_params
-    params.require(:survey).permit(:title, :description, :icon)
+    params.require(:survey).permit(:title, :description, :icon, questions_attributes: [:title, :axe, :coef], propositions_attributes: [:title, :value])
   end
 end
