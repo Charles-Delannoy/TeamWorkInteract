@@ -45,12 +45,14 @@
             <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
           </div>
           <div>
-            <%= simple_form_for @group_campaign, url: group_campaigns_path do |f| %>
-              <%= check_box_tag(group) %>
-              <%= label_tag(group, "Ajouter à la campagne") %>
-              <%= image_tag 'group.svg' %>
-              <%= f.submit "Ajouter", class: 'twi-btn' %>
+            <%= simple_form_for @group_campaign do |f| %>
+              <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
+              <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
+              <%= check_box_tag @group_campaign.group, group %>
+              <%= label_tag(:group_id, "Ajouter à la campagne") %>
+              <%= f.submit %>
             <% end %>
+            <%= image_tag 'group.svg' %>
           </div>
         </li>
       <% end %>

@@ -18,17 +18,16 @@ class CampaignsController < ApplicationController
     #   GroupCampaign.create(group: campaign_group, campaign: @campaign)
     # end
     @group_campaign = GroupCampaign.new
-  end
-
-  def create_group_campaign
-    @group_campaign = GroupCampaign.new(group_campaigns_params)
-    @group_campaign.campaign = @campaign
-    if @group_campaign.save
-      redirect_to "show"
-    else
-      render :show
+    if @group_campaign.group
+      @group_campaign.campaign = @campaign
+      if @group_campaign.save
+        redirect_to "show"
+      else
+        render "campaigns/show"
+      end
     end
   end
+
 
   def new
     @campaign = Campaign.new
