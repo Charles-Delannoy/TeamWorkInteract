@@ -46,6 +46,9 @@ gem "ferrum"
 
 gem 'turbolinks_render'
 
+# cocoon to handle nested form
+gem "cocoon"
+
 
 group :development, :test do
   gem 'pry-byebug'
