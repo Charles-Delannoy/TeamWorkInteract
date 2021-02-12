@@ -1,17 +1,17 @@
 <%= simple_form_for @survey do |f| %>
-  <div class="twi-form">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :icon %>
+  <div class="twi-form survey-form-element">
+    <%= f.input :title, placeholder: 'Titre', label: false %>
+    <%= f.input :description, placeholder: 'Description du questionnaire', label: false %>
+    <%= f.input :icon, :as => :hidden, :input_html => { :value => '<i class="fas fa-poll-h"></i>' } %>
   </div>
-  <h4>Questions</h4>
-  <div id="questions" class='create-survey-grid'>
+  <h5>Questions</h5>
+  <div id="questions">
     <%= f.simple_fields_for :questions do |question| %>
       <%= render 'question_fields', :f => question %>
     <% end %>
     <div class='links'>
-      <%= link_to_add_association 'ajouter question', f, :questions %>
+      <%= link_to_add_association '<p><i class="fas fa-plus-circle"></i></p>'.html_safe, f, :questions, class: 'add-delete-survey add-element' %>
     </div>
   </div>
-  <%= f.submit %>
+  <%= f.submit 'Enregistrer le questionnaire', class: "survey-form-btn twi-btn" %>
 <% end %>
