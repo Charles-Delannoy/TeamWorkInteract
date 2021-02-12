@@ -1,9 +1,9 @@
-<h1>Mes questionnaires 
+<h1>Mes questionnaires
 <% if policy(Survey).create? %>
   <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_survey_path, class: "add-icon" %>
 <% end %></h1>
 
-<ul class="survey-cards">
+<ul class="survey-cards index-survey-cards">
   <% @surveys.each do |survey| %>
     <li class="survey-card">
       <div class="survey-info">

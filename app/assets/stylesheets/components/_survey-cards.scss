@@ -5,11 +5,11 @@ ul.survey-cards {
   // grid-template-columns: 1fr 1fr 1fr;
   // grid-gap: 16px;
   margin-bottom: 32px;
-  li.survey-card {
+  .survey-card {
     border-radius: 16px;
     padding: 16px;
     text-decoration: none;
-    background-color: $twi-light-green;
+    background-color: $twi-green;
     margin-bottom: 20px;
     position: relative;
     h2 {
@@ -48,5 +48,11 @@ ul.survey-cards {
   }
   li.no-diplay {
     display: none;
+  }
+}
+
+.index-survey-cards {
+  li.survey-card {
+    background-color: $twi-light-green;
   }
 }
