@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :admin_users, only: [:index, :new, :create]
+  resources :group_campaigns, only: [:create]
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
   get 'validation', to: 'pages#validate_account_edit'

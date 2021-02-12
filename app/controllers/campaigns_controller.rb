@@ -8,8 +8,26 @@ class CampaignsController < ApplicationController
   end
 
   def show
-    @groups = Group.where(user: current_user)
+    groups = Group.where(user: current_user)
     @campaign_groups = @campaign.groups
+    @groups = groups.select do |group|
+      group.campaigns.include?(@campaign) == false
+    end
+
+    # @campaign_groups.each do |campaign_group|
+    #   GroupCampaign.create(group: campaign_group, campaign: @campaign)
+    # end
+    @group_campaign = GroupCampaign.new
+  end
+
+  def create_group_campaign
+    @group_campaign = GroupCampaign.new(group_campaigns_params)
+    @group_campaign.campaign = @campaign
+    if @group_campaign.save
+      redirect_to "show"
+    else
+      render :show
+    end
   end
 
   def new
@@ -44,6 +62,10 @@ class CampaignsController < ApplicationController
   end
 
   private
+
+  def group_campaigns_params
+    params.require(:campaign).permit(:group_id)
+  end
 
   def set_campaign
     @campaign = Campaign.find(params[:id])

@@ -21,6 +21,7 @@
 <div class="campaign-grid">
 
   <div class="group-cards">
+    <h1>Mes groupes</h1>
     <ul class='group-cards'>
       <% @groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
@@ -43,13 +44,21 @@
             <p><%= group.description %></p>
             <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
           </div>
-          <%= image_tag 'group.svg' %>
+          <div>
+            <%= simple_form_for @group_campaign, url: group_campaigns_path do |f| %>
+              <%= check_box_tag(group) %>
+              <%= label_tag(group, "Ajouter à la campagne") %>
+              <%= image_tag 'group.svg' %>
+              <%= f.submit "Ajouter", class: 'twi-btn' %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>
   </div>
 
   <div class="group-cards">
+    <h1>Groupes affiliés à la campagne <%= @campaign.title %></h1>
     <ul class='group-cards'>
       <% @campaign_groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
