@@ -12,7 +12,10 @@ class GroupCampaignsController < ApplicationController
   end
 
   def destroy
-    
+    @group_campaign = GroupCampaign.find(params[:id])
+    authorize @group_campaign
+    @group_campaign.destroy
+    redirect_to campaign_path(@group_campaign.campaign, anchor: "group-#{@group_campaign.group.id}")
   end
 
   private

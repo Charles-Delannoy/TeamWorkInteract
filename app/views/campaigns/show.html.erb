@@ -22,7 +22,7 @@
 
   <div>
     <h1 class="campaign-groups-title">Mes groupes</h1>
-    <ul class='group-cards scroller'>
+    <ul class='group-cards scroller' id="target">
       <% @groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
         <li class="group-card" id=<%= "group-#{group.id}" %>>
@@ -64,6 +64,7 @@
     <ul class='group-cards scroller'>
       <% @campaign_groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
+        <% @gc_created = GroupCampaign.where(group: group, campaign: @campaign).first %>
         <li class="group-card" id=<%= "group-#{group.id}" %>>
           <div class="group-info">
             <div class="group-head">
@@ -84,15 +85,9 @@
             <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
           </div>
           <div>
-            <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@group_campaign) %>
-            <%= simple_form_for(@group_campaign, remote: true) do |f| %>
-              <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
-              <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
-              <%= button_tag :type => "submit", :class => "add-icon add-submit" do %>
-                <i class="fas fa-times-circle"></i>
-              <% end %>
-            <% end %>
-          <%= image_tag 'group.svg' %>
+            <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@gc_created), method: :delete, remote: true, class: "add-icon add-submit" %>
+            <%= image_tag 'group.svg' %>
+          </div>
         </li>
       <% end %>
     </ul>
