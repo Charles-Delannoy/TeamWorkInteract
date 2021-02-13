@@ -5,9 +5,7 @@ class GroupCampaignsController < ApplicationController
     # @group_campaign.campaign = @campaign
     authorize @group_campaign
     if @group_campaign.save
-      puts group_campaigns_params[:campaign_id]
-      @campaign = Campaign.find(group_campaigns_params[:campaign_id])
-      redirect_to campaigns_path(@campaign)
+      redirect_to campaign_path(group_campaigns_params[:campaign_id], anchor: "group-#{group_campaigns_params[:group_id]}")
     else
       render "pages/dashboard"
     end
