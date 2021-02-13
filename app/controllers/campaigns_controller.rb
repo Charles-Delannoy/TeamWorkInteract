@@ -14,20 +14,16 @@ class CampaignsController < ApplicationController
       group.campaigns.include?(@campaign) == false
     end
 
-    # @campaign_groups.each do |campaign_group|
-    #   GroupCampaign.create(group: campaign_group, campaign: @campaign)
-    # end
     @group_campaign = GroupCampaign.new
-    if @group_campaign.group
-      @group_campaign.campaign = @campaign
-      if @group_campaign.save
-        redirect_to "show"
-      else
-        render "campaigns/show"
-      end
+    return unless @group_campaign.group
+
+    @group_campaign.campaign = @campaign
+    if @group_campaign.save
+      redirect_to "show"
+    else
+      render "campaigns/show"
     end
   end
-
 
   def new
     @campaign = Campaign.new

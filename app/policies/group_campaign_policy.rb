@@ -8,4 +8,8 @@ class GroupCampaignPolicy < ApplicationPolicy
   def create?
     admin?
   end
+
+  def destroy?
+    owner?(record.campaign.survey)
+  end
 end

@@ -48,9 +48,9 @@
             <%= simple_form_for(@group_campaign, remote: true) do |f| %>
               <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
               <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
-              <%= check_box_tag @group_campaign.group, group %>
-              <%= label_tag(:group_id, "Ajouter à la campagne") %>
-              <%= f.submit %>
+              <%= button_tag :type => "submit", :class => "add-icon add-submit" do %>
+                <i class="fas fa-arrow-circle-right"></i>
+              <% end %>
             <% end %>
             <%= image_tag 'group.svg' %>
           </div>
@@ -83,6 +83,15 @@
             <p><%= group.description %></p>
             <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
           </div>
+          <div>
+            <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@group_campaign) %>
+            <%= simple_form_for(@group_campaign, remote: true) do |f| %>
+              <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
+              <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
+              <%= button_tag :type => "submit", :class => "add-icon add-submit" do %>
+                <i class="fas fa-times-circle"></i>
+              <% end %>
+            <% end %>
           <%= image_tag 'group.svg' %>
         </li>
       <% end %>

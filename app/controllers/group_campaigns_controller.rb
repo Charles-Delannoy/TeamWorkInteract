@@ -11,6 +11,10 @@ class GroupCampaignsController < ApplicationController
     end
   end
 
+  def destroy
+    
+  end
+
   private
 
   def group_campaigns_params
