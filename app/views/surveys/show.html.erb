@@ -20,39 +20,20 @@
   <li></li>
 </ul>
 
-<div class="survey-grid">
-
-  <ul class="question-cards">
-    <% @questions.each do |question| %>
-      <li class="question-card" id=<%= "question-#{question.id}" %>>
-        <div class="question-head">
-          <% if policy(question).show? %>
-            <h2><%= link_to question.title, question_path(question) %></h2>
-            <% else %>
-            <h2><%= question.title %></h2>
-          <% end %>
+<ul class="question-cards">
+  <% @questions.each do |question| %>
+    <li class="question-card" id=<%= "question-#{question.id}" %>>
+      <%= simple_form_for :answer do |f| %>
+        <h5><%= question.title %></h5>
+        <div class="radio-btn">
+          <%= f.input :propositions,
+                     as: :radio_buttons,
+                     collection: question.propositions,
+                     label: '' %>
         </div>
-        <div class="question-info">
-          <div class="question-icons">
-            <% if policy(question).edit? %>
-              <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_question_path(question) %>
-            <% end %>
-            <% if policy(question).destroy? %>
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, question_path(question), method: :delete, remote: true, data: { confirm: "Etes-vous sûr de vouloir supprimer cette question ?" } %>
-            <% end %>
-          </div>
-          <h3>
-            <strong>Axe : </strong><%= question.axe.title %><br>
-            <strong>Coef : </strong><%= question.coef %>
-          </h3>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+        <%= f.submit "Valider", disabled: true%>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-  <div class="twi-form">
-    <h3>Ajoutez une question</h3>
-    <%= render "questions/form", label: "Ajouter la question" %>
-  </div>
-
-</div>

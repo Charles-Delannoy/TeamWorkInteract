@@ -1,0 +1,47 @@
+.create-survey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0 15px;
+}
+
+.survey-form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  h5, h6 {
+    color: $deep-twi-green;
+  }
+}
+
+.survey-form-element {
+  padding-top: 35px;
+  margin-bottom: 15px;
+  position: relative;
+  flex-grow: 1;
+  background-color: $twi-green;
+  h6 {
+    color: #fff;
+  }
+}
+
+.delete-element {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+
+.add-delete-survey {
+  font-size: 24px;
+  color: $grape;
+  &:hover {
+    color: $deep-grape
+  }
+}
+
+.links {
+  padding-left: 10px;
+}
+
+.prop-section {
+  background-color: $twi-light-green;
+}
+

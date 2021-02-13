@@ -2,8 +2,6 @@
   padding: 30px;
   border-radius: 15px;
   border: thin solid $twi-gray;
-  position: sticky;
-  top: 20px;
   .flatpickr-calendar {
     box-shadow: none;
     margin: 0 auto;
@@ -12,7 +10,7 @@
     border: thin solid $twi-gray;
   }
   textarea {
-    height: 38px;
+    height: 80px;
   }
   input.twi-btn {
     width: 100%;
@@ -22,4 +20,9 @@
     font-weight: 400;
     margin-bottom: 30px;
   }
+}
+
+.sticky-form {
+  position: sticky;
+  top: 20px;
 }

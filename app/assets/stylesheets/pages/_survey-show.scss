@@ -4,3 +4,15 @@
   grid-gap: 20px;
   align-items: start;
 }
+
+.radio-btn {
+  fieldset {
+    display: flex;
+  }
+  legend {
+    display: none;
+  }
+  div {
+    margin-right: 10px;
+  }
+}

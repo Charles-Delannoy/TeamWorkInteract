@@ -1,10 +1,40 @@
-<h1>Mes utilisateurs
-<% if policy(Group).create? %>
-  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_admin_user_path, class: 'add-icon' %>
-<% end %></h1>
+<h1>Mes utilisateurs</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.email %></li>
-  <% end %>
-</ul>
+<div class="admin-users-grid">
+  <div class='user-cards'>
+    <% @users.each do |user| %>
+    <% full_name = "#{user.first_name} #{user.last_name}" %>
+      <div class='user-card'>
+        <% if user.photo.attached? %>
+          <%= cl_image_tag user.photo.key, alt: "profile pic"%>
+        <% else %>
+          <%= image_tag 'profile.svg', alt: "profile pic" %>
+        <% end %>
+        <div class="user-infos">
+          <% if full_name == ' ' %>
+            <h3><%= user.email %></h3>
+            <p class='user-status pending-user'><i class="fas fa-exclamation-circle"></i> Validation en attente</p>
+          <% else %>
+            <h3><%= full_name %></h3>
+            <p class='user-status valid-user'><i class="fas fa-check-circle"></i> Invitation acceptée</p>
+          <% end %>
+        </div>
+        <div class="user-groups">
+          <h5>Groupes</h5>
+          <ul>
+            <% user.groups.each do |group| %>
+              <li>
+                <p><strong><%= group.name %></strong> - <%= UserGroup.where(user: user, group: group).first.role == 'R' ? 'Référent' : 'Membre' %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+  <div class="twi-form sticky-form">
+    <%= render "form" %>
+  </div>
+</div>
