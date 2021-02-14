@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   align-items: start;
+  h1 {
+    height: 100px;
+  }
 }
 
 .campaign-groups-title {
@@ -17,6 +20,6 @@
   // overflow-y: scroll;
   // scrollbar-color: rebeccapurple green;
   // scrollbar-width: thin;
-  height: 100vh;
+  height: calc(100vh - 40px - calc(80px + 40px) - calc(90px + 20px) - 100px);
   overflow: auto;
 }
