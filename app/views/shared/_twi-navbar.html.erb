@@ -9,6 +9,14 @@
       <li><%= link_to 'Users', admin_users_path %></li>
     <% end %>
 
+    <% if policy(Group).index? %>
+      <li><%= link_to 'Groupes', groups_path %></li>
+    <% end %>
+    
+    <% if policy(Campaign).index? %>
+      <li><%= link_to 'Campagnes', campaigns_path %></li>
+    <% end %>
+
     <% if policy(Survey).index? %>
       <li><%= link_to 'Questionnaires', surveys_path %></li>
     <% end %>
@@ -17,9 +25,6 @@
       <li><%= link_to 'Axes', axes_path %></li>
     <% end %>
 
-    <% if policy(Group).index? %>
-      <li><%= link_to 'Groupes', groups_path %></li>
-    <% end %>
   </ul>
 
   <div class="actions one-action">

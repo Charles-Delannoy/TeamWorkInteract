@@ -1,10 +1,28 @@
 class CampaignsController < ApplicationController
-  before_action :set_campaign, only: [:edit, :update, :destroy]
+  before_action :set_campaign, only: [:show, :edit, :update, :destroy]
 
   def index
     @campaigns = policy_scope(Campaign).order(end_date: :asc)
     authorize @campaigns
     new
+  end
+
+  def show
+    groups = Group.where(user: current_user)
+    @campaign_groups = @campaign.groups
+    @groups = groups.select do |group|
+      group.campaigns.include?(@campaign) == false
+    end
+
+    @group_campaign = GroupCampaign.new
+    return unless @group_campaign.group
+
+    @group_campaign.campaign = @campaign
+    if @group_campaign.save
+      redirect_to "show"
+    else
+      render "campaigns/show"
+    end
   end
 
   def new
@@ -39,6 +57,10 @@ class CampaignsController < ApplicationController
   end
 
   private
+
+  def group_campaigns_params
+    params.require(:campaign).permit(:group_id)
+  end
 
   def set_campaign
     @campaign = Campaign.find(params[:id])
