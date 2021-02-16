@@ -3,7 +3,6 @@ class DashboardsController < ApplicationController
 
   def show
     @groups = current_user.groups unless admin?
-
   end
 
   private
