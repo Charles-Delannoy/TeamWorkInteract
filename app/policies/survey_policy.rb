@@ -14,7 +14,7 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def show?
-    owner?(record)
+    owner?(record) || record == ongoing_survey
   end
 
   def update?
@@ -23,5 +23,12 @@ class SurveyPolicy < ApplicationPolicy
 
   def destroy?
     owner?(record)
+  end
+
+  private
+
+  def ongoing_survey
+    today = Date.today
+    group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today).first.survey
   end
 end

@@ -3,11 +3,31 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :admin_users, only: [:index, :create]
-
+  # DASHBOARDS
   resource :dashboard, only: :show
+  namespace :admin do
+    resource :dashboard, only: :show
+  end
 
+  # ACCOUNT VALIDATION FOR INVITED USERS
   resource :validate_accounts, only: [:edit, :update]
+
+  # ACCESS GROUPS
+  resource :access_groups, only: [:update]
+
+  # ADMIN ONLY
+  resources :recommandations, only: [:edit, :update, :destroy]
+
+  resources :campaigns, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :group_campaigns, only: [:create, :destroy]
+
+  resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
+    resources :recommandations, only: [:new, :create]
+  end
+
+  # GLOBAL ROUTES
+  resources :admin_users, only: [:index, :create]
 
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :questions, only: [:new, :create ]
@@ -20,16 +40,6 @@ Rails.application.routes.draw do
   resources :propositions, only: [ :edit, :update, :destroy ]
 
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
-
-  resources :axes, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
-    resources :recommandations, only: [:new, :create]
-  end
-
-  resources :recommandations, only: [:edit, :update, :destroy]
-
-  resources :campaigns, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-
-  resources :group_campaigns, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

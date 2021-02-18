@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_current_group_and_survey
 
   include Pundit
 
@@ -15,6 +16,10 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  def pundit_user
+    UserContext.new(current_user, session)
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :admin, :photo])
@@ -27,5 +32,15 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def set_current_group_and_survey
+    today = Date.today
+    @current_group = session[:group] ? Group.find(session[:group]['id']) : nil
+    if @current_group
+      @current_campaign = @current_group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today).first
+    else
+      @current_campaign = nil
+    end
   end
 end

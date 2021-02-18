@@ -2,7 +2,8 @@ class DashboardsController < ApplicationController
   skip_after_action :verify_authorized
 
   def show
-    @groups = current_user.groups unless admin?
+    redirect_to admin_dashboard_path if admin?
+    @groups = current_user.groups
   end
 
   private

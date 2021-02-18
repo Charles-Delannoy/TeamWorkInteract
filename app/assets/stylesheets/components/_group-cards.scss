@@ -58,3 +58,25 @@ ul.group-cards {
     align-items: center;
   }
 }
+
+.group-link {
+  color: #000;
+  &:hover {
+    text-decoration: none;
+    color: #000;
+  }
+  li {
+    transition: transform ease 300ms;
+    &:hover {
+      transform: scale(1.01);
+      transition: transform ease 300ms;
+    }
+  }
+}
+
+.current-group {
+  color: gray;
+  &:hover {
+    color: gray;
+  }
+}
