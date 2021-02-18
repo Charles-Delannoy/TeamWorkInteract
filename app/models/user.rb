@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_groups
-  has_many :groups, through: :user_groups
+  # Groups
+  has_many :groups
+  has_many :project_groups, through: :user_groups, source: :group
+
+  has_many :managed_users, through: :groups, source: :users
   has_one_attached :photo
 end
