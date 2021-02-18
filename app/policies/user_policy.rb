@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.includes(:user_groups).includes(:groups).where(groups: {user: user})
+      user.managed_users
     end
   end
 end
