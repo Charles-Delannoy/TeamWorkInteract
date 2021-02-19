@@ -31,7 +31,7 @@
                      collection: question.propositions,
                      label: '' %>
         </div>
-        <% if @current_campaign.survey == @survey %>
+        <% if @current_campaign && @current_campaign.survey == @survey %>
           <%= f.submit "Valider"%>
         <% else %>
           <%= f.submit "Valider", disabled: true%>
