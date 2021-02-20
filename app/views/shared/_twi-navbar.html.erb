@@ -2,6 +2,9 @@
   <% if current_user %>
   <div class="navbar-msg">
     <h2>Bienvenue <%= current_user.first_name %></h2>
+    <% if session[:group] %>
+      <p><%= session[:group]['name'] %></p>
+    <% end %>
   </div>
   <ul class="menu">
 
@@ -12,7 +15,7 @@
     <% if policy(Group).index? %>
       <li><%= link_to 'Groupes', groups_path %></li>
     <% end %>
-    
+
     <% if policy(Campaign).index? %>
       <li><%= link_to 'Campagnes', campaigns_path %></li>
     <% end %>
@@ -23,6 +26,10 @@
 
     <% if policy(Axe).index? %>
       <li><%= link_to 'Axes', axes_path %></li>
+    <% end %>
+
+    <% if policy(Answer).create? %>
+      <li><%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %></li>
     <% end %>
 
   </ul>

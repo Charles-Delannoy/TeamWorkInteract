@@ -2,22 +2,19 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    redirect_to dashboard_path if current_user && (current_user.first_name && current_user.last_name)
-    redirect_to validation_path if current_user && !(current_user.first_name && current_user.last_name)
-  end
-
-  def dashboard
-  end
-
-  def validate_account
-    current_user.last_name = user_params[:last_name]
-    current_user.first_name = user_params[:first_name]
-    current_user.save ? redirect_to(root_path) : (render :new)
+    if current_user && valid_account?
+      redirect_to admin? ? admin_dashboard_path : dashboard_path
+    end
+    redirect_to edit_validate_accounts_path if current_user && !valid_account?
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name)
+  def valid_account?
+    !current_user.first_name.nil? && !current_user.last_name.nil?
+  end
+
+  def admin?
+    current_user.admin == 'Y'
   end
 end

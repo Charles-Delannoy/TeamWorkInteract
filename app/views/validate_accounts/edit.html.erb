@@ -1,4 +1,4 @@
-<%= simple_form_for current_user, url: validation_path do |f| %>
+<%= simple_form_for current_user, url: validate_accounts_path do |f| %>
   <%= f.input :email %>
   <%= f.input :first_name, label: 'Prénom' %>
   <%= f.input :last_name, label: 'Nom'%>

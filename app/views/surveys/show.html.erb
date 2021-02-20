@@ -31,7 +31,11 @@
                      collection: question.propositions,
                      label: '' %>
         </div>
-        <%= f.submit "Valider", disabled: true%>
+        <% if @current_campaign.survey == @survey %>
+          <%= f.submit "Valider"%>
+        <% else %>
+          <%= f.submit "Valider", disabled: true%>
+        <% end %>
       <% end %>
     </li>
   <% end %>
