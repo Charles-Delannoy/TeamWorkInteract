@@ -22,7 +22,7 @@
         <div class="user-groups">
           <h5>Groupes</h5>
           <ul>
-            <% user.groups.each do |group| %>
+            <% user.project_groups.each do |group| %>
               <li>
                 <p><strong><%= group.name %></strong> - <%= UserGroup.where(user: user, group: group).first.role == 'R' ? 'Référent' : 'Membre' %></p>
               </li>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get 'answers/create'
+  # get 'answers/update'
   root to: 'pages#home'
 
   devise_for :users
@@ -38,6 +40,8 @@ Rails.application.routes.draw do
   end
 
   resources :propositions, only: [ :edit, :update, :destroy ]
+
+  resources :answers, only: [:create, :update]
 
   resources :groups, only: [:index, :new, :create, :destroy, :edit, :update]
 

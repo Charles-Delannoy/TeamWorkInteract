@@ -2,9 +2,6 @@
   <% if current_user %>
   <div class="navbar-msg">
     <h2>Bienvenue <%= current_user.first_name %></h2>
-    <% if session[:group] %>
-      <p><%= session[:group]['name'] %></p>
-    <% end %>
   </div>
   <ul class="menu">
 

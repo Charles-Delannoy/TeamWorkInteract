@@ -38,12 +38,14 @@ class ApplicationPolicy
   end
 
   class Scope
-    attr_reader :user, :scope
+    attr_reader :user, :scope, :context
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(context, scope)
+      @context = context
       @scope = scope
     end
+
+    delegate :user, to: :context
 
     def resolve
       scope.all

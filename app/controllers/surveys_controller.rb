@@ -27,6 +27,7 @@ class SurveysController < ApplicationController
   def show
     @questions = @survey.questions
     @question = Question.new
+    @group_campaign = GroupCampaign.where(campaign: @current_campaign, group: @current_group).first
   end
 
   def edit

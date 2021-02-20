@@ -3,7 +3,7 @@ class DashboardsController < ApplicationController
 
   def show
     redirect_to admin_dashboard_path if admin?
-    @groups = current_user.groups
+    @groups = current_user.project_groups
   end
 
   private
