@@ -23,10 +23,10 @@
 <ul class="question-cards">
   <% @questions.each do |question| %>
     <li class="question-card" id=<%= "question-#{question.id}" %>>
-      <%= simple_form_for :answer do |f| %>
+      <%= simple_form_for @answer do |f| %>
         <h5><%= question.title %></h5>
         <div class="radio-btn">
-          <%= f.input :propositions,
+          <%= f.input :proposition,
                      as: :radio_buttons,
                      collection: question.propositions,
                      label: '' %>
