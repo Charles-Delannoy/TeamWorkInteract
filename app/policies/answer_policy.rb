@@ -3,6 +3,10 @@ class AnswerPolicy < ApplicationPolicy
     group ? ongoing_campaign? : false
   end
 
+  def update?
+    create?
+  end
+
   class Scope < Scope
     def resolve
       scope.all
