@@ -29,11 +29,11 @@
   background-color: #fff;
   color: $deep-twi-green;
   font-size: 20px;
-  border: thin solid $deep-twi-green;
+  border: thin solid $twi-gray;
   &:hover {
     background-color: $twi-gray;
     color: $deep-twi-green;
-    border: thin solid $twi-gray;
+    border: thin solid $deep-twi-green;
 
   }
 }
@@ -58,10 +58,14 @@
 }
 
 .survey-form-btn {
-  background-color: #eeefef;
+  background-color: #fff;
   border: none;
   width: 100%;
   margin-bottom: 50px;
+  &:hover {
+    background-color: $twi-green;
+    color: white;
+  }
 }
 
 .add-submit {

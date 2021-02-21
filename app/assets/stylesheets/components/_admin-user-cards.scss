@@ -5,7 +5,8 @@
   grid-gap: 20px;
   .user-card {
     width: 300px;
-    border: thin solid #d2d1d1;
+    border: thin solid $twi-gray;
+    background-color: #fff;
     img {
       border-bottom: thin solid $twi-gray;
       width: 100%;
