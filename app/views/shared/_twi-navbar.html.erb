@@ -38,10 +38,16 @@
     <div class="actions one-action">
       <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn grape-btn' %>
     </div>
-  <% else %>
+  <% elsif controller_name != 'sessions' %>
     <div class="actions home-actions">
-      <%= link_to 'Connexion', new_user_session_path, class: 'twi-btn green-btn' %>
-      <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn grape-btn' %>
+      <% if controller_name != 'registrations' %>
+        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn green-btn" %>
+      <% else %>
+        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn green-btn full-width-btn" %>
+      <% end %>
+      <% if controller_name != 'registrations' %>
+        <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn grape-btn' %>
+      <% end %>
     </div>
   <% end %>
 </div>
