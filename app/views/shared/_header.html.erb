@@ -1,5 +1,8 @@
 <div id="header">
-  <h1>TeamWorkInteract</h1>
+  <%= link_to root_path do %>
+    <%= image_tag 'logo.png' %>
+  <% end %>
+  <h1>- TeamWorkInteract</h1>
   <% if current_user %>
   <div class="profile-pic">
     <%= link_to edit_user_registration_path do %>
