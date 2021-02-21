@@ -12,9 +12,11 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
     <% unless current_page?('/')%>
-      <%= render 'shared/twi-navbar' %>
+      <%= render 'shared/header' %>
+    <% end %>
+    <%= render 'shared/twi-navbar' %>
+    <% unless current_page?('/')%>
       <div class="twi-container">
     <% end %>
 
