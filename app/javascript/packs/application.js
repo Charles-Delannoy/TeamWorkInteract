@@ -28,6 +28,7 @@ require("@nathanvda/cocoon")
 
 // External imports
 import "bootstrap";
+import AOS from 'aos';
 
 // Internal imports, e.g:
 import { typed } from '../plugins/typed';
@@ -37,6 +38,7 @@ import { initFlatpicker } from "../plugins/flatpickr" ;
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  AOS.init();
   typed();
   initFlatpicker();
 });
