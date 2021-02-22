@@ -6,7 +6,6 @@ ul.survey-cards {
   // grid-gap: 16px;
   margin-bottom: 32px;
   .survey-card {
-    border-radius: 16px;
     padding: 16px;
     text-decoration: none;
     background-color: $twi-green;
@@ -53,6 +52,6 @@ ul.survey-cards {
 
 .index-survey-cards {
   li.survey-card {
-    background-color: $twi-light-green;
+    background-color: #fff;
   }
 }

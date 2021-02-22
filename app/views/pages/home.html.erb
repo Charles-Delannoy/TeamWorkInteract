@@ -1,11 +1,12 @@
 <div class="home-pic-banner">
   <%= image_tag "logo.png" %>
   <h1>Team Work Interact</h1>
-  <p>Analyser la dynamique de vos équipes</p>
+  <p>Analysez la dynamique de vos équipes</p>
   <%= link_to "Je me lance !", new_user_registration_path, class: 'twi-btn cta-btn main-cta-btn' %>
+  <a class='bottom-arrow-link' href="#home-btm"><%= image_tag 'white-arrow.png', class: 'bottom-arrow' %></a>
 </div>
 
-<div class="twi-container">
+<div class="twi-container" id='home-btm'>
   <div class="home-banner">
     <h1><span id="home-typed-text"></span></h1>
     <div class="home-cards">

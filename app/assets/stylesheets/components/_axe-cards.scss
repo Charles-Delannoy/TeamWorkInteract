@@ -5,10 +5,9 @@ ul.axe-cards {
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   li.axe-card {
-    border-radius: 16px;
     padding: 16px;
     text-decoration: none;
-    background-color: $twi-light-green;
+    background-color: #fff;
     margin-bottom: 20px;
     position: relative;
     h2 {
