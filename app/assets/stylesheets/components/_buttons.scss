@@ -38,6 +38,17 @@
   }
 }
 
+.main-cta-btn {
+  border: none;
+  width: 45vw;
+  color: #000;
+  text-align: center;
+  &:hover {
+    border: none;
+    color: #000;
+  }
+}
+
 .add-icon {
   font-size: 30px;
   color: $deep-twi-green;
