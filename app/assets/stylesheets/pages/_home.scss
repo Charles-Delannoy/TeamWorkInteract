@@ -30,10 +30,16 @@
 
 .bottom-arrow-link{
   position: absolute;
-  bottom: 15px;
+  bottom: 0;
   // scroll-behavior: smooth;
-  .bottom-arrow {
-    height: 45px;
+  svg {
+    height: 70px;
+    stroke: #fff;
+  }
+  &:hover {
+    svg {
+      stroke: $twi-blue;
+    }
   }
 }
 
