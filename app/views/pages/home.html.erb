@@ -2,7 +2,7 @@
   <%= image_tag "logo.png" %>
   <h1>Team Work Interact</h1>
   <p>Analysez la dynamique de vos équipes</p>
-  <%= link_to "Je me lance !", new_user_registration_path, class: 'twi-btn main-cta-btn' %>
+  <%= link_to "Je me lance !", new_user_registration_path, class: 'twi-btn cta-btn main-cta-btn' %>
   <%= link_to "#home-btn", class: 'bottom-arrow-link' do %>
     <%= svg_tag 'arrow.svg' %>
   <% end %>
@@ -16,13 +16,13 @@
         <%= image_tag('metrics.svg') %>
         <h2>Définissez vos axes de suivi</h2>
       </div>
-      <div class="home-card" data-aos="zoom-in-up">
-        <%= image_tag('team.svg') %>
-        <h2>Créez vos équipes</h2>
-      </div>
       <div class="home-card" data-aos="zoom-in-left">
         <%= image_tag('survey.svg') %>
-        <h2>Editez vos questions</h2>
+        <h2>Editez vos questionnaires</h2>
+      </div>
+      <div class="home-card" data-aos="zoom-in-up">
+        <%= image_tag('team.svg') %>
+        <h2>Analysez vos équipes</h2>
       </div>
     </div>
     <div class="home-cta">

@@ -46,21 +46,7 @@
 
 .cta-btn {
   background-color: #fff;
-  color: $deep-twi-green;
-  font-size: 20px;
-  border: thin solid $twi-gray;
-  &:hover {
-    background-color: $twi-gray;
-    color: $deep-twi-green;
-    border: thin solid $deep-twi-green;
-
-  }
-}
-
-.main-cta-btn {
-  background-color: #fff;
   color: #000;
-  width: 45vw;
   font-size: 18px;
   &:hover {
     background-color: $twi-blue;
@@ -68,22 +54,26 @@
   }
 }
 
+.main-cta-btn {
+  width: 45vw;
+}
+
 .add-icon {
   font-size: 30px;
-  color: $deep-twi-green;
+  color: $twi-blue;
   &:hover {
-    color: $twi-green;
+    color: $twi-deep-blue;
   }
 }
 
 .survey-form-btn {
-  background-color: #fff;
+  background-color: $twi-blue;
   border: none;
   width: 100%;
   margin-bottom: 50px;
+  color: white;
   &:hover {
-    background-color: $twi-green;
-    color: white;
+    background-color: $twi-deep-blue;
   }
 }
 

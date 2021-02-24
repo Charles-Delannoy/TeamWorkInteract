@@ -4,8 +4,8 @@ const typed = () => {
   const homeTitle = document.getElementById('home-typed-text');
   if (homeTitle) {
     new Typed('#home-typed-text', {
-      strings: ["Créez vos questionnaires", "Suivez vos équipes", "Améliorer leur cohésion"],
-      typeSpeed: 120,
+      strings: ["Identifiez des axes d'améliorations", "Proposer des actions correctives", "Suivez leur évolution"],
+      typeSpeed: 80,
       loop: true
     });
   }
