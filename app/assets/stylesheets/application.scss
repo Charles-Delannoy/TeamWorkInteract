@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -8,7 +11,10 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "flatpickr/dist/flatpickr";
+// @import "https://unpkg.com/aos@next/dist/aos.css";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+

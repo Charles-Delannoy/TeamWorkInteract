@@ -1,9 +1,28 @@
 .twi-btn {
   padding: 10px 20px;
   border-radius: 4px;
-  transition: all 0.5s ease-out;
+  text-align: center;
+  transition: color 0.5s ease-out, background-color 0.5s ease-out;
   &:hover {
     text-decoration: none;
+  }
+}
+
+.lblue-btn {
+  background-color: $twi-blue;
+  color: white;
+  &:hover {
+    background-color: $twi-blue-alt;
+    color: white;
+  }
+}
+
+.dblue-btn {
+  background-color: $twi-deep-blue;
+  color: white;
+  &:hover {
+    background-color: $twi-deep-blue-alt;
+    color: white;
   }
 }
 
@@ -27,44 +46,34 @@
 
 .cta-btn {
   background-color: #fff;
-  color: $deep-twi-green;
-  font-size: 20px;
-  border: thin solid $twi-gray;
+  color: #000;
+  font-size: 18px;
   &:hover {
-    background-color: $twi-gray;
-    color: $deep-twi-green;
-    border: thin solid $deep-twi-green;
-
+    background-color: $twi-blue;
+  color: #fff;
   }
 }
 
 .main-cta-btn {
-  border: none;
   width: 45vw;
-  color: #000;
-  text-align: center;
-  &:hover {
-    border: none;
-    color: #000;
-  }
 }
 
 .add-icon {
   font-size: 30px;
-  color: $deep-twi-green;
+  color: $twi-blue;
   &:hover {
-    color: $twi-green;
+    color: $twi-deep-blue;
   }
 }
 
 .survey-form-btn {
-  background-color: #fff;
+  background-color: $twi-blue;
   border: none;
   width: 100%;
   margin-bottom: 50px;
+  color: white;
   &:hover {
-    background-color: $twi-green;
-    color: white;
+    background-color: $twi-deep-blue;
   }
 }
 

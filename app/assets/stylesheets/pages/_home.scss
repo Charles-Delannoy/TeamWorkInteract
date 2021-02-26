@@ -30,9 +30,16 @@
 
 .bottom-arrow-link{
   position: absolute;
-  bottom: 15px;
-  .bottom-arrow {
-    height: 45px;
+  bottom: 0;
+  // scroll-behavior: smooth;
+  svg {
+    height: 70px;
+    stroke: #fff;
+  }
+  &:hover {
+    svg {
+      stroke: $twi-blue;
+    }
   }
 }
 
@@ -44,7 +51,7 @@
   text-align: center;
   height: calc(100vh - 120px);
   h1 {
-    color: #9590a8;
+    color: $twi-deep-blue;
     margin-bottom: 40px;
     font-weight: 300;
   }
@@ -72,7 +79,7 @@
   h2 {
     font-weight: 400;
     min-height: 80px;
-    color: $deep-twi-green
+    color: $twi-blue;
   }
   img {
     width: 100%;

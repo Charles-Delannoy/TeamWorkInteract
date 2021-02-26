@@ -3,24 +3,26 @@
   <h1>Team Work Interact</h1>
   <p>Analysez la dynamique de vos équipes</p>
   <%= link_to "Je me lance !", new_user_registration_path, class: 'twi-btn cta-btn main-cta-btn' %>
-  <a class='bottom-arrow-link' href="#home-btm"><%= image_tag 'white-arrow.png', class: 'bottom-arrow' %></a>
+  <%= link_to "#home-btn", class: 'bottom-arrow-link' do %>
+    <%= svg_tag 'arrow.svg' %>
+  <% end %>
 </div>
 
-<div class="twi-container" id='home-btm'>
+<div class="twi-container" id='home-btn'>
   <div class="home-banner">
     <h1><span id="home-typed-text"></span></h1>
     <div class="home-cards">
-      <div class="home-card">
+      <div class="home-card" data-aos="zoom-in-right">
         <%= image_tag('metrics.svg') %>
         <h2>Définissez vos axes de suivi</h2>
       </div>
-      <div class="home-card">
-        <%= image_tag('team.svg') %>
-        <h2>Créez vos équipes</h2>
-      </div>
-      <div class="home-card">
+      <div class="home-card" data-aos="zoom-in-left">
         <%= image_tag('survey.svg') %>
-        <h2>Editez vos questions</h2>
+        <h2>Editez vos questionnaires</h2>
+      </div>
+      <div class="home-card" data-aos="zoom-in-up">
+        <%= image_tag('team.svg') %>
+        <h2>Analysez vos équipes</h2>
       </div>
     </div>
     <div class="home-cta">

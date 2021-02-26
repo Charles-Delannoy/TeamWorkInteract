@@ -41,12 +41,12 @@
   <% elsif controller_name != 'sessions' %>
     <div class="actions home-actions">
       <% if controller_name != 'registrations' %>
-        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn green-btn" %>
+        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn lblue-btn" %>
       <% else %>
-        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn green-btn full-width-btn" %>
+        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn lblue-btn full-width-btn" %>
       <% end %>
       <% if controller_name != 'registrations' %>
-        <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn grape-btn' %>
+        <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn dblue-btn' %>
       <% end %>
     </div>
   <% end %>
