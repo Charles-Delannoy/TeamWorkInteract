@@ -10,6 +10,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install google-chrome-stable
   - nvm install --lts
+env:
+  - DB=pgsql
 addons:
   postgresql: '9.6'
 before_script:
