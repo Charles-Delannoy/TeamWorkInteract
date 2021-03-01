@@ -6,8 +6,8 @@ class HomepagesTest < ApplicationSystemTestCase
     # Exercise
     visit root_url
     # Verify
-    assert_selector ".home-pic-banner h1", text: "Team Work Interact"
     # save_and_open_screenshot
+    assert_selector ".home-pic-banner h1", text: "Team Work Interact"
     # Teardown => No teardown
   end
 end

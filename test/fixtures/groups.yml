@@ -1,0 +1,9 @@
+twi:
+  name: "Team Work Interact"
+  description: "Un super projet d'application permettant de créer des questionnaire et de jauger la cohésion d'une équipe projet"
+  user: chrystelle
+
+mm:
+  name: "Millesime Manager"
+  description: "Application de gestion de cave à vin intégrant la notion d'apogée du vin"
+  user: chrystelle

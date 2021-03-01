@@ -1,0 +1,29 @@
+chrystelle:
+  email: "chrystelle@twi.fr"
+  first_name: "Chrystelle"
+  last_name: "Gaujard"
+  admin: "Y"
+
+georges:
+  email: "george@twi.fr"
+  first_name: "George"
+  last_name: "Abitbol"
+  admin: "N"
+
+charles:
+  email: "charles@twi.fr"
+  first_name: "Charles"
+  last_name: "Delannoy"
+  admin: "N"
+
+thibaud:
+  email: "thibaud@twi.fr"
+  first_name: "Thibaud"
+  last_name: "Domergue"
+  admin: "N"
+
+mathieu:
+  email: "mathieu@twi.fr"
+  first_name: "Mathieu"
+  last_name: "Grimbert"
+  admin: "N"
