@@ -12,4 +12,8 @@ class User < ApplicationRecord
 
   has_many :managed_users, through: :groups, source: :users
   has_one_attached :photo
+
+  def full_name
+    return first_name.nil? || last_name.nil? ? nil : "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end

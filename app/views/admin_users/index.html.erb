@@ -3,7 +3,6 @@
 <div class="admin-users-grid">
   <div class='user-cards'>
     <% @users.each do |user| %>
-    <% full_name = "#{user.first_name} #{user.last_name}" %>
       <div class='user-card' data-aos="zoom-out-down">
         <% if user.photo.attached? %>
           <%= cl_image_tag user.photo.key, alt: "profile pic"%>
@@ -11,11 +10,11 @@
           <%= image_tag 'profile.svg', alt: "profile pic" %>
         <% end %>
         <div class="user-infos">
-          <% if full_name == ' ' %>
+          <% if user.full_name.nil? %>
             <h3><%= user.email %></h3>
             <p class='user-status pending-user'><i class="fas fa-exclamation-circle"></i> Validation en attente</p>
           <% else %>
-            <h3><%= full_name %></h3>
+            <h3><%= user.full_name %></h3>
             <p class='user-status valid-user'><i class="fas fa-check-circle"></i> Invitation acceptée</p>
           <% end %>
         </div>
