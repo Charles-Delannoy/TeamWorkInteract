@@ -14,6 +14,14 @@ class ActiveSupport::TestCase
   # for test with devise
   include Warden::Test::Helpers
   Warden.test_mode!
+
+  def green(text)
+    puts "\e[32m#{text}\e[0m"
+  end
+
+  def green_bg(text)
+    puts "\e[42m#{text}\e[0m"
+  end
 end
 
 Capybara.register_driver :headless_chrome do |app|
