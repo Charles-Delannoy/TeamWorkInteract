@@ -27,7 +27,7 @@
         <li><%= link_to 'Axes', axes_path %></li>
       <% end %>
 
-      <% if policy(Answer).create? %>
+      <% if policy(Answer).create? && @current_campaign %>
         <li><%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %></li>
       <% end %>
     <% end %>
