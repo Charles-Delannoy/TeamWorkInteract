@@ -4,6 +4,7 @@ cache:
   yarn: true
 services:
   - redis-server
+  - postgresql
 sudo: required
 before_install:
   - sudo apt-get update
@@ -11,8 +12,6 @@ before_install:
   - nvm install --lts
 addons:
   postgresql: '9.6'
-services:
-  - postgresql
 before_script:
   - psql -c 'create database TeamWorkInteract_test;' -U postgres
 script:
