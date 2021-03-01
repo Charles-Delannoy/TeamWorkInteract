@@ -27,3 +27,9 @@ mathieu:
   first_name: "Mathieu"
   last_name: "Grimbert"
   admin: "N"
+
+manon:
+  email: "manon@twi.fr"
+  first_name: "Manon"
+  last_name: "Pages"
+  admin: "N"
