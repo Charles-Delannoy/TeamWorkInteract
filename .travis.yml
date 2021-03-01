@@ -15,9 +15,9 @@ env:
 addons:
   postgresql: '9.6'
 before_script:
-  - psql -c 'create database TeamWorkInteract_test;'
+  - psql -c 'create database TeamWorkInteract_test;' -U postgres
 script:
-  - bundle exec rake db:schema:load
+  # - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
   - SECRET_KEY_BASE=a RAILS_ENV=production bundle exec rake assets:precompile
   - bundle exec rake test
