@@ -59,7 +59,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # Test with Rspec
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 4.0'
+  # add method to rspec
+  gem 'rails-controller-testing'
   # Guard automatically launch test on modifications
   gem 'guard-rspec', require: false
   # Replacement of fixtures for Rspec

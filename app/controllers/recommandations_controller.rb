@@ -12,7 +12,11 @@ class RecommandationsController < ApplicationController
     @axe = Axe.find(params[:axe_id])
     @recommandation.axe = @axe
     authorize @recommandation
-    @recommandation.save ? (redirect_to axe_path(@axe)) : (render :new)
+    if @recommandation.save
+      redirect_to axe_path(@axe)
+    else
+      render :new
+    end
   end
 
   def edit
