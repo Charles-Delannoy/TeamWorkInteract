@@ -60,6 +60,8 @@ group :development, :test do
 
   # Test with Rspec
   gem 'rspec-rails', '~> 3.5'
+  # Guard automatically launch test on modifications
+  gem 'guard-rspec', require: false
 end
 
 group :development do
