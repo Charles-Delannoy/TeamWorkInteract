@@ -62,6 +62,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Guard automatically launch test on modifications
   gem 'guard-rspec', require: false
+  # Replacement of fixtures for Rspec
+  gem 'factory_bot_rails'
 end
 
 group :development do
