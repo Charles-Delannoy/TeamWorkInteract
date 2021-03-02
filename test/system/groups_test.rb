@@ -28,8 +28,8 @@ class GroupsTest < ApplicationSystemTestCase
 
     fill_in "group_name", with: "Le Wagon"
     fill_in "group_description", with: "Changez de vie, apprenez à coder."
-    # fill_in "range_start", with: "2021-03-01"
-    # fill_in "range_end", with: "2021-05-04"
+    page.execute_script("document.getElementById('range_start').value = '2021-03-10'")
+    page.execute_script("document.getElementById('range_end').value = '2021-05-04'")
     click_on 'Créer'
 
     assert_equal groups_path, page.current_path
@@ -39,6 +39,7 @@ class GroupsTest < ApplicationSystemTestCase
     green("Redirection OK")
 
     assert_text "Changez de vie, apprenez à coder."
+    assert_text "Du 2021-03-10 au 2021-05-04"
     # Part test result
     green("New group is displayed")
     assert_equal nb_group + 1, Group.where(user: users(:chrystelle)).length
