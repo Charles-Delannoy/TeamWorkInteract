@@ -1,0 +1,7 @@
+<% 1.upto(5) do |i| %>
+axe_<%= i %>:
+  title: <%= Faker::Company.name %>
+  description: <%= Faker::Company.catch_phrase %>
+  user: chrystelle
+  icon: "<i class='fas fa-bahai'></i>"
+<% end %>
