@@ -1,11 +1,12 @@
 <h1><%= @chatroom.name %></h1>
 
 <div class="chat-container">
-  <div class="chat-window" id='chat-content'>
+  <div class="chat-window" id='chat-content' data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.order(:created_at).each do |message| %>
-      <p class="message-content <% if message.user == current_user %> my-message <% end %>"><%= message.content %></p>
+      <div id="<%= "message-#{message.id}" %>" class="message-content <% if message.user == current_user %> my-message <% end %>">
+        <%= render "messages/message", message: message %>
+      </div>
     <% end %>
-    <div id="bottom-chat"></div>
   </div>
 
   <div class="new-message-form">
