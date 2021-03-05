@@ -1,0 +1,17 @@
+<h1><%= @chatroom.name %></h1>
+
+<div class="chat-container">
+  <div class="chat-window" id='chat-content'>
+    <% @chatroom.messages.order(:created_at).each do |message| %>
+      <p class="message-content <% if message.user == current_user %> my-message <% end %>"><%= message.content %></p>
+    <% end %>
+    <div id="bottom-chat"></div>
+  </div>
+
+  <div class="new-message-form">
+    <%= simple_form_for([@chatroom, @message], remote: true) do |f| %>
+    <%= f.input :content, label: false %>
+    <%= f.submit 'Envoyer', {class: 'twi-btn lblue-btn chat-submit-btn'}%>
+  <% end %>
+  </div>
+</div>

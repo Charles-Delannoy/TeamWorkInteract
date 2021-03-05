@@ -28,8 +28,12 @@ Rails.application.routes.draw do
     resources :recommandations, only: [:new, :create]
   end
 
-  # GLOBAL ROUTES
   resources :admin_users, only: [:index, :create]
+
+  resources :chatrooms, only: [:new, :show] do
+    resources :messages, only: [:create]
+  end
+  # GLOBAL ROUTES
 
   resources :surveys, only: [:index, :new, :create, :destroy, :edit, :update, :show] do
     resources :questions, only: [:new, :create ]
