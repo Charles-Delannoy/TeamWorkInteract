@@ -12,8 +12,8 @@
   <div class="new-message-form">
     <%= simple_form_for([@chatroom, @message], remote: true) do |f| %>
     <%= f.input :content, label: false %>
-    <%= f.button :submit, class: 'twi-btn lblue-btn chat-submit-btn' do %>
-      <i class="fas fa-cart-arrow-down"></i>
+    <%= button_tag class: 'twi-btn lblue-btn chat-submit-btn' do %>
+      <i class='fas fa-paper-plane'></i>
     <% end %>
   <% end %>
   </div>
