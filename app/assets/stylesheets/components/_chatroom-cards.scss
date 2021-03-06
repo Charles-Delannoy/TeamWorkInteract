@@ -1,8 +1,13 @@
+.dashboard-chatrooms {
+  display: flex;
+}
+
 .chatroom-link {
+  width: 220px;
   .chatroom-card {
     position: relative;
     color: #fff;
-    width: 220px;
+
     font-size: 20px;
     background: $twi-blue;
     padding: 15px;
