@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
   def show
     redirect_to admin_dashboard_path if admin?
     @groups = current_user.project_groups
+    @chatrooms = Chatroom.includes(:chatroom_users).where(chatroom_users: { user: current_user })
   end
 
   private

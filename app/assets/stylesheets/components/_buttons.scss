@@ -8,6 +8,12 @@
   }
 }
 
+.chat-submit-btn {
+  border: none;
+  border-radius: 0 4px 4px 0;
+  max-height: 44px;
+}
+
 .lblue-btn {
   background-color: $twi-blue;
   color: white;
@@ -90,4 +96,15 @@
 .full-width-btn {
   width: 100%;
   text-align: center;
+}
+
+.chat-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 25px;
+  color: $twi-blue;
+  &:hover {
+    color: $twi-blue-alt;
+  }
 }

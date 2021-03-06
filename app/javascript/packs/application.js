@@ -32,7 +32,9 @@ import AOS from 'aos';
 
 // Internal imports, e.g:
 import { typed } from '../plugins/typed';
-import { initFlatpicker } from "../plugins/flatpickr" ;
+import { initFlatpicker } from "../plugins/flatpickr";
+import { chatBottomScroll } from "../plugins/chatBottomScroll";
+import { initChatroomCable } from "../channels/chatroom_channel"
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -41,4 +43,6 @@ document.addEventListener('turbolinks:load', () => {
   AOS.init();
   typed();
   initFlatpicker();
+  chatBottomScroll();
+  initChatroomCable();
 });

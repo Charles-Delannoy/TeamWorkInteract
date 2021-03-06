@@ -2,3 +2,13 @@
 <%  #else %>
   <%= render 'groups' %>
 <% # end %>
+
+<div class="dashboard-chatrooms">
+  <% @chatrooms.each do |chatroom| %>
+    <%= link_to chatroom_path(chatroom) do %>
+      <div class="chatroom-card">
+        <h3><%= chatroom.name %></h3>
+      </div>
+    <% end %>
+  <% end %>
+</div>
