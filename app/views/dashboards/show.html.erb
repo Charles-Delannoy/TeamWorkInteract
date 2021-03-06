@@ -1,13 +1,16 @@
-<% # if session[:group] %>
-<%  #else %>
-  <%= render 'groups' %>
-<% # end %>
-
+<h2>Groupes</h2>
+<%= render 'groups' %>
+<h2>Conversations</h2>
 <div class="dashboard-chatrooms">
   <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom) do %>
+    <%= link_to chatroom_path(chatroom), class: 'chatroom-link' do %>
       <div class="chatroom-card">
-        <h3><%= chatroom.name %></h3>
+        <p><%= chatroom.name %></p>
+        <% unless chatroom.new_message_counter(current_user).zero? %>
+          <div class="message-notification">
+            <p><%= chatroom.new_message_counter(current_user) %></p>
+          </div>
+        <% end %>
       </div>
     <% end %>
   <% end %>
