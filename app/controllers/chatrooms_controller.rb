@@ -15,11 +15,16 @@ class ChatroomsController < ApplicationController
 
   def show
     @chatroom = Chatroom.find(params[:id])
-    chatroom_user = ChatroomUser.where(chatroom: @chatroom, user: current_user).first
-    chatroom_user.seen_at = DateTime.now
-    chatroom_user.save
     @message = Message.new()
     authorize @chatroom
+    respond_to do |format|
+      format.html do
+        chatroom_user = ChatroomUser.where(chatroom: @chatroom, user: current_user).first
+        chatroom_user.seen_at = DateTime.now
+        chatroom_user.save
+      end
+      format.json { render json: { counter: @chatroom.new_message_counter(current_user) } }
+    end
   end
 
   private

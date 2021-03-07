@@ -1,17 +1,24 @@
 <h2>Groupes</h2>
 <%= render 'groups' %>
-<h2>Conversations <a href="#"><i class="fas fa-sync-alt"></i></a></h2>
+<h2>Conversations</h2>
 <div class="dashboard-chatrooms">
   <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom), class: 'chatroom-link' do %>
-      <div class="chatroom-card">
-        <p><%= chatroom.name %></p>
-        <% unless chatroom.new_message_counter(current_user).zero? %>
-          <div class="message-notification">
-            <p><%= chatroom.new_message_counter(current_user) %></p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+    <div data-controller="new-messages">
+      <%= link_to chatroom_path(chatroom), class: 'chatroom-link' do %>
+        <div class="chatroom-card"
+             data-new-messages-target="card"
+             data-chatroom-id="<%= chatroom.id %>">
+          <p><%= chatroom.name %></p>
+          <% unless chatroom.new_message_counter(current_user).zero? %>
+            <div class="message-notification">
+                <p data-new-messages-target='count'>
+                   <%= chatroom.new_message_counter(current_user) %>
+                </p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <a data-action="click->new-messages#refresh" href="#"><i class="fas fa-sync-alt"></i></a>
+    </div>
   <% end %>
 </div>

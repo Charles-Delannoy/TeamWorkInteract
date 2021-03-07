@@ -14,6 +14,7 @@ const displayMessage = (data, messagesContainer) => {
 
 const initChatroomCable = () => {
   const messagesContainer = document.getElementById('chat-content');
+  const notifs = document.querySelectorAll('.message-notification');
   if (messagesContainer) {
     const id = messagesContainer.dataset.chatroomId;
     consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
@@ -21,6 +22,12 @@ const initChatroomCable = () => {
         setTimeout(() => displayMessage(data, messagesContainer), 100);
       },
     });
+  }
+  if (notifs.item(0)) {
+    // mettre à jours les compteurs
+    notifs.forEach((notif) => {
+      console.log('une notif à mettre à jour');
+    })
   }
 }
 
