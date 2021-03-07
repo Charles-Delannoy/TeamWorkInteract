@@ -9,16 +9,13 @@
              data-new-messages-target="card"
              data-chatroom-id="<%= chatroom.id %>">
           <p><%= chatroom.name %></p>
-          <% unless chatroom.new_message_counter(current_user).zero? %>
-            <div class="message-notification">
-                <p data-new-messages-target='count'>
-                   <%= chatroom.new_message_counter(current_user) %>
-                </p>
-            </div>
-          <% end %>
+          <div data-new-messages-target='count' class="message-notification <% if chatroom.new_message_counter(current_user).zero? %> d-none <% end %>">
+            <p>
+               <%= chatroom.new_message_counter(current_user) %>
+            </p>
+          </div>
         </div>
       <% end %>
-      <a data-action="click->new-messages#refresh" href="#"><i class="fas fa-sync-alt"></i></a>
     </div>
   <% end %>
 </div>
