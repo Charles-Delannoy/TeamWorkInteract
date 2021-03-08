@@ -1,0 +1,38 @@
+.dashboard-chatrooms {
+  display: flex;
+}
+
+.chatroom-link {
+  width: 220px;
+  .chatroom-card {
+    position: relative;
+    color: #fff;
+
+    font-size: 20px;
+    background: $twi-blue;
+    padding: 15px;
+    transition: background-color ease .3s;
+    p{
+      margin-bottom: 0;
+    }
+  }
+  &:hover {
+    text-decoration: none;
+    .chatroom-card {
+      background-color: $twi-blue-alt;
+    }
+  }
+}
+
+.message-notification {
+  position: absolute;
+  background: $twi-deep-blue;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 25px;
+  border-radius: 50%;
+  top: -12px;
+  left: -12px;
+}

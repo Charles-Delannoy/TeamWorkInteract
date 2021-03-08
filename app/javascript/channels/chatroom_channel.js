@@ -2,11 +2,9 @@ import consumer from "./consumer";
 import { chatBottomScroll } from "../plugins/chatBottomScroll";
 
 const displayMessage = (data, messagesContainer) => {
-  console.log(`message-${data[1]}`);
   const sender = document.getElementById(`message-${data[1]}`)
   if (!sender) {
     const message = `<div class='message-content'>${data[0]}</div>`;
-    console.log(message)
     messagesContainer.insertAdjacentHTML('beforeend', message);
     chatBottomScroll();
   }
