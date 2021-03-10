@@ -38,7 +38,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(name: "#{@user.full_name} & #{current_user.full_name}")
     authorize @chatroom
     @chatroom.save
-    ChatroomUser.create(chatroom: @chatroom, user: current_user)
-    ChatroomUser.create(chatroom: @chatroom, user: @user)
+    ChatroomUser.create(chatroom: @chatroom, user: current_user, seen_at: DateTime.now)
+    ChatroomUser.create(chatroom: @chatroom, user: @user, seen_at: DateTime.now)
   end
 end
