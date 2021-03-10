@@ -12,7 +12,6 @@ export default class extends Controller {
     fetch(`/chatrooms/${id}`, { headers: { accept: "application/json" } })
       .then(response => response.json())
       .then((data) => {
-        console.log(this.countTarget);
         if (parseInt(this.countTarget.innerText, 10) < data.counter) {
           this.countTarget.classList.remove('d-none');
           this.countTarget.innerText = data.counter;
