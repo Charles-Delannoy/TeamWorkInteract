@@ -40,9 +40,9 @@ class AdminUsersController < ApplicationController
       http = Rails.env.development? ? '' : "https://"
       port = Rails.env.development? ? ':3000' : ""
       base_url = ActionMailer::Base.default_url_options[:host]
-      reset_pwd_url = "#{http}#{base_url}#{port}/users/password/edit?reset_password_token=#{raw}"
+      @reset_pwd_url = "#{http}#{base_url}#{port}/users/password/edit?reset_password_token=#{raw}"
 
-      UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_later
+      UserMailer.first_welcome(@user, @group.name, @role, @reset_pwd_url).deliver_later
     else
       @users = policy_scope(User)
       render :index
