@@ -1,15 +1,6 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'team-work-interact.herokuapp.com' }
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "gmail.com",
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password:ENV["GMAIL_PASSWORD"]
-  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -25,9 +16,20 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.action_mailer.perform_caching = false
+
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password:ENV["GMAIL_PASSWORD"]
+  }
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
