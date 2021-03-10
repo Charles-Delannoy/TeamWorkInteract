@@ -3,7 +3,7 @@
 <div class="admin-users-grid">
   <div class='user-cards'>
     <% @users.each do |user| %>
-      <div class='user-card' data-aos="zoom-out-down">
+      <div class='user-card'>
         <% if user.photo.attached? %>
           <%= cl_image_tag user.photo.key, alt: "profile pic"%>
         <% else %>

@@ -5,7 +5,7 @@
   <ul class='group-cards'>
     <% @groups.each do |group| %>
       <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
-      <li data-aos="flip-down" class="group-card" id=<%= "group-#{group.id}" %> >
+      <li class="group-card" id=<%= "group-#{group.id}" %> >
         <div class="group-info">
           <div class="group-head">
             <h2><%= group.name %></h2>

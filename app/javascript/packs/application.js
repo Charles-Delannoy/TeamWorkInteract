@@ -10,7 +10,6 @@ require("channels")
 
 // cocoon
 require("jquery")
-require("@nathanvda/cocoon")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -28,7 +27,6 @@ require("@nathanvda/cocoon")
 
 // External imports
 import "bootstrap";
-import AOS from 'aos';
 
 // Internal imports, e.g:
 import { typed } from '../plugins/typed';
@@ -40,7 +38,6 @@ import { initChatroomCable } from "../channels/chatroom_channel"
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  AOS.init();
   typed();
   initFlatpicker();
   chatBottomScroll();
