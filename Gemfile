@@ -49,6 +49,9 @@ gem 'turbolinks_render'
 # cocoon to handle nested form
 gem "cocoon"
 
+# sidekiq for background jobs
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development, :test do
   gem 'pry-byebug'

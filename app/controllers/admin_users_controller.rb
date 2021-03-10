@@ -38,7 +38,7 @@ class AdminUsersController < ApplicationController
       @user.reset_password_sent_at = Time.now.utc
       @user.save
       reset_pwd_url = "http://localhost:3000/users/password/edit?reset_password_token=#{raw}"
-      UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_now
+      UserMailer.first_welcome(@user, @group.name, @role, reset_pwd_url).deliver_later
     else
       @users = policy_scope(User)
       render :index
@@ -48,7 +48,7 @@ class AdminUsersController < ApplicationController
   def add_user_to_group
     if UserGroup.where(user: @existing_user, group: @group).empty?
       create_user_group(@existing_user)
-      UserMailer.welcome_to_group(@existing_user, @group.name, @role).deliver_now
+      UserMailer.welcome_to_group(@existing_user, @group.name, @role).deliver_later
       flash.alert = "Cet utilisateur a été ajouté au groupe"
     else
       flash.alert = "Cet utilisateur fait déjà partie de ce groupe"
