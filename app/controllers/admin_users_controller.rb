@@ -2,6 +2,7 @@ class AdminUsersController < ApplicationController
   def index
     @users = policy_scope(User).order(:first_name).uniq
     new
+    @chatrooms = Chatroom.includes(:chatroom_users).where(chatroom_users: { user: current_user })
   end
 
   def new
