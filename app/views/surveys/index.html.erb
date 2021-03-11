@@ -16,11 +16,9 @@
             <%= link_to '<i class="fas fa-trash"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.title} ?" } %>
           <% end %>
         </div>
-        <p><%= survey.description %></p>
+        <p class='index-survey-description'><%= survey.description %></p>
       </div>
-      <% if survey.icon %>
-        <%= survey.icon.html_safe %>
-      <% end %>
+      <i class="fas fa-poll-h"></i>
 
     </li>
   <% end %>
