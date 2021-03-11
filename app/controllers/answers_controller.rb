@@ -23,7 +23,6 @@ class AnswersController < ApplicationController
 
   def set_answer
     @answer = Answer.find(params[:id])
-    puts @answer
     authorize @answer
   end
 
