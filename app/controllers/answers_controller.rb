@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:update]
+
   def create
     answer_params[:proposition_id] = answer_params[:proposition_id].to_i
     @answer = Answer.new(answer_params)
@@ -11,10 +13,19 @@ class AnswersController < ApplicationController
   end
 
   def update
-
+    answer_params[:proposition_id] = answer_params[:proposition_id].to_i
+    @answer.update(answer_params)
+    @answer.save
+    redirect_to survey_path(@current_campaign.survey)
   end
 
   private
+
+  def set_answer
+    @answer = Answer.find(params[:id])
+    puts @answer
+    authorize @answer
+  end
 
   def answer_params
     params.require(:answer).permit(:proposition_id)
