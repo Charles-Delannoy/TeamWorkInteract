@@ -10,6 +10,6 @@ class DashboardsController < ApplicationController
   private
 
   def admin?
-    current_user.admin == 'Y'
+    current_user.admin
   end
 end
