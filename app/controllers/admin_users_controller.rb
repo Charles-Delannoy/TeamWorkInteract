@@ -31,6 +31,7 @@ class AdminUsersController < ApplicationController
 
   def create_user
     @user = User.new(user_params)
+    @user.admin = false
     if @user.save
       create_user_group(@user)
       redirect_to admin_users_path

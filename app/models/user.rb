@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :admin, inclusion: { in: %w[Y N] }
+  before_validation :set_admin
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -12,6 +12,10 @@ class User < ApplicationRecord
 
   has_many :managed_users, through: :groups, source: :users
   has_one_attached :photo
+
+  def set_admin
+    admin = admin == 'Y'
+  end
 
   def full_name
     return first_name.nil? || last_name.nil? ? nil : "#{first_name.capitalize} #{last_name.capitalize}"
