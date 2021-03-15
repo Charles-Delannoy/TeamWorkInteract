@@ -1,7 +1,15 @@
 class AdminUsersController < ApplicationController
   def index
-    @users = policy_scope(User).order(:first_name).uniq
+    @users = policy_scope(User)
+    if params[:query].present?
+      # sql_query = "users.first_name @@ :query \
+      #              OR users.last_name @@ :query \
+      #              OR groups.name @@ :query \
+      #              OR user_groups.role @@ :query"
+      @users = @users.search_by_first_and_last_name(params[:query])
+    end
     new
+    @users = @users.order(:first_name).uniq
     @chatrooms = Chatroom.includes(:chatroom_users).where(chatroom_users: { user: current_user })
   end
 
