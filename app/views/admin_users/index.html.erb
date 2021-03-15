@@ -1,13 +1,6 @@
 <h1>Mes utilisateurs</h1>
 
-<%= form_tag admin_users_path, method: :get, class: 'search-form' do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Chercher un utilisateur"
-  %>
-  <%= submit_tag "Chercher", class: "twi-btn lblue-btn chat-submit-btn" %>
-<% end %>
+<%= render 'search_bar' %>
 
 <div class="admin-users-grid">
   <div class='user-cards'>

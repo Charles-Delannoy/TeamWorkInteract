@@ -38,14 +38,15 @@
 }
 
 .search-form {
-  display: flex;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
   margin-bottom: 20px;
   .chat-submit-btn {
     height: 38px;
     line-height: 18px;
   }
   input#query {
-    border-radius: 4px 0 0 4px;
-    border-right: none;
+    grid-column: span 3;
   }
 }

@@ -7,11 +7,6 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
-  pg_search_scope :search_by_first_and_last_name,
-                  against: [:first_name, :last_name],
-                  using: {
-                    tsearch: { prefix: true }
-                  }
 
   has_many :user_groups
   # Groups
@@ -20,6 +15,13 @@ class User < ApplicationRecord
 
   has_many :managed_users, through: :groups, source: :users
   has_one_attached :photo
+
+  pg_search_scope :search_by_first_last_name_and_email,
+                  against: [:first_name, :last_name, :email],
+
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   def set_admin
     admin = admin == 'Y'
