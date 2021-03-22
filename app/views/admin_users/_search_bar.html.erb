@@ -1,0 +1,10 @@
+<%= form_tag admin_users_path, method: :get, class: 'search-form twi-form' do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Chercher par nom, prénom et email"
+  %>
+  <%= select_tag :groupe, options_for_select(@groups, @selected_group) %>
+  <%= select_tag :role, options_for_select(@roles, @selected_role) %>
+  <%= submit_tag "Chercher", class: "twi-btn lblue-btn chat-submit-btn" %>
+<% end %>

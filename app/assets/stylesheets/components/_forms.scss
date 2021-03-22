@@ -36,3 +36,17 @@
 .devise-form-container {
   padding: 0 10vw;
 }
+
+.search-form {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 20px;
+  .chat-submit-btn {
+    height: 38px;
+    line-height: 18px;
+  }
+  input#query {
+    grid-column: span 3;
+  }
+}
