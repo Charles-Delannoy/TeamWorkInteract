@@ -56,6 +56,9 @@ gem 'sidekiq-failures', '~> 1.0'
 # Enhences search
 gem 'pg_search', '~> 2.3.0'
 
+# Faker to create fake data
+  gem 'faker', '~> 2.16'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -91,9 +94,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-
-  # Faker to create fake test data
-  gem 'faker', '~> 2.16'
 
   # Add screeshot tests
   gem 'launchy'
