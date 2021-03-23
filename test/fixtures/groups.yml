@@ -1,3 +1,24 @@
+current_group:
+  name: "Millesime Manager"
+  description: "Application de gestion de cave à vin intégrant la notion d'apogée du vin"
+  user: chrystelle
+  start_date: <%= Date.today - 30 %>
+  end_date: <%= Date.today + 30 %>
+
+current_group_with_campaign:
+  name: "Millesime Manager"
+  description: "Application de gestion de cave à vin intégrant la notion d'apogée du vin"
+  user: chrystelle
+  start_date: <%= Date.today - 30 %>
+  end_date: <%= Date.today + 30 %>
+
+past_group:
+  name: "Millesime Manager"
+  description: "Application de gestion de cave à vin intégrant la notion d'apogée du vin"
+  user: chrystelle
+  start_date: <%= Date.today - 40 %>
+  end_date: <%= Date.today - 10 %>
+
 twi:
   name: "Team Work Interact"
   description: "Un super projet d'application permettant de créer des questionnaire et de jauger la cohésion d'une équipe projet"
