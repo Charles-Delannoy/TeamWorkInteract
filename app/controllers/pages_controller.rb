@@ -15,6 +15,6 @@ class PagesController < ApplicationController
   end
 
   def admin?
-    current_user.admin == 'Y'
+    current_user.admin == true
   end
 end
