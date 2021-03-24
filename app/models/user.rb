@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_create :send_welcome_email, if: :admin?
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -24,5 +26,19 @@ class User < ApplicationRecord
 
   def full_name
     return first_name.nil? || last_name.nil? ? nil : "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  private
+
+  def admin?
+    admin
+  end
+
+  def send_welcome_email
+    http = Rails.env.development? ? '' : "https://"
+    port = Rails.env.development? ? ':3000' : ""
+    base_url = ActionMailer::Base.default_url_options[:host]
+    url = "#{http}#{base_url}#{port}"
+    UserMailer.welcome(self, url).deliver_later
   end
 end

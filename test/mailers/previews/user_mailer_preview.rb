@@ -1,6 +1,16 @@
 # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome
+  def welcome
+    user = User.first
+    http = Rails.env.development? ? '' : "https://"
+    port = Rails.env.development? ? ':3000' : ""
+    base_url = ActionMailer::Base.default_url_options[:host]
+    url = "#{http}#{base_url}#{port}"
+    UserMailer.welcome(user, url)
+  end
+
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/first_welcome
   def first_welcome
     user = User.first
