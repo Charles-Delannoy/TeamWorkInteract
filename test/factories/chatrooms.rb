@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :chatroom do
-    name { "MyString" }
+    name { "My Chatroom" }
   end
 end
