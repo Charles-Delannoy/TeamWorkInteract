@@ -32,6 +32,9 @@
   top: 20px;
 }
 
+.sticky-form-search {
+  top: 105px;
+}
 
 .devise-form-container {
   padding: 0 10vw;
@@ -42,6 +45,9 @@
   grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   margin-bottom: 20px;
+  position: sticky;
+  top: -15px;
+  z-index: 1000;
   .chat-submit-btn {
     height: 38px;
     line-height: 18px;
