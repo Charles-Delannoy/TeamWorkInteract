@@ -9,35 +9,42 @@ RSpec.describe Campaign, type: :model do
       campaign = build(:campaign_no_title)
       campaign.validate
       expect(campaign.errors).to include(:title)
-      expect(campaign.errors.messages[:title].first).to include("can't be blank")
+      expect(campaign.errors.messages[:title]).to include("can't be blank")
+    end
+
+    it 'should validate title length: min 4' do
+      campaign = build(:campaign_short_title)
+      campaign.validate
+      expect(campaign.errors).to include(:title)
+      expect(campaign.errors.messages[:title]).to include("is too short (minimum is 4 characters)")
     end
 
     it 'should validate start_date presence' do
       campaign = build(:campaign_no_start)
       campaign.validate
       expect(campaign.errors).to include(:start_date)
-      expect(campaign.errors.messages[:start_date].first).to include("can't be blank")
+      expect(campaign.errors.messages[:start_date]).to include("can't be blank")
     end
 
     it 'should validate end_date presence' do
       campaign = build(:campaign_no_end)
       campaign.validate
       expect(campaign.errors).to include(:end_date)
-      expect(campaign.errors.messages[:end_date].first).to include("can't be blank")
+      expect(campaign.errors.messages[:end_date]).to include("can't be blank")
     end
 
     it 'should validate that start_date is before end_date' do
       campaign = build(:campaign_start_after_en)
       campaign.validate
       expect(campaign.errors).to include(:end_date)
-      expect(campaign.errors.messages[:end_date].first).to include("must be after starts_at")
+      expect(campaign.errors.messages[:end_date]).to include("must be after starts_at")
     end
 
     it 'should validate survey existence' do
       campaign = build(:campaign)
       campaign.validate
       expect(campaign.errors).to include(:survey)
-      expect(campaign.errors.messages[:survey].first).to include("must exist")
+      expect(campaign.errors.messages[:survey]).to include("must exist")
     end
 
     it 'should persist a campaign if validations are ok' do

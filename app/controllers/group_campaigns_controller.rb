@@ -2,13 +2,9 @@ class GroupCampaignsController < ApplicationController
 
   def create
     @group_campaign = GroupCampaign.new(group_campaigns_params)
-    # @group_campaign.campaign = @campaign
     authorize @group_campaign
-    if @group_campaign.save
-      redirect_to campaign_path(group_campaigns_params[:campaign_id])
-    else
-      render "pages/dashboard"
-    end
+    flash[:alert] = "Dates du groupe incompatible avec cette campagne" unless @group_campaign.save
+    redirect_to campaign_path(group_campaigns_params[:campaign_id])
   end
 
   def destroy

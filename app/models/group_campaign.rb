@@ -5,6 +5,8 @@ class GroupCampaign < ApplicationRecord
   validate :campaign_within_group_dates, if: :group && :campaign
   validate :no_other_campaign_ongoing, if: :group
 
+  private
+
   def unfinished_group
     errors.add :group, "must not be finished" if Date.today > group.end_date
   end

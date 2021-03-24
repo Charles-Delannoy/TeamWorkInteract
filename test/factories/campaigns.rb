@@ -8,6 +8,10 @@ FactoryBot.define do
       title { nil }
     end
 
+    factory :campaign_short_title do
+      title { 'abc' }
+    end
+
     factory :campaign_no_start do
       start_date { nil }
     end
