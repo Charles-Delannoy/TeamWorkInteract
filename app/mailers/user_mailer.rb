@@ -1,10 +1,11 @@
 class UserMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.welcome.subject
-  #
+  def welcome(user, url)
+    @user = user
+    @url = url
+    mail to: user.email, subject: 'TWI : Votre compte a bien été créé'
+  end
+
   def first_welcome(user, group, role, reset_pwd_url)
     @user = user
     @group = group

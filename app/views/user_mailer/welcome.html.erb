@@ -1,0 +1,27 @@
+<style>
+  body {
+    font-family: 'sans-serif';
+  }
+  strong {
+    font-weight: 600;
+  }
+  p {
+    font-weight: 100;
+  }
+</style>
+<strong>Bienvenue <%= @user.full_name %>,</strong>
+
+<p>
+  Votre compte TeamWorkInteract a bien été créé.
+</p>
+<p>Vous pouvez désormais commencer à utiliser notre produit et :</p>
+<ul>
+  <li>Créer des groupes</li>
+  <li>Inviter des utilisateurs dans vos groupes</li>
+  <li>Préparer vos questionnaires</li>
+  <li>Les soumettre aux groupes à travers des campagnes.</li>
+</ul>
+👉 <a href=<%= @url %> >Accèder au site</a>
+
+<p>L'équipe de TeamWorkInteract </br>
+<%= mail_to "teamworkinteract@gmail.com", "teamworkinteract@gmail.com" %></p>
