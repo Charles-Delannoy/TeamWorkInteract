@@ -31,7 +31,7 @@ puts "-----------------------"
 pwd = 'aaaaaa'
 
 puts "Create the admin Chrystelle..."
-admin = User.create(first_name: "Chrystelle", last_name: "Gaujard", email: 'cg@twi.com', password: pwd, admin: true)
+admin = User.create(first_name: "Chrystelle", last_name: "Gaujard", email: 'cg@twi.com', password: pwd)
 
 puts "-----------------------"
 
@@ -55,7 +55,7 @@ main_end = Date.today + 90
 for i in 0..4
   start_d = i < 2 ? main_start : Date.today - (0..6).to_a.sample * 30
   end_d = i < 2 ? main_end + 90 : Date.today + (0..6).to_a.sample * 30
-  group = Group.create(name: titles[i], description: texts[i], user: admin, start_date: start_d, end_date: end_d)
+  group = Group.create(name: titles[i], description: texts[i], user: admin, start_date: start_d, end_date: end_d, admin: false)
   puts "create users for the group #{group.name}..."
   for j in 0..5 do
     role = j.zero? ? 'R' : 'M'
