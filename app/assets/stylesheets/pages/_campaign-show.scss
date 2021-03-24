@@ -10,6 +10,8 @@
 
 .campaign-show-grid {
   grid-template-columns: 1fr 1fr;
+  max-height: calc(100vh - 270px);
+  overflow: hidden
 }
 
 .campaign-groups-title {

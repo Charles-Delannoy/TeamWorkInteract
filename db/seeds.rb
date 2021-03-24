@@ -106,7 +106,7 @@ end
 puts "-----------------------"
 
 puts "create campaign (and group_campaign) for the 2 firsts groups"
-campaign = Campaign.create(survey: survey, start_date: main_start, end_date: main_end - 45)
+campaign = Campaign.create(title: 'Campagne principale', survey: survey, start_date: main_start, end_date: main_end - 45)
 Group.all.first(2).each do |group|
   GroupCampaign.create(campaign: campaign, group: group)
   puts "you can test answers with #{group.users[1].email} from the group #{group.name}"

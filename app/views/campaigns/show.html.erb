@@ -60,7 +60,7 @@
   </div>
 
   <div>
-    <h1 class="campaign-groups-title">Groupes affiliés à la campagne <%= @campaign.title %></h1>
+    <h1 class="campaign-groups-title">Groupes affiliés à la campagne</h1>
     <ul class='group-cards scroller'>
       <% @campaign_groups.each do |group| %>
         <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
