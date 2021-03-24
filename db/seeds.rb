@@ -55,13 +55,13 @@ main_end = Date.today + 90
 for i in 0..4
   start_d = i < 2 ? main_start : Date.today - (0..6).to_a.sample * 30
   end_d = i < 2 ? main_end + 90 : Date.today + (0..6).to_a.sample * 30
-  group = Group.create(name: titles[i], description: texts[i], user: admin, start_date: start_d, end_date: end_d, admin: false)
+  group = Group.create(name: titles[i], description: texts[i], user: admin, start_date: start_d, end_date: end_d)
   puts "create users for the group #{group.name}..."
   for j in 0..5 do
     role = j.zero? ? 'R' : 'M'
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
-    user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@twi.com", password: pwd)
+    user = User.create(first_name: first_name, last_name: last_name, email: "#{first_name}.#{last_name}@twi.com", password: pwd, admin: false)
     UserGroup.create(user: user, group: group, role: role)
   end
 end
