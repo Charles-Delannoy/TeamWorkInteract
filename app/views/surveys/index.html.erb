@@ -5,21 +5,6 @@
 
 <ul class="survey-cards index-survey-cards">
   <% @surveys.each do |survey| %>
-    <li class="survey-card">
-      <div class="survey-info">
-        <div class="survey-head">
-          <h2><%= link_to survey.title, survey_path(survey) %></h2>
-          <% if policy(survey).edit? %>
-            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_survey_path(survey) %>
-          <% end %>
-          <% if policy(survey).destroy? %>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.title} ?" } %>
-          <% end %>
-        </div>
-        <p class='index-survey-description'><%= survey.description %></p>
-      </div>
-      <i class="fas fa-poll-h"></i>
-
-    </li>
+    <%= render 'survey_card_linked', survey: survey %>
   <% end %>
 </ul>
