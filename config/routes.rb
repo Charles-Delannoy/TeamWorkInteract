@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :create ]
   end
 
-  resources :questions, only: [ :show, :edit, :update, :destroy ] do
+  resources :questions, only: [ :edit, :update, :destroy ] do
     resources :propositions, only: [:create]
   end
 

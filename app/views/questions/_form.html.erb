@@ -1,6 +1,0 @@
-<%= simple_form_for([@survey, @question], remote: true) do |f| %>
-  <%= f.input :title %>
-  <%= f.association :axe %>
-  <%= f.input :coef %>
-  <%= f.submit label, class: 'twi-btn' %>
-<% end %>
