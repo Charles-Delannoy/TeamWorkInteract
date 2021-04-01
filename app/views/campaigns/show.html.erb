@@ -1,21 +1,5 @@
 <ul class="campaign-cards">
-  <li class="campaign-card" id=<%= "campaign-#{@campaign.id}" %>>
-    <div class="campaign-head">
-      <h2><%= @campaign.title %></h2>
-      <% if policy(@campaign).edit? %>
-        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_campaign_path(@campaign) %>
-      <% end %>
-      <% if policy(@campaign).destroy? %>
-        <%= link_to('<i class="fas fa-trash"></i>'.html_safe, campaign_path(@campaign), class:'no-scroll-btn',
-          method: :delete,
-          data: { confirm: "Etes vous sur de vouloir supprimer la campagne #{@campaign.title} ?" },
-          remote: true)
-        %>
-      <% end %>
-    </div>
-    <h3><strong>Questionnaire :</strong> <%= @campaign.survey.title %></h3>
-    <p class='campaign-date'>Du <%= @campaign.start_date %> au <%= @campaign.end_date %></p>
-  </li>
+  <%= render 'campaign_card', campaign: @campaign %>
 </ul>
 
 <div class="campaign-grid campaign-show-grid">
@@ -24,26 +8,8 @@
     <h1 class="campaign-groups-title">Mes groupes</h1>
     <ul class='group-cards scroller' id="target">
       <% @groups.each do |group| %>
-        <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
         <li class="group-card" id=<%= "group-#{group.id}" %>>
-          <div class="group-info">
-            <div class="group-head">
-              <h2><%= group.name %></h2>
-              <% if policy(group).edit? %>
-                <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-              <% end %>
-              <% if policy(group).destroy? %>
-                <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
-                  method: :delete,
-                  data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
-                  remote: true, id: "delete-group-#{group.id}")
-                %>
-              <% end %>
-            </div>
-            <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
-            <p><%= group.description %></p>
-            <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
-          </div>
+          <%= render 'group_card', group: group %>
           <div>
             <%= simple_form_for(@group_campaign, remote: true) do |f| %>
               <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
@@ -63,27 +29,9 @@
     <h1 class="campaign-groups-title">Groupes affiliés à la campagne</h1>
     <ul class='group-cards scroller'>
       <% @campaign_groups.each do |group| %>
-        <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
         <% @gc_created = GroupCampaign.where(group: group, campaign: @campaign).first %>
         <li class="group-card" id=<%= "group-#{group.id}" %>>
-          <div class="group-info">
-            <div class="group-head">
-              <h2><%= group.name %></h2>
-              <% if policy(group).edit? %>
-                <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-              <% end %>
-              <% if policy(group).destroy? %>
-                <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
-                  method: :delete,
-                  data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
-                  remote: true, id: "delete-group-#{group.id}")
-                %>
-              <% end %>
-            </div>
-            <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
-            <p><%= group.description %></p>
-            <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>
-          </div>
+          <%= render 'group_card', group: group %>
           <div>
             <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@gc_created), method: :delete, remote: true, class: "add-icon add-submit" %>
             <%= image_tag 'group.svg' %>

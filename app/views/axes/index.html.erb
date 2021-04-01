@@ -5,24 +5,6 @@
 
 <ul class="axe-cards">
   <% @axes.each do |axe| %>
-
-    <li class="axe-card">
-      <div class="axe-info">
-        <div class="axe-head">
-          <h2><%= link_to axe.title, axe_path(axe) %></h2>
-          <% if policy(axe).edit? %>
-            <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_axe_path(axe) %>
-          <% end %>
-          <% if policy(axe).destroy? %>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, axe_path(axe), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer l'axe #{axe.title} ?" } %>
-          <% end %>
-        </div>
-        <p><%= axe.description %></p>
-      </div>
-      <% if axe.icon %>
-        <%= axe.icon.html_safe %>
-      <% end %>
-    </li>
-
+    <%= render 'axe_card', axe: axe %>
   <% end %>
 </ul>

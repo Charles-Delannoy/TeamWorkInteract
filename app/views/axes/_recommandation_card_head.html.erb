@@ -1,0 +1,9 @@
+<div class="survey-head">
+  <h2><%= reco.title %></h2>
+  <% if policy(reco).edit? %>
+    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_recommandation_path(reco) %>
+  <% end %>
+  <% if policy(reco).destroy? %>
+    <%= link_to '<i class="fas fa-trash"></i>'.html_safe, recommandation_path(reco), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{reco.title} ?" }, remote: true %>
+  <% end %>
+</div>
