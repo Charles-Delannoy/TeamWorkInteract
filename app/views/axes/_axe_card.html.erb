@@ -1,0 +1,9 @@
+<li class="axe-card">
+  <div class="axe-info">
+    <%= render 'axe_card_head', axe: axe %>
+    <p><%= axe.description %></p>
+  </div>
+  <% if axe.icon %>
+    <%= axe.icon.html_safe %>
+  <% end %>
+</li>
