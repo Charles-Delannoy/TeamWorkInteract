@@ -1,0 +1,21 @@
+<% chatroom = chatrooms.find do |chatroom| %>
+  <% chatroom.users.include?(user) %>
+<% end %>
+
+<% if chatroom %>
+  <div data-controller="new-messages" data-new-messages-target="card" data-chatroom-id="<%= chatroom.id %>" >
+<% end %>
+
+    <%= link_to new_chatroom_path(user: user), class: 'chat-btn' do %>
+      <i class="fas fa-comment">
+        <% if chatroom %>
+          <p data-new-messages-target='count' class="message-notification-admin <% if chatroom.new_message_counter(current_user).zero? %> d-none <% end %>">
+            <%= chatroom.new_message_counter(current_user) %>
+          </p>
+        <% end %>
+      </i>
+    <% end %>
+
+<% if chatroom %>
+  </div>
+<% end %>

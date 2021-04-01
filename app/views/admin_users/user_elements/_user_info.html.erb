@@ -1,0 +1,9 @@
+<div class="user-infos">
+  <% if user.full_name.nil? %>
+    <h3><%= user.email %></h3>
+    <p class='user-status pending-user'><i class="fas fa-exclamation-circle"></i> Validation en attente</p>
+  <% else %>
+    <h3><%= user.full_name %></h3>
+    <p class='user-status valid-user'><i class="fas fa-check-circle"></i> Invitation acceptée</p>
+  <% end %>
+</div>
