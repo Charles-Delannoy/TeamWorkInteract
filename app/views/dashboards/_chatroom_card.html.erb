@@ -1,0 +1,14 @@
+<div data-controller="new-messages">
+  <%= link_to chatroom_path(chatroom), class: 'chatroom-link' do %>
+    <div class="chatroom-card"
+         data-new-messages-target="card"
+         data-chatroom-id="<%= chatroom.id %>">
+      <p><%= chatroom.name %></p>
+      <div data-new-messages-target='count' class="message-notification <% if chatroom.new_message_counter(current_user).zero? %> d-none <% end %>">
+        <p>
+           <%= chatroom.new_message_counter(current_user) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

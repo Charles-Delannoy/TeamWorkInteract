@@ -1,20 +1,7 @@
 <h1><%= @chatroom.name %></h1>
 
 <div class="chat-container">
-  <div class="chat-window" id='chat-content' data-chatroom-id="<%= @chatroom.id %>">
-    <% @chatroom.messages.order(:created_at).each do |message| %>
-      <div id="<%= "message-#{message.id}" %>" class="message-content <% if message.user == current_user %> my-message <% end %>">
-        <%= render "messages/message", message: message %>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'chat_window', chatroom: @chatroom %>
 
-  <div class="new-message-form">
-    <%= simple_form_for([@chatroom, @message], remote: true) do |f| %>
-    <%= f.input :content, label: false %>
-    <%= button_tag class: 'twi-btn lblue-btn chat-submit-btn' do %>
-      <i class='fas fa-paper-plane'></i>
-    <% end %>
-  <% end %>
-  </div>
+  <%= render 'message_form', chatroom: @chatroom, message: @message %>
 </div>

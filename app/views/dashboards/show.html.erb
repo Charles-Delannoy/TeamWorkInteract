@@ -1,21 +1,12 @@
 <h2>Groupes</h2>
-<%= render 'groups' %>
+<ul class='group-cards'>
+  <% @groups.each do |group| %>
+    <%= render 'group_card', group: group %>
+  <% end %>
+</ul>
 <h2>Conversations</h2>
 <div class="dashboard-chatrooms">
   <% @chatrooms.each do |chatroom| %>
-    <div data-controller="new-messages">
-      <%= link_to chatroom_path(chatroom), class: 'chatroom-link' do %>
-        <div class="chatroom-card"
-             data-new-messages-target="card"
-             data-chatroom-id="<%= chatroom.id %>">
-          <p><%= chatroom.name %></p>
-          <div data-new-messages-target='count' class="message-notification <% if chatroom.new_message_counter(current_user).zero? %> d-none <% end %>">
-            <p>
-               <%= chatroom.new_message_counter(current_user) %>
-            </p>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'chatroom_card', chatroom: chatroom %>
   <% end %>
 </div>

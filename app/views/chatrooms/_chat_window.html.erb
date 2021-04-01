@@ -1,0 +1,7 @@
+<div class="chat-window" id='chat-content' data-chatroom-id="<%= chatroom.id %>">
+  <% chatroom.messages.order(:created_at).each do |message| %>
+    <div id="<%= "message-#{message.id}" %>" class="message-content <% if message.user == current_user %> my-message <% end %>">
+      <%= render "messages/message", message: message %>
+    </div>
+  <% end %>
+</div>
