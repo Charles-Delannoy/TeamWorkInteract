@@ -15,10 +15,12 @@ puts 'STARTING SEEDING'
 puts ""
 
 puts 'Destroy all datas ... '
+Answer.destroy_all
+GroupCampaign.destroy_all
 Campaign.destroy_all
 Survey.destroy_all
+Recommandation.destroy_all
 Axe.destroy_all
-Answer.destroy_all
 Group.destroy_all
 Message.destroy_all
 ChatroomUser.destroy_all
@@ -107,9 +109,27 @@ puts "-----------------------"
 
 puts "create campaign (and group_campaign) for the 2 firsts groups"
 campaign = Campaign.create(title: 'Campagne principale', survey: survey, start_date: main_start, end_date: main_end - 45)
+puts 'create answers for the 2 first groups'
 Group.all.first(2).each do |group|
-  GroupCampaign.create(campaign: campaign, group: group)
-  puts "you can test answers with #{group.users[1].email} from the group #{group.name}"
+  group_campaign = GroupCampaign.create(campaign: campaign, group: group)
+  # puts "you can test answers with #{group.users[1].email} from the group #{group.name}"
+  g_users = User.includes(:user_groups).where(user_groups: { group_id: group.id })
+  g_users.each do |user|
+    survey.questions.each do |question|
+      proposition = question.propositions.sample
+      Answer.create(
+        user: user,
+        group_campaign: group_campaign,
+        proposition: proposition
+        )
+    end
+  end
+  # Delete answers for one user for tests
+  if Group.all.index(group) == 1
+    answers_to_delete = Answer.where(user: g_users.last)
+    answers_to_delete.each(&:destroy)
+    puts "#{g_users.last.full_name} has no answers"
+  end
 end
 
 puts ""
