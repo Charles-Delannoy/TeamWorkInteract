@@ -1,5 +1,4 @@
 FactoryBot.define do
-  factory :group_campaigns do
-    
+  factory :group_campaign do
   end
 end

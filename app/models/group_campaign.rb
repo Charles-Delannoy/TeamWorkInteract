@@ -16,7 +16,7 @@ class GroupCampaign < ApplicationRecord
       scores[answer.axe.id] += answer.proposition.value
       n_answers[answer.axe.id] += 1
     end
-    scores.each { |axe_id, score| scores[axe_id] = score / n_answers[axe_id] }
+    scores.each { |axe_id, score| scores[axe_id] = score.to_f / n_answers[axe_id] }
     scores
   end
 
