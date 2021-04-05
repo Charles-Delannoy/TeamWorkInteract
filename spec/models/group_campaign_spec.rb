@@ -4,6 +4,9 @@ RSpec.describe GroupCampaign, type: :model do
   fixtures :groups
   fixtures :campaigns
   fixtures :group_campaigns
+  fixtures :questions
+  fixtures :propositions
+  fixtures :answers
 
   context 'validation' do
     it 'should validate group existence' do
@@ -53,6 +56,37 @@ RSpec.describe GroupCampaign, type: :model do
       group_campaign.group = groups(:current_group)
       group_campaign.save
       expect(GroupCampaign.count).to eq(n_group_campaign + 1)
+    end
+  end
+
+  context '#score_calculation' do
+    let(:score_hash) { group_campaigns(:group_campaign_current_group).score_calculation }
+
+    it 'should return a hash' do
+      expect(score_hash).to be_a(Hash)
+    end
+
+    it 'has an axe id as a key' do
+      axe = Axe.find(score_hash.keys.first)
+      expect(axe).to be_a(Axe)
+    end
+
+    it 'has an integer as value' do
+      first_key = score_hash.keys.first
+      expect(score_hash[first_key]).to be_a(Integer)
+    end
+
+    it 'create a key for each axe included in the survey' do
+      expect(score_hash.keys.length).to eq(7)
+    end
+
+    it 'calculate the score for the first axe' do
+      expect(score_hash[first_key]).to eq(2)
+    end
+
+    it 'calculate the score for all axes' do
+      expect(score_hash.keys.empty?).to be(false)
+      score_hash.keys.each { |key| expect(score_hash[key]).to eq(2) }
     end
   end
 end

@@ -1,0 +1,9 @@
+<% [User.all[1], User.all[2]].each_with_index do |user, i| %>
+  <% Survey.first.questions.each_with_index do |question, index| %>
+    <% proposition = question.propositions.where('value = 2') %>
+answer_q_<%= index %>_user_<%= i %>:
+  user: user
+  group_campaign: group_campaign_current_group
+  proposition: proposition
+  <% end %>
+<% end %>

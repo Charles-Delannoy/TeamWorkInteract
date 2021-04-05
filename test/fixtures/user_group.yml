@@ -1,0 +1,7 @@
+georges_group:
+  user: georges
+  group: current_group_with_campaign
+
+charles_group:
+  user: charles
+  group: current_group_with_campaign
