@@ -19,3 +19,10 @@
     <li><%= axe.title %>: <%= score %> / 5</li>
   <% end %>
 </ul>
+
+<div>
+  <canvas id="radar-chartjs" width="400" height="400"
+          data-labels="<%= @axes_labels.to_json %>"
+          data-scores="<%= @scores.to_json %>" >
+  </canvas>
+</div>

@@ -4,6 +4,9 @@ class GroupCampaignsController < ApplicationController
     @group_campaign = GroupCampaign.find(params[:id])
     @group = @group_campaign.group
     authorize @group_campaign
+
+    @axes_labels = @group_campaign.score_calculation.keys.map(&:title)
+    @scores = @group_campaign.score_calculation.values
   end
 
   def create
