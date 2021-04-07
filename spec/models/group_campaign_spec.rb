@@ -132,9 +132,8 @@ RSpec.describe GroupCampaign, type: :model do
       expect(@score_hash).to be_a(Hash)
     end
 
-    it 'has an axe id as a key' do
-      axe = Axe.find(@score_hash.keys.first)
-      expect(axe).to be_a(Axe)
+    it 'has an axe as a key' do
+      expect(@score_hash.keys.first).to be_a(Axe)
     end
 
     it 'has a float as a value' do
@@ -184,14 +183,14 @@ RSpec.describe GroupCampaign, type: :model do
         @score_hash = @group_campaign.score_calculation
       end
       it 'calculate the score for the first axe' do
-        first_key = @axes.first.id
+        first_key = @axes.first
         expect(@score_hash[first_key]).to eq(2.33)
       end
 
       it 'still calculate the other scores too' do
         axes_ids = @score_hash.keys
         expect(axes_ids.empty?).to be(false)
-        axes_ids.each { |key| expect(@score_hash[key]).to eq(2) unless key == @axes.first.id }
+        axes_ids.each { |key| expect(@score_hash[key]).to eq(2) unless key == @axes.first }
       end
     end
   end

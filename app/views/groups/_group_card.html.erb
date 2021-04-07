@@ -2,7 +2,7 @@
 
 <li class="group-card" id=<%= "group-#{group.id}" %> >
   <div class="group-info">
-    <%= render 'group_card_head', group: group %>
+    <%= render 'groups/group_card_head', group: group %>
     <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
     <p><%= group.description %></p>
     <p class='group-date'>Du <%= group.start_date %> au <%= group.end_date %></p>

@@ -1,0 +1,21 @@
+<h1>Résultat de "<%= @group_campaign.campaign.title %>"</h1>
+
+<ul class='group-cards'>
+  <%= render 'groups/group_card', group: @group %>
+</ul>
+
+<ul>
+  <% @group.users.each do |user| %>
+    <% unless UserGroup.where(user: user, group: @group).first.role == 'R' %>
+    <li>
+      <%= user.full_name %>
+    </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% @group_campaign.score_calculation.each do |axe, score| %>
+    <li><%= axe.title %>: <%= score %> / 5</li>
+  <% end %>
+</ul>

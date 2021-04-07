@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_current_group_and_survey
+  before_action :set_current_group_and_campaign
 
   include Pundit
 
@@ -34,11 +34,12 @@ class ApplicationController < ActionController::Base
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def set_current_group_and_survey
+  def set_current_group_and_campaign
     today = Date.today
     @current_group = session[:group] ? Group.find(session[:group]['id']) : nil
     if @current_group
       @current_campaign = @current_group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today).first
+      @group_campaign = GroupCampaign.where(group: @current_group, campaign: @current_campaign).first
     else
       @current_campaign = nil
     end

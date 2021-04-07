@@ -11,10 +11,10 @@ class GroupCampaign < ApplicationRecord
   def score_calculation
     scores = {}
     n_answers = {}
-    axes.each { |axe| scores[axe.id] = n_answers[axe.id] = 0 }
+    axes.each { |axe| scores[axe] = n_answers[axe] = 0 }
     answers.each do |answer|
-      scores[answer.axe.id] += answer.proposition.value
-      n_answers[answer.axe.id] += answer.question.coef
+      scores[answer.axe] += answer.proposition.value
+      n_answers[answer.axe] += answer.question.coef
     end
     scores.each { |axe_id, score| scores[axe_id] = (score.to_f / n_answers[axe_id]).round(2) }
     scores
