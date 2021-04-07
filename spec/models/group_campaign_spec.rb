@@ -167,13 +167,14 @@ RSpec.describe GroupCampaign, type: :model do
         question.save
 
         proposition = build(:proposition)
-        proposition.value = 4
+        proposition.value = 5
         proposition.question = question
         proposition.save
 
         answer1 = Answer.new
         answer2 = Answer.new
-        answer1.group_campaign = answer2.group_campaign = @group_campaign
+        @group_campaign.answers << answer1
+        @group_campaign.answers << answer2
         answer1.user = users(:georges)
         answer2.user = users(:charles)
         answer1.proposition = answer2.proposition = proposition
@@ -184,10 +185,10 @@ RSpec.describe GroupCampaign, type: :model do
       end
       it 'calculate the score for the first axe' do
         first_key = @score_hash.keys.first
-        expect(@score_hash[first_key]).to eq(3.33)
+        expect(@score_hash[first_key]).to eq(2.33)
       end
 
-      it 'calculate the other scores too' do
+      it 'still calculate the other scores too' do
         axes_ids = @score_hash.keys
         expect(axes_ids.empty?).to be(false)
         axes_ids.each { |key| expect(@score_hash[key]).to eq(2) unless key == axes_ids.first }
