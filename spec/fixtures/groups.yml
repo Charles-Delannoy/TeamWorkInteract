@@ -1,5 +1,5 @@
 current_group:
-  name: "Millesime Manager"
+  name: "Mon super groupe"
   description: "Application de gestion de cave à vin intégrant la notion d'apogée du vin"
   user: chrystelle
   start_date: <%= Date.today - 30 %>

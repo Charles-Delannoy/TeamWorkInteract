@@ -36,7 +36,7 @@ class AdminUsersController < ApplicationController
     if @user.save
       create_user_group(@user)
       redirect_to admin_users_path
-      SendFirstWelcomeMailJob.perform_now(@user, @group, @role)
+      SendFirstWelcomeMailJob.perform_later(@user, @group, @role)
     else
       @users = policy_scope(User)
       render :index

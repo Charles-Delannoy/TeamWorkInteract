@@ -1,9 +1,24 @@
 class GroupCampaign < ApplicationRecord
   belongs_to :group
   belongs_to :campaign
+  has_one :survey, through: :campaign
+  has_many :axes, through: :survey
+  has_many :answers
   validate :unfinished_group, if: :group
   validate :campaign_within_group_dates, if: :group && :campaign
   validate :no_other_campaign_ongoing, if: :group
+
+  def score_calculation
+    scores = {}
+    n_answers = {}
+    axes.each { |axe| scores[axe.id] = n_answers[axe.id] = 0 }
+    answers.each do |answer|
+      scores[answer.axe.id] += answer.proposition.value
+      n_answers[answer.axe.id] += answer.question.coef
+    end
+    scores.each { |axe_id, score| scores[axe_id] = (score.to_f / n_answers[axe_id]).round(2) }
+    scores
+  end
 
   private
 

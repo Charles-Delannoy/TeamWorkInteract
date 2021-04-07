@@ -1,0 +1,41 @@
+climat:
+  title: "Le climat du groupe est ouvert, l’atmosphère est détendue ?"
+  survey: survey_s1
+  coef: 1
+  axe: climat
+
+apports:
+  title: "Le groupe exploite bien les apports de ses membres /expertise ?"
+  survey: survey_s1
+  coef: 1
+  axe: apports
+
+resultats:
+  title: "La production des résultats est réellement un effort collectif ?"
+  survey: survey_s1
+  coef: 1
+  axe: resultats
+
+organisation:
+  title: "Le travail en groupe est productif et efficace pour chacun ?"
+  survey: survey_s1
+  coef: 1
+  axe: organisation
+
+communication:
+  title: "Le groupe aide ses membres à communiquer de manière efficace ?"
+  survey: survey_s1
+  coef: 1
+  axe: communication
+
+encouragement:
+  title: "Le groupe veille à ce que chacun ait l’occasion de s’exprimer librement et de façon opportune ?"
+  survey: survey_s1
+  coef: 1
+  axe: encouragement
+
+entraide:
+  title: "Les membres du groupe s’aident et s’encouragent mutuellement ?"
+  survey: survey_s1
+  coef: 1
+  axe: entraide
