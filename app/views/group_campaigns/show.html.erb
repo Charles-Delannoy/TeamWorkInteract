@@ -4,25 +4,28 @@
   <%= render 'groups/group_card', group: @group %>
 </ul>
 
-<ul>
-  <% @group.users.each do |user| %>
-    <% unless UserGroup.where(user: user, group: @group).first.role == 'R' %>
-    <li>
-      <%= user.full_name %>
-    </li>
+<div class='results'>
+  <div class="member-display">
+    <% @group.users.each do |user| %>
+      <% unless UserGroup.where(user: user, group: @group).first.role == 'R' %>
+      <div class='group_member'>
+        <div class='avatar-img'>
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, alt: "profile pic"%>
+          <% else %>
+            <%= image_tag 'profile.svg', alt: "profile pic" %>
+          <% end %>
+        </div>
+        <p><%= user.full_name %></p>
+      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </div>
 
-<ul>
-  <% @group_campaign.score_calculation.each do |axe, score| %>
-    <li><%= axe.title %>: <%= score %> / 5</li>
-  <% end %>
-</ul>
-
-<div>
-  <canvas id="radar-chartjs" width="400" height="400"
-          data-labels="<%= @axes_labels.to_json %>"
-          data-scores="<%= @scores.to_json %>" >
-  </canvas>
+  <div class='chart-container'>
+    <canvas id="radar-chartjs"
+            data-labels="<%= @axes_labels.to_json %>"
+            data-scores="<%= @scores.to_json %>" >
+    </canvas>
+  </div>
 </div>
