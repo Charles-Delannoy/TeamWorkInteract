@@ -39,9 +39,9 @@ class ApplicationController < ActionController::Base
     @current_group = session[:group] ? Group.find(session[:group]['id']) : nil
     if @current_group
       @current_campaign = @current_group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today).first
-      @group_campaign = GroupCampaign.where(group: @current_group, campaign: @current_campaign).first
+      @current_group_campaign = GroupCampaign.where(group: @current_group, campaign: @current_campaign).first
     else
-      @current_campaign = nil
+      @current_campaign = @group_campaign = nil
     end
   end
 end

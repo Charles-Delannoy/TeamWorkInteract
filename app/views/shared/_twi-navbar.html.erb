@@ -31,8 +31,8 @@
         <li><%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %></li>
       <% end %>
 
-      <% if policy(@group_campaign).show? && @current_campaign %>
-        <li><%= link_to 'Resultats', result_path(@group_campaign) %></li>
+      <% if @current_group_campaign && policy(@current_group_campaign).show? %>
+        <li><%= link_to 'Resultats', result_path(@current_group_campaign) %></li>
       <% end %>
     <% end %>
 
