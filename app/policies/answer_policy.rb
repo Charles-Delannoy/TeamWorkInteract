@@ -20,7 +20,7 @@ class AnswerPolicy < ApplicationPolicy
   end
 
   def member?
-    UserGroup.where(group: group, user: user).role == 'M'
+    UserGroup.where(group: group, user: user).first.role == 'M'
   end
 
   def today

@@ -14,7 +14,7 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def show?
-    owner?(record) || record == ongoing_survey
+    group && record == ongoing_survey || owner?(record)
   end
 
   def update?
