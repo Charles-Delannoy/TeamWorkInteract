@@ -47,11 +47,9 @@ const initRadarChart = () => {
       },
       maintainAspectRatio: true,
       scale: {
-        ticks: {
-          beginAtZero: true,
-          max: 5,
-          stepSize: 1
-        }
+        max: 5,
+        min: 0,
+        stepSize: 1
       }
     };
 

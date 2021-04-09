@@ -20,6 +20,14 @@
   background-color: white;
   padding: 10px;
   grid-column: 1 / 3;
+  color: $twi-deep-blue-alt;
+  h2 {
+    font-size: 23px;
+    text-align: center;
+    border-bottom: 4px solid $light-gray;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
 }
 
 .results {

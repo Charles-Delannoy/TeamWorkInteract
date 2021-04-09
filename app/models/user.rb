@@ -28,6 +28,9 @@ class User < ApplicationRecord
     return first_name.nil? || last_name.nil? ? nil : "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def completion_rate(group_campaign)
+  end
+
   private
 
   def admin?

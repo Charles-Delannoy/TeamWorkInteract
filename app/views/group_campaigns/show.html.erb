@@ -6,6 +6,7 @@
 
 <div class='results'>
   <div class="member-display">
+    <h2>Membres du groupe</h2>
     <% @group.users.each do |user| %>
       <% unless UserGroup.where(user: user, group: @group).first.role == 'R' %>
       <div class='group_member'>
