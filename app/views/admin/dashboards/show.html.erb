@@ -1,0 +1,16 @@
+<h1>Campagnes en cours</h1>
+
+<% @ongoin_campaigns.each do |campaign| %>
+  <div class='campaign-admin-dashboard'>
+    <h2><%= campaign.title %></h2>
+    <ul>
+      <% campaign.groups.each do |group| %>
+        <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
+        <li>
+          <h3><%= group.name %></h3>
+          <%= link_to 'Resultats', result_path(group_campaign) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
