@@ -113,7 +113,7 @@ puts 'create answers for the 2 first groups'
 Group.all.first(2).each do |group|
   group_campaign = GroupCampaign.create(campaign: campaign, group: group)
   # puts "you can test answers with #{group.users[1].email} from the group #{group.name}"
-  g_users = User.includes(:user_groups).where(user_groups: { group_id: group.id })
+  g_users = User.includes(:user_groups).where(user_groups: { group_id: group.id, role: 'M' })
   g_users.each do |user|
     survey.questions.each do |question|
       proposition = question.propositions.sample

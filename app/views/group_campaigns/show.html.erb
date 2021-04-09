@@ -1,0 +1,32 @@
+<h1>Résultat de "<%= @group_campaign.campaign.title %>"</h1>
+
+<ul class='group-cards'>
+  <%= render 'groups/group_card', group: @group %>
+</ul>
+
+<div class='results'>
+  <div class="member-display">
+    <h2>Membres du groupe</h2>
+    <% @group.users.each do |user| %>
+      <% unless UserGroup.where(user: user, group: @group).first.role == 'R' %>
+      <div class='group_member'>
+        <div class='avatar-img'>
+          <% if user.photo.attached? %>
+            <%= cl_image_tag user.photo.key, alt: "profile pic"%>
+          <% else %>
+            <%= image_tag 'profile.svg', alt: "profile pic" %>
+          <% end %>
+        </div>
+        <p><%= user.full_name %></p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class='chart-container'>
+    <canvas id="radar-chartjs"
+            data-labels="<%= @axes_labels.to_json %>"
+            data-scores="<%= @scores.to_json %>" >
+    </canvas>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class AnswerPolicy < ApplicationPolicy
   def create?
-    group ? ongoing_campaign? : false
+    group && member? ? ongoing_campaign? : false
   end
 
   def update?
@@ -17,6 +17,10 @@ class AnswerPolicy < ApplicationPolicy
 
   def ongoing_campaign?
     group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today)
+  end
+
+  def member?
+    UserGroup.where(group: group, user: user).first.role == 'M'
   end
 
   def today

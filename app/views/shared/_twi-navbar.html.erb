@@ -27,8 +27,12 @@
         <li><%= link_to 'Axes', axes_path %></li>
       <% end %>
 
-      <% if policy(Answer).create? && @current_campaign %>
+      <% if @current_campaign && policy(@current_campaign.survey).show? %>
         <li><%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %></li>
+      <% end %>
+
+      <% if @current_group_campaign && policy(@current_group_campaign).show? %>
+        <li><%= link_to 'Resultats', result_path(@current_group_campaign) %></li>
       <% end %>
     <% end %>
 

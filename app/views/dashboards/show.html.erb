@@ -4,9 +4,11 @@
     <%= render 'group_card', group: group %>
   <% end %>
 </ul>
-<h2>Conversations</h2>
-<div class="dashboard-chatrooms">
-  <% @chatrooms.each do |chatroom| %>
-    <%= render 'chatroom_card', chatroom: chatroom %>
-  <% end %>
-</div>
+<% unless @chatrooms.empty? %>
+  <h2><%= 'Conversation'.pluralize(@chatrooms.length) %></h2>
+  <div class="dashboard-chatrooms">
+    <% @chatrooms.each do |chatroom| %>
+      <%= render 'chatroom_card', chatroom: chatroom %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,52 @@
+.avatar-img {
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+.group_member {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  p {
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+}
+
+.member-display {
+  background-color: white;
+  padding: 10px;
+  grid-column: 1 / 3;
+  color: $twi-deep-blue-alt;
+  h2 {
+    font-size: 23px;
+    text-align: center;
+    border-bottom: 4px solid $light-gray;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+.results {
+  width: 100%;
+  // align-items: start;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-gap: 20px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  grid-column: 3 / 10;
+  background-color: white;
+}
+
+#radar-chartjs {
+  max-width: 650px;
+  max-height: 650px;
+}

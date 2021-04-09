@@ -13,16 +13,15 @@ class CampaignsController < ApplicationController
     @groups = groups.select do |group|
       group.campaigns.include?(@campaign) == false
     end
-
     @group_campaign = GroupCampaign.new
-    return unless @group_campaign.group
+    # return unless @group_campaign.group
 
-    @group_campaign.campaign = @campaign
-    if @group_campaign.save
-      redirect_to "show"
-    else
-      render "campaigns/show"
-    end
+    # @group_campaign.campaign = @campaign
+    # if @group_campaign.save
+    #   redirect_to "show"
+    # else
+    #   render "campaigns/show"
+    # end
   end
 
   def new
