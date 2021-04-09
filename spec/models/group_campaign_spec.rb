@@ -71,7 +71,7 @@ RSpec.describe GroupCampaign, type: :model do
         # Group Users de test
         user_group1 = build(:user_group)
         user_group1.user = users(:georges)
-        user_group2 = build(:user_group_referent)
+        user_group2 = build(:user_group)
         user_group2.user = users(:charles)
         user_group1.group = user_group2.group = group
         user_group1.save

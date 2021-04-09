@@ -4,7 +4,8 @@ class GroupCampaignsController < ApplicationController
     @group_campaign = GroupCampaign.find(params[:id])
     @group = @group_campaign.group
     authorize @group_campaign
-
+    @members = @group.users.includes(:user_groups).where(user_groups: {role: 'M'})
+    @survey_completed = answered?
     @axes_labels = @group_campaign.score_calculation.keys.map(&:title)
     @scores = @group_campaign.score_calculation.values
   end
@@ -24,6 +25,13 @@ class GroupCampaignsController < ApplicationController
   end
 
   private
+
+  def answered?
+    @members.each do |member|
+      return false if member.completion_rate(@group_campaign) < 100
+    end
+    true
+  end
 
   def group_campaigns_params
     params.require(:group_campaign).permit(:group_id, :campaign_id)
