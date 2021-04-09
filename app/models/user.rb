@@ -29,6 +29,9 @@ class User < ApplicationRecord
   end
 
   def completion_rate(group_campaign)
+    n_questions = group_campaign.survey.questions.count
+    n_answers = Answer.where(group_campaign: group_campaign, user: self).count
+    n_answers * 100 / n_questions
   end
 
   private
