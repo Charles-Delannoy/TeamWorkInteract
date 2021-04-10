@@ -1,7 +1,7 @@
 <div class="nested-fields twi-form survey-form-element">
   <%= link_to_remove_association '<i class="fas fa-times"></i>'.html_safe, f, class: 'delete-element add-delete-survey' %>
   <%= f.input :title, placeholder: 'Enoncé de la question', label: false %>
-  <%= f.association :axe, :prompt => "Quel axe concerne cette question ?", label: false %>
+  <%= f.association :axe, collection: Axe.where(user: current_user), prompt: "Quel axe concerne cette question ?", label: false %>
   <%= f.input :coef, placeholder: "Coefficient de la question pour l'axe selectionné (1, 2, 3 ...)", label: false %>
   <h6>Propositions</h6>
   <div id="propositions" class="create-survey-grid">
