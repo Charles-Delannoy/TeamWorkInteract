@@ -1,5 +1,5 @@
 class SendFirstWelcomeMailJob < ApplicationJob
-  queue_as :mailer
+  queue_as :default
 
   def perform(user, group, role)
     raw, hashed = Devise.token_generator.generate(User, :reset_password_token)
