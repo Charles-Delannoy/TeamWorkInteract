@@ -17,7 +17,7 @@
           <% end %>
         </div>
         <p class='member-name'>
-          <%= user.full_name %>
+          <%= user.full_name || user.email %>
           <% case user.completion_rate(@group_campaign) %>
           <% when 100 %>
             <i class="fas fa-check-circle green"></i>
