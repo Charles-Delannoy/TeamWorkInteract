@@ -1,7 +1,7 @@
 .create-survey-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 0 15px;
+  grid-gap: 15px;
 }
 
 .survey-form-container {
@@ -12,16 +12,9 @@
   }
 }
 
-// .survey-form-element {
-//   padding-top: 35px;
-//   margin-bottom: 15px;
-//   position: relative;
-//   flex-grow: 1;
-//   background-color: $twi-green;
-//   h6 {
-//     color: #fff;
-//   }
-// }
+.survey-form-element {
+  margin-bottom: 15px;
+}
 
 .delete-element {
   position: absolute;
