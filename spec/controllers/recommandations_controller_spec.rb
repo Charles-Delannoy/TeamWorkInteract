@@ -11,7 +11,7 @@ RSpec.describe RecommandationsController, type: :controller do
       before(:each) do
         sign_in user
 
-        post :create, params: { axe_id: axe.id, recommandation: attributes_for(:recommandation_empty) }
+        post :create, params: { axe_id: axe.id, recommandation: attributes_for(:recommandation_no_description) }
       end
 
       it 'should render the new template' do
