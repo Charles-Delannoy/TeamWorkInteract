@@ -1,10 +1,13 @@
-<h1>Mes axes d'analyse
-<% if policy(Axe).create? %>
-  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_axe_path, class: 'add-icon' %>
-<% end %></h1>
+<h1>Mes axes d'analyse</h1>
 
 <ul class="axe-cards">
+  <div class="axes-cards-container">
   <% @axes.each do |axe| %>
     <%= render 'axe_card', axe: axe %>
   <% end %>
+  </div>
+  <div class="twi-form sticky-form">
+    <%= render "form", axe: @axe, label: 'Créer' %>
+  </div>
 </ul>
+
