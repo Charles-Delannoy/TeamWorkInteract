@@ -4,10 +4,6 @@ RSpec.describe GroupCampaign, type: :model do
   fixtures :users
   fixtures :groups
   fixtures :campaigns
-  fixtures :group_campaigns
-  fixtures :questions
-  fixtures :propositions
-  fixtures :answers
 
   context 'validation' do
     it 'should validate group existence' do

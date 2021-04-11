@@ -20,7 +20,7 @@ FactoryBot.define do
       end_date { nil }
     end
 
-    factory :campaign_start_after_en do
+    factory :campaign_start_after_end do
       start_date { Date.today + 40 }
     end
   end

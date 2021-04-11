@@ -2,8 +2,9 @@ ul.axe-cards {
   list-style-type: none;
   padding: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-gap: 16px;
+  align-items: start;
   li.axe-card {
     padding: 16px;
     text-decoration: none;

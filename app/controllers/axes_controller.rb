@@ -4,6 +4,7 @@ class AxesController < ApplicationController
   def index
     @axes = policy_scope(Axe).order(created_at: :desc)
     authorize @axes
+    new
   end
 
   def new
