@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
-
   has_many :user_groups
   # Groups
   has_many :groups
@@ -23,6 +22,8 @@ class User < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+
 
   def full_name
     return first_name.nil? || last_name.nil? ? nil : "#{first_name.capitalize} #{last_name.capitalize}"

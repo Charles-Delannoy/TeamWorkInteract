@@ -16,7 +16,12 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     authorize @group
     @group.user = current_user
-    @group.save ? (redirect_to groups_path(anchor: "group-#{@group.id}")) : (render :new)
+    if @group.save
+      redirect_to groups_path(anchor: "group-#{@group.id}")
+    else
+      @groups = policy_scope(Group).where(user: current_user)
+      render :index
+    end
   end
 
   def edit

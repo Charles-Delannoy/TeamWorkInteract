@@ -34,7 +34,7 @@ RSpec.describe Campaign, type: :model do
     end
 
     it 'should validate that start_date is before end_date' do
-      campaign = build(:campaign_start_after_en)
+      campaign = build(:campaign_start_after_end)
       campaign.validate
       expect(campaign.errors).to include(:end_date)
       expect(campaign.errors.messages[:end_date]).to include("must be after starts_at")
