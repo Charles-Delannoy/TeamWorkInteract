@@ -1,12 +1,8 @@
 class AdminUsersController < ApplicationController
   def index
-    @users = policy_scope(User)
-    @users = @users.search_by_first_last_name_and_email(params[:query]) if params[:query].present?
-    @users = @users.includes(:user_groups).where(user_groups: { group_id: params[:groupe] }) if params[:groupe].present?
-    @users = @users.includes(:user_groups).where(user_groups: { role: params[:role] }) if params[:role].present?
+    users_filtered
     new
     prepare_search_bar
-    @users = @users.order(:first_name).uniq
     @chatrooms = Chatroom.includes(:chatroom_users).where(chatroom_users: { user: current_user })
     render :index if params.keys.length > 2
   end
@@ -30,6 +26,14 @@ class AdminUsersController < ApplicationController
 
   private
 
+  def users_filtered
+    @users = policy_scope(User)
+    @users = @users.search_by_first_last_name_and_email(params[:query]) if params[:query].present?
+    @users = @users.includes(:user_groups).where(user_groups: { group_id: params[:groupe] }) if params[:groupe].present?
+    @users = @users.includes(:user_groups).where(user_groups: { role: params[:role] }) if params[:role].present?
+    @users = @users.order(:first_name).uniq
+  end
+
   def create_user
     @user = User.new(user_params)
     @user.admin = false
@@ -38,7 +42,10 @@ class AdminUsersController < ApplicationController
       redirect_to admin_users_path
       SendFirstWelcomeMailJob.perform_later(@user, @group, @role)
     else
-      @users = policy_scope(User)
+      users_filtered
+      prepare_search_bar
+      generate_pswd
+      @chatrooms = Chatroom.includes(:chatroom_users).where(chatroom_users: { user: current_user })
       render :index
     end
   end

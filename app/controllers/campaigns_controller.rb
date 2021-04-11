@@ -14,14 +14,6 @@ class CampaignsController < ApplicationController
       group.campaigns.include?(@campaign) == false
     end
     @group_campaign = GroupCampaign.new
-    # return unless @group_campaign.group
-
-    # @group_campaign.campaign = @campaign
-    # if @group_campaign.save
-    #   redirect_to "show"
-    # else
-    #   render "campaigns/show"
-    # end
   end
 
   def new
@@ -35,7 +27,8 @@ class CampaignsController < ApplicationController
     if @campaign.save
       redirect_to campaigns_path(anchor: "campaign-#{@campaign.id}")
     else
-      render :new
+      @campaigns = policy_scope(Campaign).order(end_date: :asc)
+      render :index
     end
   end
 
