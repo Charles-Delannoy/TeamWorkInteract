@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Axe, type: :model do
   # setup
   fixtures :users
-  fixtures :axes
   context 'validations' do
     it 'should check for title presence' do
       axe = build(:axe_no_title)

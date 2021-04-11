@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Campaign, type: :model do
-  fixtures :users
   fixtures :surveys
 
   context 'validation' do
