@@ -48,8 +48,7 @@ class SurveysController < ApplicationController
     dup_survey = Survey.new(title: "#{survey.title} (copie)", description: survey.description, user: current_user)
     dup_survey.save
     survey.questions.each { |question| duplicate_question(question, dup_survey) }
-    @surveys = policy_scope(Survey).order(created_at: :desc)
-    render :index
+    redirect_to surveys_path
   end
 
   def destroy
