@@ -45,7 +45,13 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
-    @campaign.destroy
+    begin
+      @campaign.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:alert] = "Opération impossible 👉 des groupes ont commencés à répondre aux questionnaire de la campagne"
+      @campaigns = policy_scope(Campaign).order(end_date: :asc)
+      render :index
+    end
   end
 
   private
