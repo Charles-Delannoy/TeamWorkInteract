@@ -32,9 +32,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @campaign.update(campaigns_params)
     if @campaign.save
@@ -45,7 +42,13 @@ class CampaignsController < ApplicationController
   end
 
   def destroy
-    @campaign.destroy
+    begin
+      @campaign.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:alert] = "Opération impossible 👉 des groupes ont commencés à répondre aux questionnaire de la campagne"
+      @campaigns = policy_scope(Campaign).order(end_date: :asc)
+      render :index
+    end
   end
 
   private

@@ -51,5 +51,9 @@ Rails.application.routes.draw do
 
   resources :group_campaigns, only: [:show], path: "results", as: 'results'
 
+  # CUSTOMS ROUTES
+
+  get 'surveys/:id/duplicate', to: 'surveys#duplicate', as: 'survey_duplication'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

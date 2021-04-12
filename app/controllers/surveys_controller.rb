@@ -42,6 +42,15 @@ class SurveysController < ApplicationController
     end
   end
 
+  def duplicate
+    survey = Survey.find(params[:id])
+    authorize survey
+    dup_survey = Survey.new(title: "#{survey.title} (copie)", description: survey.description, user: current_user)
+    dup_survey.save
+    survey.questions.each { |question| duplicate_question(question, dup_survey) }
+    redirect_to surveys_path
+  end
+
   def destroy
     @survey.destroy
     redirect_to surveys_path
@@ -58,5 +67,16 @@ class SurveysController < ApplicationController
     params.require(:survey).permit(:title, :description,
                                    questions_attributes: [:id, :title, :axe_id, :coef, :_destroy,
                                                           propositions_attributes: [:id, :title, :value, :_destroy]])
+  end
+
+  def duplicate_question(question, new_survey)
+    dup_question = Question.new(title: question.title, coef: question.coef, axe: question.axe, survey: new_survey)
+    dup_question.save
+    question.propositions.each { |proposition| duplicate_proposition(proposition, dup_question) }
+  end
+
+  def duplicate_proposition(proposition, new_question)
+    dup_proposition = Proposition.new(title: proposition.title, value: proposition.value, question: new_question)
+    dup_proposition.save
   end
 end

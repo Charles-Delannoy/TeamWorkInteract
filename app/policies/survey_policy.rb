@@ -18,7 +18,11 @@ class SurveyPolicy < ApplicationPolicy
   end
 
   def update?
-    owner?(record)
+    owner?(record) && without_campaign?
+  end
+
+  def duplicate?
+    owner?(record) && !without_campaign?
   end
 
   def destroy?
@@ -30,5 +34,9 @@ class SurveyPolicy < ApplicationPolicy
   def ongoing_survey
     today = Date.today
     group.campaigns.where('start_date <= ?', today).where('end_date >= ?', today).first.survey
+  end
+
+  def without_campaign?
+    Campaign.where(survey: record).empty?
   end
 end
