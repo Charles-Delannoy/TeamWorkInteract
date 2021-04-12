@@ -20,7 +20,11 @@ class GroupCampaignsController < ApplicationController
   def destroy
     @group_campaign = GroupCampaign.find(params[:id])
     authorize @group_campaign
-    @group_campaign.destroy
+    begin
+      @group_campaign.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      flash[:alert] = "Opération impossible 👉 le groupe a commencé à répondre aux questions"
+    end
     redirect_to campaign_path(@group_campaign.campaign)
   end
 
