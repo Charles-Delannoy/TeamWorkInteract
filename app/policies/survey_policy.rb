@@ -21,6 +21,10 @@ class SurveyPolicy < ApplicationPolicy
     owner?(record) && without_campaign?
   end
 
+  def duplicate?
+    owner?(record)
+  end
+
   def destroy?
     owner?(record)
   end

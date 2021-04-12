@@ -32,9 +32,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @campaign.update(campaigns_params)
     if @campaign.save
