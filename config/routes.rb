@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :group_campaigns, only: [:create, :destroy]
 
   resources :axes, only: [:index, :create, :destroy, :edit, :update, :show] do
-    resources :recommandations, only: [:new, :create]
+    resources :recommandations, only: [:create]
   end
 
   resources :admin_users, only: [:index, :create]

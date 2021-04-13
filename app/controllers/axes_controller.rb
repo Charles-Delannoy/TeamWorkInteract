@@ -25,6 +25,7 @@ class AxesController < ApplicationController
   end
 
   def show
+    @recommandation = Recommandation.new
   end
 
   def edit
