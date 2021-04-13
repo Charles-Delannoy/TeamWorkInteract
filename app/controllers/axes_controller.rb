@@ -19,7 +19,8 @@ class AxesController < ApplicationController
     if @axe.save
       redirect_to axes_path
     else
-      render :new
+      @axes = policy_scope(Axe).order(created_at: :desc)
+      render :index
     end
   end
 
