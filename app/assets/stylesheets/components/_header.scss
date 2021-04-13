@@ -14,9 +14,19 @@
   }
   a {
     margin-right: 7px;
-    img.twi-logo {
-      height: 20px;
-    }
+  }
+}
+.twi-logo {
+  height: 20px;
+}
+
+.home-logo {
+  position: absolute;
+  left: 10px;
+  font-size: 25px;
+  color: white;
+  &:hover {
+    color: $twi-blue;
   }
 }
 
