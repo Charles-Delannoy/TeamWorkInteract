@@ -14,13 +14,13 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(surveys_params)
-    @survey.user = current_user
-    authorize @survey
-    if @survey.save
-      redirect_to surveys_path
+    if params[:survey_id]
+      duplicate
     else
-      render :new
+      @survey = Survey.new(surveys_params)
+      @survey.user = current_user
+      authorize @survey
+      @survey.save ? (redirect_to surveys_path) : (render :new)
     end
   end
 
@@ -42,21 +42,34 @@ class SurveysController < ApplicationController
     end
   end
 
-  def duplicate
-    survey = Survey.find(params[:id])
-    authorize survey
-    dup_survey = Survey.new(title: "#{survey.title} (copie)", description: survey.description, user: current_user)
-    dup_survey.save
-    survey.questions.each { |question| duplicate_question(question, dup_survey) }
-    redirect_to surveys_path
-  end
-
   def destroy
     @survey.destroy
     redirect_to surveys_path
   end
 
   private
+
+  def duplicate
+    survey = Survey.find(params[:survey_id])
+    authorize survey
+    title = get_next_free_title(survey)
+    dup_survey = Survey.new(title: title, description: survey.description, user: current_user)
+    dup_survey.save
+    survey.questions.each { |question| duplicate_question(question, dup_survey) }
+    redirect_to surveys_path
+  end
+
+  def get_next_free_title(survey)
+    i = 1
+    until title_free?("#{survey.title} (copie #{i})")
+      i += 1
+    end
+    "#{survey.title} (copie #{i})"
+  end
+
+  def title_free?(title)
+    Survey.where(title: title).empty?
+  end
 
   def set_survey
     @survey = Survey.find(params[:id])

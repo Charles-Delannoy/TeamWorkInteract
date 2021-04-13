@@ -9,7 +9,7 @@
         <%= link_to '<i class="fas fa-trash"></i>'.html_safe, survey_path(survey), method: :delete, data: { confirm: "Etes vous sur de vouloir supprimer le questionnaire #{survey.title} ?" } %>
       <% end %>
       <% if policy(survey).duplicate? %>
-        <%= link_to '<i class="fas fa-clone"></i>'.html_safe, survey_duplication_path(survey) %>
+        <%= link_to '<i class="fas fa-clone"></i>'.html_safe, surveys_path(survey_id: survey.id), method: :post %>
       <% end %>
     </div>
     <p class='index-survey-description'><%= survey.description %></p>
