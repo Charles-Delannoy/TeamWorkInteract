@@ -16,6 +16,13 @@ RSpec.describe Axe, type: :model do
       expect(axe.errors.messages[:title]).to include("is too short (minimum is 3 characters)")
     end
 
+    it 'should validate title unicity for a user' do
+      Axe.create(title: "communication", description: "savoir bien communiquer", user: users(:chrystelle))
+      axe = Axe.new(title: "communication", description: "savoir bien communiquer", user: users(:chrystelle))
+      axe.validate
+      expect(axe.errors.messages[:title]).to include("has already been taken")
+    end
+
     it 'should check for description length' do
       axe = build(:axe_short_description)
       axe.validate
