@@ -15,6 +15,16 @@ RSpec.describe Survey, type: :model do
       expect(survey.errors.messages[:title]).to include("is too short (minimum is 3 characters)")
     end
 
+    it 'should validate title unicity for a user' do
+      survey = build(:survey)
+      survey.user = users(:chrystelle)
+      survey.save
+      survey2 = build(:survey)
+      survey2.user = users(:chrystelle)
+      survey2.validate
+      expect(survey2.errors.messages[:title]).to include("has already been taken")
+    end
+
     it 'should validate description presence' do
       survey = build(:survey_no_description)
       survey.validate

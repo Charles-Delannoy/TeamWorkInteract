@@ -45,7 +45,8 @@ class SurveysController < ApplicationController
   def duplicate
     survey = Survey.find(params[:id])
     authorize survey
-    dup_survey = Survey.new(title: "#{survey.title} (copie)", description: survey.description, user: current_user)
+    title = get_next_free_title(survey)
+    dup_survey = Survey.new(title: title, description: survey.description, user: current_user)
     dup_survey.save
     survey.questions.each { |question| duplicate_question(question, dup_survey) }
     redirect_to surveys_path
@@ -57,6 +58,18 @@ class SurveysController < ApplicationController
   end
 
   private
+
+  def get_next_free_title(survey)
+    i = 1
+    until title_free?("#{survey.title} (copie #{i})")
+      i += 1
+    end
+    "#{survey.title} (copie #{i})"
+  end
+
+  def title_free?(title)
+    Survey.where(title: title).empty?
+  end
 
   def set_survey
     @survey = Survey.find(params[:id])

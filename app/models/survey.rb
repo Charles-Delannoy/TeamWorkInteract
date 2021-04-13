@@ -6,6 +6,6 @@ class Survey < ApplicationRecord
 
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 
-  validates :title, presence: true, length: { minimum: 3 }
+  validates :title, presence: true, length: { minimum: 3 }, uniqueness: { scope: :user }
   validates :description, presence: true, length: { minimum: 10 }
 end
