@@ -1,5 +1,5 @@
 .twi-btn {
-  padding: 10px 20px;
+  padding: 3px 20px;
   border-radius: 4px;
   text-align: center;
   transition: color 0.5s ease-out, background-color 0.5s ease-out;
@@ -28,24 +28,6 @@
   color: white;
   &:hover {
     background-color: $twi-deep-blue-alt;
-    color: white;
-  }
-}
-
-.grape-btn {
-  background-color: $grape;
-  color: white;
-  &:hover {
-    background-color: $deep-grape;
-    color: white;
-  }
-}
-
-.green-btn {
-  background-color: $twi-green;
-  color: white;
-  &:hover {
-    background-color: $deep-twi-green;
     color: white;
   }
 }
