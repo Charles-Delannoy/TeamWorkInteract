@@ -1,47 +1,76 @@
 <div class="twi-navbar">
-  <% if current_user %>
-    <div class="navbar-msg">
-      <h2>Bienvenue <%= current_user.first_name %></h2>
-    </div>
-  <% end %>
   <ul class="menu">
 
     <% if current_user %>
       <% if policy(User).index? %>
-        <li><%= link_to 'Users', admin_users_path %></li>
+        <li <% if request.path.match?(/\/admin_users.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Utilisateurs</p>
+            <%= link_to 'Utilisateurs', admin_users_path %>
+          </div>
+        </li>
       <% end %>
 
       <% if policy(Group).index? %>
-        <li><%= link_to 'Groupes', groups_path %></li>
+        <li <% if request.path.match?(/\/groups.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Groupes</p>
+            <%= link_to 'Groupes', groups_path %>
+        </li>
       <% end %>
 
       <% if policy(Campaign).index? %>
-        <li><%= link_to 'Campagnes', campaigns_path %></li>
+        <li <% if request.path.match?(/\/campaigns.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Campagnes</p>
+            <%= link_to 'Campagnes', campaigns_path %>
+          </div>
+         </li>
       <% end %>
 
       <% if policy(Survey).index? %>
-        <li><%= link_to 'Questionnaires', surveys_path %></li>
+        <li <% if request.path.match?(/\/surveys.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Questionnaires</p>
+            <%= link_to 'Questionnaires', surveys_path %>
+          </div>
+        </li>
       <% end %>
 
       <% if policy(Axe).index? %>
-        <li><%= link_to 'Axes', axes_path %></li>
+        <li <% if request.path.match?(/\/axes.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Axes</p>
+            <%= link_to 'Axes', axes_path %>
+          </div>
+        </li>
       <% end %>
 
       <% if @current_campaign && policy(@current_campaign.survey).show? %>
-        <li><%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %></li>
+        <li <% if request.path.match?(/\/surveys.*/)%> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Questionnaire</p>
+            <%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %>
+          </div>
+        </li>
       <% end %>
 
       <% if @current_group_campaign && policy(@current_group_campaign).show? %>
-        <li><%= link_to 'Resultats', result_path(@current_group_campaign) %></li>
+        <li <% if request.path.match?(/\/results.*/)%> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Resultats</p>
+            <%= link_to 'Resultats', result_path(@current_group_campaign) %>
+          </div>
+        </li>
       <% end %>
     <% end %>
 
   </ul>
 
   <% if current_user %>
-    <div class="actions one-action">
+
       <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete, class: 'twi-btn dblue-btn' %>
-    </div>
+
   <% elsif controller_name != 'sessions' %>
     <div class="actions home-actions">
       <% if controller_name != 'registrations' %>
