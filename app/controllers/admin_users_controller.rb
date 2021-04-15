@@ -14,17 +14,29 @@ class AdminUsersController < ApplicationController
   end
 
   def create
-    @group = Group.find(user_group_params[:groups].to_i)
+    @group = user_group_params[:groups].to_i.zero? ? nil : Group.find(user_group_params[:groups].to_i)
     @existing_user = User.where(email: user_params[:email])[0]
-    @role = user_group_params[:role] == "R" ? 'référent' : 'membre'
-    if @existing_user
-      add_user_to_group
+    get_role
+    if @group && @role
+      @existing_user ? add_user_to_group : create_user
     else
-      create_user
+      flash[:alert] = []
+      flash[:alert] << "⚠ Vous devez selectionner un groupe" if @group.nil?
+      flash[:alert] << "⚠ Vous devez selectionner un role" if @role.nil?
+      redirect_to admin_users_path
     end
   end
 
   private
+
+  def get_role
+    case user_group_params[:role]
+    when "R" then @role = "référent"
+    when "M" then @role = "membre"
+    else
+      @role = nil
+    end
+  end
 
   def users_filtered
     @users = policy_scope(User)

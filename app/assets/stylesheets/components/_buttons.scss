@@ -90,3 +90,9 @@
     color: $twi-blue-alt;
   }
 }
+
+.search-bar-btn {
+  border-radius: 0 45px 45px 0;
+  border: 1px solid $twi-gray;
+  border-left: none;
+}

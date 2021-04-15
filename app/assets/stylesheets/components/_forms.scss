@@ -42,7 +42,7 @@
 
 .search-form {
   display: grid;
-  grid-gap: 10px;
+  // grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   margin-bottom: 20px;
   position: sticky;
@@ -52,7 +52,28 @@
     height: 38px;
     line-height: 18px;
   }
+  select {
+    border: 1px solid $twi-gray;
+  }
+  input.middle:focus {
+    outline-width: 0;
+}
   input#query {
     grid-column: span 3;
+    height: 55px;
+    border-radius: 45px 0 0 45px;
+    border: 1px solid $twi-gray;
+    border-right: none;
+    &:focus {
+      outline: none;
+      outline-width: 0;
+    }
+  }
+  select {
+    padding-left: 10px;
+    border-right: none;
+    &:focus {
+      outline: none;
+    }
   }
 }
