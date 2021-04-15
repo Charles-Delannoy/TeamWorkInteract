@@ -1,7 +1,8 @@
-<h1>Mes questionnaires
-<% if policy(Survey).create? %>
-  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_survey_path, class: "add-icon" %>
-<% end %></h1>
+<div class="new-survey-action">
+  <% if policy(Survey).create? %>
+    <%= link_to 'Créer un nouveau questionnaire', new_survey_path, class: "twi-btn lblue-btn" %>
+  <% end %>
+</div>
 
 <ul class="survey-cards index-survey-cards">
   <% @surveys.each do |survey| %>
