@@ -8,7 +8,11 @@
 <% end %>
 <% if alert %>
   <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <%= alert %>
+    <% if alert.class == Array %>
+      <%= alert.join('</br>').html_safe %>
+    <% else %>
+      <%= alert %>
+    <% end %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

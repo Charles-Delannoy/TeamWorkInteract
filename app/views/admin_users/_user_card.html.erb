@@ -1,10 +1,7 @@
 <div class='user-card'>
-  <% if user.photo.attached? %>
-    <%= cl_image_tag user.photo.key, alt: "profile pic"%>
-  <% else %>
-    <%= image_tag 'profile.svg', alt: "profile pic" %>
-  <% end %>
   <%= render 'admin_users/user_elements/user_info', user: user %>
   <%= render 'admin_users/user_elements/user_groups', user: user %>
-  <%= render 'admin_users/user_elements/chatroom_link', user: user, chatrooms: chatrooms %>
+  <% if user.full_name %>
+    <%= render 'admin_users/user_elements/chatroom_link', user: user, chatrooms: chatrooms %>
+  <% end %>
 </div>
