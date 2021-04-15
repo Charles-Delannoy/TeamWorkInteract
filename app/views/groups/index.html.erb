@@ -1,12 +1,10 @@
-<h1>Mes groupes projet</h1>
-
 <div class="group-grid">
 
-  <ul class='group-cards'>
+  <div class='white-cards'>
     <% @groups.each do |group| %>
       <%= render 'group_card', group: group %>
     <% end %>
-  </ul>
+  </div>
   <div class="twi-form sticky-form">
     <%= render "form", group: @group, label: 'Créer' %>
   </div>
