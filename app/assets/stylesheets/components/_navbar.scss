@@ -6,6 +6,9 @@
   border-bottom: thin solid $twi-gray;
   background: #fff;
   padding-right: 5px;
+  position: sticky;
+  top: 40px;
+  z-index: 1000;
   .navbar-msg {
     h2 {
       font-size: 25px;
