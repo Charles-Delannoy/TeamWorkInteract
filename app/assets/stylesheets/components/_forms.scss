@@ -3,6 +3,8 @@
   padding: 30px;
   border-radius: 5px;
   border: thin solid $twi-gray;
+  border-bottom: 5px solid $twi-blue;
+  border-top: 5px solid $twi-blue;
   background-color: #fff;
   .flatpickr-calendar {
     box-shadow: none;
