@@ -79,3 +79,29 @@
     }
   }
 }
+
+.icons-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  grid-gap: 5px;
+  label {
+    cursor: pointer;
+    color: $twi-deep-blue;
+    font-size: 22px;
+    border: 1px solid $twi-gray;
+    border-radius: 3px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon-selector:checked + label {
+    color: white;
+    background-color: $twi-blue;
+  }
+}
+
+.icon-item .radio_buttons {
+  display: none;
+}

@@ -1,6 +1,14 @@
 <%= simple_form_for axe, remote: true do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <%= f.input :icon %>
+  <%= f.input :icon,
+              as: :radio_buttons,
+              collection_wrapper_tag: 'div',
+              collection_wrapper_class: 'icons-wrapper',
+              item_wrapper_class: 'icon-item',
+              input_html: {class: 'icon-selector'},
+              label_method: lambda { |item| item.html_safe },
+              collection: Icon.all.map(&:code),
+              label: '' %>
   <%= f.submit label, class: 'twi-btn lblue-btn' %>
 <% end %>
