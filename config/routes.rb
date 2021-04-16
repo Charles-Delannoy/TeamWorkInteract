@@ -20,11 +20,11 @@ Rails.application.routes.draw do
   # ADMIN ONLY
   resources :recommandations, only: [:edit, :update, :destroy]
 
-  resources :campaigns, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :campaigns, only: [:index, :show, :create, :update, :destroy]
 
   resources :group_campaigns, only: [:create, :destroy]
 
-  resources :axes, only: [:index, :create, :destroy, :edit, :update, :show] do
+  resources :axes, only: [:index, :create, :destroy, :update, :show] do
     resources :recommandations, only: [:create]
   end
 
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [:create, :update]
 
-  resources :groups, only: [:index, :create, :destroy, :edit, :update]
+  resources :groups, only: [:index, :create, :destroy, :update]
 
   resources :group_campaigns, only: [:show], path: "results", as: 'results'
 

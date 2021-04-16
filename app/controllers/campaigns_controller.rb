@@ -3,8 +3,8 @@ class CampaignsController < ApplicationController
 
   def index
     @campaigns = policy_scope(Campaign).order(end_date: :asc)
-    authorize @campaigns
-    new
+    params[:id] ? set_campaign : new
+    @label = params[:id] ? 'Enregistrer' : 'Créer'
   end
 
   def show
