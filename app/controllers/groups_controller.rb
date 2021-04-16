@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
 
   def update
     @group.update(group_params)
-    @group.save ? (redirect_to groups_path) : (render :new)
+    @group.save ? (redirect_to groups_path(anchor: "group-#{@group.id}")) : (render :new)
   end
 
   def destroy

@@ -1,5 +1,5 @@
 // let card = document.getElementById(`group-${<%= @group.id %>}`);
-card = document.getElementById(`group-${<%= @group.id %>}`)
+card = document.querySelector(`#group-${<%= @group.id %>} + .group-card`)
 card.classList.add('fade-card');
 
 noDisplay = (element) => {
