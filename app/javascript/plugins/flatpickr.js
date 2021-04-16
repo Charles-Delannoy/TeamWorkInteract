@@ -2,14 +2,16 @@ import flatpickr from "flatpickr";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 const initFlatpicker = () => {
-  if (document.getElementById("range_start")) {
+  if (document.getElementById("range_start") || document.getElementById("range_start_edit")) {
 
     let calendar = flatpickr("#range_start", {
       altInput: true,
       inline: true,
       plugins: [new rangePlugin({ input: "#range_end"})]
     });
-    calendar.clear();
+    if (document.getElementById("range_start")) {
+      calendar.clear();
+    }
 
   } else if (document.getElementById("range_start_edit")) {
 
