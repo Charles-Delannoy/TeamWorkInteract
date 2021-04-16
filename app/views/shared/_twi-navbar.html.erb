@@ -73,9 +73,7 @@
 
   <% elsif controller_name != 'sessions' %>
     <div class="actions home-actions">
-      <% if controller_name != 'registrations' %>
-        <%= link_to 'Connexion', new_user_session_path, class: "twi-btn lblue-btn" %>
-      <% else %>
+      <% if controller_name = 'registrations' %>
         <%= link_to 'Connexion', new_user_session_path, class: "twi-btn lblue-btn full-width-btn" %>
       <% end %>
       <% if controller_name != 'registrations' %>

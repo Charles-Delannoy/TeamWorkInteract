@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 .home-pic-banner {
   position: relative;
-  bottom: 80px;
   width: 100%;
   height: 100vh;
   background-image: image-url('teampic.jpg');
@@ -45,7 +44,15 @@
 
 .home-actions a {
   z-index: 2;
-  margin-top: 25px;
+}
+
+.home-btns {
+  display: flex;
+  width: 275px;
+  justify-content: space-between;
+  position: absolute;
+  top: 20px;
+  right: 35px;
 }
 
 .home-banner {
