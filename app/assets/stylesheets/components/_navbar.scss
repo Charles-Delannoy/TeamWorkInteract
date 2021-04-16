@@ -6,7 +6,8 @@
   border-bottom: thin solid $twi-gray;
   background: #fff;
   padding-right: 5px;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 40px;
   z-index: 1000;
   .navbar-msg {

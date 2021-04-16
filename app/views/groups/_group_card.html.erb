@@ -1,6 +1,6 @@
 <% ref = group.users.includes(:user_groups).where(user_groups: {role: 'R'}).first %>
 
-<li class="group-card" id=<%= "group-#{group.id}" %> >
+<li class="group-card" >
   <div class="group-info">
     <%= render 'groups/group_card_head', group: group %>
     <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>

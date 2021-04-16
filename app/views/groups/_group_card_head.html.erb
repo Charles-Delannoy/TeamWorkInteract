@@ -1,7 +1,7 @@
 <div class="group-head">
   <h2><%= group.name %></h2>
   <% if policy(group).edit? %>
-    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, groups_path(id: group) %>
   <% end %>
   <% if policy(group).destroy? %>
     <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',

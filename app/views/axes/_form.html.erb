@@ -1,6 +1,6 @@
 <%= simple_form_for axe, remote: true do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.input :title, label: false, placeholder: 'Titre' %>
+  <%= f.input :description, label: false, placeholder: 'Description' %>
   <%= f.input :icon,
               as: :radio_buttons,
               collection_wrapper_tag: 'div',
