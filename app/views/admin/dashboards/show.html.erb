@@ -3,14 +3,22 @@
 <% @ongoin_campaigns.each do |campaign| %>
   <div class='campaign-admin-dashboard'>
     <h2><%= campaign.title %></h2>
-    <ul>
+    <div class='groups-section'>
       <% campaign.groups.each do |group| %>
-        <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
-        <li>
-          <h3><%= group.name %></h3>
-          <%= link_to 'Resultats', result_path(group_campaign) %>
-        </li>
+        <div class='group-section'>
+          <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
+          <div class='group-section-head'>
+            <div>
+              <h3><%= group.name %></h3>
+              <h4>Referent : <%= group.referent.full_name %></h4>
+            </div>
+            <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
+          </div>
+          <% group.members.each do |member| %>
+            <h4><%= member.full_name %></h4>
+          <% end %>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 <% end %>
