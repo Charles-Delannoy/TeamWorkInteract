@@ -1,0 +1,89 @@
+
+// Dans Pages ?
+.group-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  align-items: start;
+}
+
+
+// Dans components/cards ?
+
+.white-card {
+  background-color: #fff;
+  display: flex;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid $twi-gray;
+  border-left: 4px solid $twi-blue;
+  .info {
+    flex-grow: 1;
+    padding: 20px;
+    margin-right: 180px;
+    padding-right: 40px;
+    .head {
+      h2 {
+        font-size: 20px;
+        margin-bottom: 0;
+      }
+      .team {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        h3 {
+          margin-bottom: 0;
+          font-size: 18px;
+          color: $twi-blue-alt;
+        }
+        .avatars {
+          margin-right: 25px;
+          padding-left: 8px;
+          .avatar {
+            border: 1.5px solid white;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: -15px;
+          }
+        }
+      }
+    }
+    p {
+      color: $twi-blue;
+    }
+  }
+  .right {
+    width: 200px;
+    height: 200px;
+    // border: 1px solid $twi-blue-alt;
+    border-left: none;
+    padding: 0;
+    background-color: $twi-blue;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .actions {
+      padding: 20px;
+      text-align: right;
+      a { 
+        text-decoration: none; //A PLACER DANS UN CSS PLUS GLOBAL
+        color: white;
+        padding: 2px;
+      }
+    }
+    .dates {
+      margin: 0 20px;
+      padding-top: 10px;
+      text-align: center;
+      border-top: 1.5px solid white;
+    }
+  }
+}
+
+

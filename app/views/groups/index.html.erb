@@ -1,11 +1,11 @@
 <div class="group-grid">
 
-  <ul class='group-cards'>
+  <div>
     <% @groups.each do |group| %>
       <div style='position: relative; top: -120px'id=<%= "group-#{group.id}" %>></div>
       <%= render 'group_card', group: group %>
     <% end %>
-  </ul>
+  </div>
   <div class="twi-form sticky-form">
     <%= render "form", group: @group, label: @label %>
   </div>
