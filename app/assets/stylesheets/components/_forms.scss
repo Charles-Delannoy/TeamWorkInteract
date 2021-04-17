@@ -35,12 +35,12 @@
 }
 
 .sticky-form-search {
-  top: 190px;
+  top: 160px;
 }
 
 .search-bar-container {
   position: sticky;
-  top: 120px;
+  top: 110px;
   z-index: 1000;
 }
 
@@ -53,9 +53,9 @@
   // grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   margin-bottom: 20px;
-  padding-top: 40px;
+  padding-top: 10px;
   position: relative;
-  bottom: 40px;
+  bottom: 30px;
   background: #f4f4f4;
   .chat-submit-btn {
     height: 38px;

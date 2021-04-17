@@ -125,6 +125,17 @@ RSpec.describe GroupCampaign, type: :model do
         @score_hash = @group_campaign.score_calculation
       end
 
+      context '#answered?' do
+        it 'should return true if survey is completed by all user' do
+          expect(@group_campaign.answered?).to eq(true)
+        end
+
+        it 'should return false instead' do
+          Answer.last.destroy
+          expect(@group_campaign.answered?).to eq(false)
+        end
+      end
+
       it 'should return a hash' do
         expect(@score_hash).to be_a(Hash)
       end

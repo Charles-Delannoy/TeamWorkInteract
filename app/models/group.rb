@@ -11,4 +11,12 @@ class Group < ApplicationRecord
   validates :end_date, presence: true
 
   include StartBeforeEndConcern
+
+  def members
+    users.includes(:user_groups).where(user_groups: {role: 'M'} )
+  end
+
+  def referent
+    users.includes(:user_groups).where(user_groups: {role: 'R'} ).first
+  end
 end
