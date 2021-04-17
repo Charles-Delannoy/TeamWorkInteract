@@ -5,7 +5,7 @@
     <h2><%= campaign.title %></h2>
   <% end %>
   <% if policy(campaign).edit? %>
-    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_campaign_path(campaign) %>
+    <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, campaigns_path(id: campaign) %>
   <% end %>
   <% if policy(campaign).destroy? %>
     <%= link_to('<i class="fas fa-trash"></i>'.html_safe, campaign_path(campaign), class:'no-scroll-btn',

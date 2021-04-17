@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
   h1 {
     font-size: 25px;
     color: white;

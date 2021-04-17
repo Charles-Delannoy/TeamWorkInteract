@@ -3,8 +3,8 @@ class GroupsController < ApplicationController
 
   def index
     @groups = policy_scope(Group).where(user: current_user)
-    # @current_groups = @groups.where()
-    new
+    params[:id] ? set_group : new
+    @label = params[:id] ? 'Enregistrer' : 'Créer'
   end
 
   def new
@@ -24,12 +24,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @group.update(group_params)
-    @group.save ? (redirect_to groups_path) : (render :new)
+    @group.save ? (redirect_to groups_path(anchor: "group-#{@group.id}")) : (render :new)
   end
 
   def destroy

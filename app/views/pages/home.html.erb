@@ -1,4 +1,8 @@
 <div class="home-pic-banner">
+  <div class='home-btns'>
+    <%= link_to 'Connexion', new_user_session_path, class: "twi-btn lblue-btn" %>
+    <%= link_to 'Inscription', new_user_registration_path, class: 'twi-btn dblue-btn' %>
+  </div>
   <%= image_tag "logo.png" %>
   <h1>Team Work Interact</h1>
   <p>Analysez la dynamique de vos équipes</p>

@@ -11,9 +11,6 @@ class GroupsTest < ApplicationSystemTestCase
 
     green_bg("Visiting the group index")
 
-    assert_selector ".twi-container h1", text: "Mes groupes projet"
-    green("Group index title OK")
-
     assert_selector ".group-card", count: nb_group
     green("Group count OK => Chrystelle has #{nb_group} groups")
     # save_and_open_screenshot

@@ -31,7 +31,7 @@ RSpec.describe RecommandationsController, type: :controller do
       end
 
       it 'should redirect to axe #show' do
-        expect(response).to redirect_to(axe_url(axe.id))
+        expect(response).to redirect_to(axe_path(axe.id))
       end
 
       it 'should persisted the recommandation' do

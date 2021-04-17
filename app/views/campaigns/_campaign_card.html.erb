@@ -1,4 +1,4 @@
-<li class="campaign-card" id=<%= "campaign-#{campaign.id}" %> >
+<li class="campaign-card">
   <%= render 'campaign_card_head', campaign: campaign %>
   <h3><strong>Questionnaire :</strong> <%= campaign.survey.title %></h3>
   <p class='campaign-date'>Du <%= campaign.start_date %> au <%= campaign.end_date %></p>

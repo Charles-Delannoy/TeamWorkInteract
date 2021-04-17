@@ -1,15 +1,16 @@
-<h1>Mes campagnes</h1>
-
 <div class="campaign-grid">
 
   <ul class="campaign-cards">
+    <div>
     <% @campaigns.each do |campaign| %>
+      <div style='position: relative; top: -120px' id=<%= "campaign-#{campaign.id}" %>></div>
       <%= render 'campaign_card', campaign: campaign %>
     <% end %>
+    </div>
   </ul>
 
   <div class="twi-form">
-    <%= render "form", campaign: @campaign, label: "Créer" %>
+    <%= render "form", campaign: @campaign, label: @label %>
   </div>
 
 </div>

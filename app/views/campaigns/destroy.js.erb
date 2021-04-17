@@ -1,4 +1,4 @@
-card = document.getElementById(`campaign-${<%= @campaign.id %>}`)
+card = document.querySelector(`#campaign-${<%= @campaign.id %>} + .campaign-card`)
 card.classList.add('fade-card');
 
 noDisplay = (element) => {

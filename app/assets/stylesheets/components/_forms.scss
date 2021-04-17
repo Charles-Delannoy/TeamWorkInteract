@@ -3,6 +3,8 @@
   padding: 30px;
   border-radius: 5px;
   border: thin solid $twi-gray;
+  border-bottom: 5px solid $twi-blue;
+  border-top: 5px solid $twi-blue;
   background-color: #fff;
   .flatpickr-calendar {
     box-shadow: none;
@@ -29,11 +31,17 @@
 
 .sticky-form {
   position: sticky;
-  top: 20px;
+  top: 90px;
 }
 
 .sticky-form-search {
-  top: 105px;
+  top: 190px;
+}
+
+.search-bar-container {
+  position: sticky;
+  top: 120px;
+  z-index: 1000;
 }
 
 .devise-form-container {
@@ -45,9 +53,10 @@
   // grid-gap: 10px;
   grid-template-columns: repeat(6, 1fr);
   margin-bottom: 20px;
-  position: sticky;
-  top: -15px;
-  z-index: 1000;
+  padding-top: 40px;
+  position: relative;
+  bottom: 40px;
+  background: #f4f4f4;
   .chat-submit-btn {
     height: 38px;
     line-height: 18px;
@@ -76,4 +85,30 @@
       outline: none;
     }
   }
+}
+
+.icons-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  grid-gap: 5px;
+  label {
+    cursor: pointer;
+    color: $twi-deep-blue;
+    font-size: 22px;
+    border: 1px solid $twi-gray;
+    border-radius: 3px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .icon-selector:checked + label {
+    color: white;
+    background-color: $twi-blue;
+  }
+}
+
+.icon-item .radio_buttons {
+  display: none;
 }

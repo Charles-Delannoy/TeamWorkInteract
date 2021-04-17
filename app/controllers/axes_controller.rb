@@ -4,7 +4,8 @@ class AxesController < ApplicationController
   def index
     @axes = policy_scope(Axe).order(created_at: :desc)
     authorize @axes
-    new
+    params[:id] ? set_axe : new
+    @label = params[:id] ? 'Enregistrer' : 'Créer'
   end
 
   def new
@@ -17,7 +18,7 @@ class AxesController < ApplicationController
     @axe.user = current_user
     authorize @axe
     if @axe.save
-      redirect_to axes_path
+      redirect_to axes_path(anchor: "axe-#{@axe.id}")
     else
       @axes = policy_scope(Axe).order(created_at: :desc)
       render :index
@@ -28,13 +29,10 @@ class AxesController < ApplicationController
     @recommandation = Recommandation.new
   end
 
-  def edit
-  end
-
   def update
     @axe.update(axes_params)
     if @axe.save
-      redirect_to axes_path
+      redirect_to axes_path(anchor: "axe-#{@axe.id}")
     else
       render :edit
     end
@@ -48,7 +46,7 @@ class AxesController < ApplicationController
   private
 
   def set_axe
-    @axe = Axe.find(params[:id])
+    @axe = Axe.find(params[:id].to_i)
     authorize @axe
   end
 
