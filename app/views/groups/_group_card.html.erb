@@ -6,17 +6,24 @@
   </div>
 
   <div class="right">
-    <% if policy(group).edit? %>
-      <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
-    <% end %>
-    <% if policy(group).destroy? %>
-      <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
-        method: :delete,
-        data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
-        remote: true, id: "delete-group-#{group.id}")
-      %>
-    <% end %>
-    <p>Du <%= group.start_date %> au <%= group.end_date %></p>
+    <div class="actions">
+      <% if policy(group).edit? %>
+        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_group_path(group) %>
+      <% end %>
+      <% if policy(group).destroy? %>
+        <%= link_to('<i class="fas fa-trash"></i>'.html_safe, group_path(group), class:'no-scroll-btn',
+          method: :delete,
+          data: { confirm: "Etes vous sur de vouloir supprimer le groupe #{group.name} ?" },
+          remote: true, id: "delete-group-#{group.id}")
+        %>
+      <% end %>
+    </div>
+    <div class="dates">
+      <p>Du <br>
+      <%= l(group.start_date, format: '%d %B %Y', locale: 'fr') %> <br>
+      Au <br>
+      <%= l(group.end_date, format: '%d %B %Y', locale: 'fr') %></p>
+    </div>
   </div>
 
 </div>
