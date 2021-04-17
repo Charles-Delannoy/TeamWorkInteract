@@ -4,7 +4,7 @@
   <div class='campaign-admin-dashboard'>
     <h2><%= campaign.title %></h2>
     <div class='groups-section'>
-      <% campaign.groups.each do |group| %>
+      <% campaign.groups.order(name: :asc).each do |group| %>
         <div class='group-section'>
           <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
           <div class='group-section-head'>
@@ -12,7 +12,9 @@
               <h3><%= group.name %></h3>
               <h4><strong>Referent : </strong><%= group.referent.full_name %></h4>
             </div>
-            <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
+            <% if group_campaign.answered? %>
+              <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
+            <% end %>
           </div>
           <% labels = group.members.map { |member| member.full_name || member.email } %>
           <% completions = group.members.map { |member| member.completion_rate(group_campaign) } %>

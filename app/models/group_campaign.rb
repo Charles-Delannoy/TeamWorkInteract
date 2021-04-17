@@ -21,6 +21,13 @@ class GroupCampaign < ApplicationRecord
     scores
   end
 
+  def answered?
+    group.members.each do |member|
+      return false if member.completion_rate(self) < 100
+    end
+    true
+  end
+
   private
 
   def max_proposition_value(answer)

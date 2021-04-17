@@ -61,7 +61,10 @@ const initBarChart = () => {
       const backColors = [];
       const borderColors = [];
       completions.forEach((completion) => {
-        if (completion < 50) {
+        if (completion === 0) {
+          backColors.push('rgba(255, 99, 132)');
+          borderColors.push('rgb(255, 99, 132)');
+        } else if (completion < 50) {
           backColors.push('rgba(255, 99, 132, 0.2)');
           borderColors.push('rgb(255, 99, 132)');
         } else if (completion < 100) {
@@ -80,7 +83,10 @@ const initBarChart = () => {
           // fill: true,
           backgroundColor: backColors,
           borderColor: borderColors,
-          borderWidth: 1
+          borderWidth: 1,
+          barThickness: 80,
+          maxBarThickness: 80,
+          minBarLength: 2,
           // pointBackgroundColor: 'rgb(41, 48, 68)',
           // pointBorderColor: '#fff',
           // pointHoverBackgroundColor: '#fff',
@@ -97,8 +103,7 @@ const initBarChart = () => {
         maintainAspectRatio: true,
         scale: {
           max: 100,
-          min: 0,
-          stepSize: 1
+          min: 0
         }
       };
 

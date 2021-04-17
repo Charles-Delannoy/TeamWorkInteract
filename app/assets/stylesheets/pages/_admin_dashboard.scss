@@ -1,8 +1,8 @@
 .campaign-admin-dashboard {
-  width: 40%;
+  margin-top: 25px;
   background-color: white;
   padding: 20px;
-      width: 100%;
+  width: 100%;
   h2 {
     font-size: 20px;
     margin-bottom: 40px;
@@ -26,11 +26,19 @@
 }
 
 .groups-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(calc(50% - 20px), 1fr));
+  // grid-template-columns: 1fr 1fr;
   grid-gap: 40px;
 }
 
 .group-section {
   margin-bottom: 40px;
-  width: 50%;
+  width: 100%;
+}
+
+.followup-chart {
+  margin-top: 10px;
+  padding: 25px;
+  border: 1px solid $twi-gray;
 }
