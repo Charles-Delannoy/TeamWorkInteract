@@ -32,8 +32,9 @@ import "bootstrap";
 import { typed } from '../plugins/typed';
 import { initFlatpicker } from "../plugins/flatpickr";
 import { chatBottomScroll } from "../plugins/chatBottomScroll";
-import { initChatroomCable } from "../channels/chatroom_channel"
-import { initRadarChart } from "../plugins/initRadarChart"
+import { initChatroomCable } from "../channels/chatroom_channel";
+import { initRadarChart } from "../plugins/initRadarChart";
+import { initBarChart } from "../plugins/initBarChart";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -44,6 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   chatBottomScroll();
   initChatroomCable();
   initRadarChart();
+  initBarChart();
 });
 
 import "controllers"

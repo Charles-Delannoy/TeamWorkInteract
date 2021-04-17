@@ -10,13 +10,19 @@
           <div class='group-section-head'>
             <div>
               <h3><%= group.name %></h3>
-              <h4>Referent : <%= group.referent.full_name %></h4>
+              <h4><strong>Referent : </strong><%= group.referent.full_name %></h4>
             </div>
             <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
           </div>
-          <% group.members.each do |member| %>
-            <h4><%= member.full_name %></h4>
-          <% end %>
+          <% labels = group.members.map { |member| member.full_name || member.email } %>
+          <% completions = group.members.map { |member| member.completion_rate(group_campaign) } %>
+          <div class='followup-chart'>
+            <canvas class="bar-chartjs"
+                    data-labels="<%= labels.to_json %>"
+                    data-completions="<%= completions.to_json %>"
+            >
+            </canvas>
+          </div>
         </div>
       <% end %>
     </div>
