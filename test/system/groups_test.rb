@@ -34,9 +34,9 @@ class GroupsTest < ApplicationSystemTestCase
     green_bg("Create a group")
     # Part test result
     green("Redirection OK")
-
+    save_and_open_screenshot
     assert_text "Changez de vie, apprenez à coder."
-    assert_text "Du 2021-03-10 au 2021-05-04"
+    assert_text "Du\n10 mars 2021\nAu\n04 mai 2021"
     # Part test result
     green("New group is displayed")
     assert_equal nb_group + 1, Group.where(user: users(:chrystelle)).length

@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
+DEFAULT_META = YAML.load_file(Rails.root.join("config/meta.yml"))
 require_relative '../config/environment'
 require 'rails/test_help'
 
