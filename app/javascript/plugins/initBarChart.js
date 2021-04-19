@@ -52,7 +52,6 @@ Chart.register(
 );
 
 const initBarChart = () => {
-  console.log('barchart');
   const barCharts = document.querySelectorAll('.bar-chartjs');
   barCharts.forEach((barChart) => {
     if (barChart) {
@@ -84,8 +83,8 @@ const initBarChart = () => {
           backgroundColor: backColors,
           borderColor: borderColors,
           borderWidth: 1,
-          barThickness: 80,
-          maxBarThickness: 80,
+          minBarThickness: 10,
+          maxBarThickness: 70,
           minBarLength: 2,
           // pointBackgroundColor: 'rgb(41, 48, 68)',
           // pointBorderColor: '#fff',
