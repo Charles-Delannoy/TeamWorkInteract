@@ -1,32 +1,37 @@
 <h1>Campagnes en cours</h1>
 
-<% @ongoin_campaigns.each do |campaign| %>
-  <div class='campaign-admin-dashboard'>
-    <h2><%= campaign.title %></h2>
-    <div class='groups-section'>
-      <% campaign.groups.order(name: :asc).each do |group| %>
-        <div class='group-section'>
-          <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
-          <div class='group-section-head'>
-            <div>
-              <h3><%= group.name %></h3>
-              <h4><strong>Referent : </strong><%= group.referent.full_name %></h4>
+<div data-controller="accordion">
+  <% @ongoin_campaigns.each do |campaign| %>
+    <div class='campaign-admin-dashboard'>
+      <div class='dahsboard-campaign-header'>
+        <h2><%= campaign.title %></h2>
+        <div class='triangle' data-accordion-target="arrow" data-action="click->accordion#hideOrShow" data-campaign="campaign-<%= campaign.id %>"></div>
+      </div>
+      <div class='groups-section' id="campaign-<%= campaign.id %>">
+        <% campaign.groups.order(name: :asc).each do |group| %>
+          <div class='group-section'>
+            <% group_campaign = GroupCampaign.where(group: group, campaign: campaign).first %>
+            <div class='group-section-head'>
+              <div>
+                <h3><%= group.name %></h3>
+                <h4><strong>Referent : </strong><%= group.referent.full_name %></h4>
+              </div>
+              <% if group_campaign.answered? %>
+                <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
+              <% end %>
             </div>
-            <% if group_campaign.answered? %>
-              <%= link_to 'Resultats', result_path(group_campaign), class: 'twi-btn lblue-btn' %>
-            <% end %>
+            <% labels = group.members.map { |member| member.full_name || member.email } %>
+            <% completions = group.members.map { |member| member.completion_rate(group_campaign) } %>
+            <div class='followup-chart'>
+              <canvas class="bar-chartjs"
+                      data-labels="<%= labels.to_json %>"
+                      data-completions="<%= completions.to_json %>"
+              >
+              </canvas>
+            </div>
           </div>
-          <% labels = group.members.map { |member| member.full_name || member.email } %>
-          <% completions = group.members.map { |member| member.completion_rate(group_campaign) } %>
-          <div class='followup-chart'>
-            <canvas class="bar-chartjs"
-                    data-labels="<%= labels.to_json %>"
-                    data-completions="<%= completions.to_json %>"
-            >
-            </canvas>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
