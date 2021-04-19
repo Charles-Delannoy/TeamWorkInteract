@@ -1,4 +1,4 @@
-<ul class="axe-cards">
+<div class="axe-cards">
   <div class="axes-cards-container">
   <% @axes.each do |axe| %>
     <%= render 'axe_card', axe: axe %>
@@ -7,5 +7,5 @@
   <div class="twi-form sticky-form">
     <%= render "form", axe: @axe, label: @label %>
   </div>
-</ul>
+</div>
 

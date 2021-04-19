@@ -4,8 +4,8 @@
   <% end %>
 </div>
 
-<ul class="survey-cards index-survey-cards">
+<div class="survey-cards index-survey-cards">
   <% @surveys.each do |survey| %>
     <%= render 'survey_card_linked', survey: survey %>
   <% end %>
-</ul>
+</div>
