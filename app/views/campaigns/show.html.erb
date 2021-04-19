@@ -1,44 +1,40 @@
-<ul class="campaign-cards">
-  <%= render 'campaign_card', campaign: @campaign %>
-</ul>
+<%= render 'campaign_card', campaign: @campaign %>
 
 <div class="campaign-grid campaign-show-grid">
 
   <div>
-    <h1 class="campaign-groups-title">Mes groupes</h1>
-    <ul class='group-cards scroller' id="target">
+    <h1>Mes groupes</h1>
+    <div class='group-cards scroller' id="target">
       <% @groups.each do |group| %>
-        <li class="group-card" id=<%= "group-#{group.id}" %>>
-          <%= render 'group_card', group: group %>
-          <div>
-            <%= simple_form_for(@group_campaign, remote: true) do |f| %>
-              <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
-              <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
-              <%= button_tag :type => "submit", :class => "add-icon add-submit" do %>
-                <i class="fas fa-arrow-circle-right"></i>
+          <div class='add-group-cards'>
+            <%= render 'groups/group_card', group: group %>
+            <div>
+              <%= simple_form_for(@group_campaign, remote: true) do |f| %>
+                <%= f.input :campaign_id, as: :hidden, :input_html => { value: @campaign.id } %>
+                <%= f.input :group_id, as: :hidden, :input_html => { value: group.id } %>
+                <%= button_tag :type => "submit", :class => "add-icon-btn" do %>
+                  <i class="fas fa-arrow-circle-right"></i>
+                <% end %>
               <% end %>
-            <% end %>
-            <%= image_tag 'group.svg' %>
+            </div>
           </div>
-        </li>
       <% end %>
-    </ul>
+    </div>
   </div>
 
   <div>
-    <h1 class="campaign-groups-title">Groupes affiliés à la campagne</h1>
-    <ul class='group-cards scroller'>
+    <h1>Groupes affiliés à la campagne</h1>
+    <div class='group-cards scroller'>
       <% @campaign_groups.each do |group| %>
         <% @gc_created = GroupCampaign.where(group: group, campaign: @campaign).first %>
-        <li class="group-card" id=<%= "group-#{group.id}" %>>
-          <%= render 'group_card', group: group %>
+        <div class='add-group-cards'>
+          <%= render 'groups/group_card', group: group %>
           <div>
-            <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@gc_created), method: :delete, remote: true, class: "add-icon add-submit" %>
-            <%= image_tag 'group.svg' %>
+            <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, group_campaign_path(@gc_created), method: :delete, remote: true, class: "add-icon-btn" %>
           </div>
-        </li>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
 
 </div>

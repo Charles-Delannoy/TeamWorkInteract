@@ -111,3 +111,23 @@
   position: relative;
   bottom: 10px;
 }
+
+.add-group-cards {
+  position: relative;
+  .add-icon-btn {
+    border: none;
+    background-color: transparent;
+    align-self: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 35px;
+    color: white;
+  }
+  .actions {
+    height: 70px;
+    a {
+      display: none;
+    }
+  }
+}
