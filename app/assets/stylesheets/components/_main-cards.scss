@@ -26,6 +26,7 @@
     padding: 20px;
     padding-right: 40px;
     .head {
+      margin-bottom: 20px;
       h2 {
         font-size: 20px;
         margin-bottom: 0;
@@ -41,7 +42,6 @@
       .subhead {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
         h3 {
           margin-bottom: 0;
           font-size: 18px;
@@ -96,5 +96,12 @@
       text-align: center;
       border-top: 1.5px solid white;
     }
+  }
+}
+
+.small-card {
+  height: 120px;
+  .right {
+    min-width: auto;
   }
 }
