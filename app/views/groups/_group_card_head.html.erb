@@ -2,7 +2,7 @@
 
 <div class="head">
   <h2><%= group.name %></h2>
-  <div class="team">
+  <div class="subhead">
     <h3><strong>Référent :</strong> <%= ref ? "#{ref.first_name} #{ref.last_name}" : 'A définir' %></h3>
     <div class="avatars">
       <% group.users.each do |user| %>
