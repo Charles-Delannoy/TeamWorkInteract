@@ -90,7 +90,7 @@
         padding: 2px;
       }
     }
-    .dates {
+    .right-bottom {
       margin: 0 20px;
       padding-top: 10px;
       text-align: center;
@@ -104,4 +104,10 @@
   .right {
     min-width: auto;
   }
+}
+
+.card-icon {
+  font-size: 28px;
+  position: relative;
+  bottom: 10px;
 }
