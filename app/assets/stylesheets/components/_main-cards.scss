@@ -10,7 +10,7 @@
 
 // Dans components/cards ?
 
-.white-card {
+.main-card {
   background-color: #fff;
   display: flex;
   height: 200px;
@@ -110,4 +110,54 @@
   font-size: 28px;
   position: relative;
   bottom: 10px;
+}
+
+.add-group-cards {
+  position: relative;
+  .add-icon-btn {
+    border: none;
+    background-color: transparent;
+    align-self: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 35px;
+    color: white;
+  }
+  .actions {
+    height: 70px;
+    a {
+      display: none;
+    }
+  }
+}
+
+.title-card {
+  height: auto;
+  background-color: $twi-deep-blue;
+  .info .head {
+    margin-bottom: 0;
+    h2 {
+      color: #fff;
+      font-size: 25px;
+      a {
+        color: #fff;
+      }
+    }
+    .no-description {
+      height: auto;
+    }
+    .subhead h3 {
+      color: #fff;
+      margin-top: 20px;
+    }
+  }
+  .right {
+    .actions {
+      display: none;
+    }
+    .right-bottom {
+      border-top: none;
+    }
+  }
 }
