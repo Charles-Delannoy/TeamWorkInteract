@@ -10,7 +10,7 @@
 
 // Dans components/cards ?
 
-.white-card {
+.main-card {
   background-color: #fff;
   display: flex;
   height: 200px;
@@ -128,6 +128,36 @@
     height: 70px;
     a {
       display: none;
+    }
+  }
+}
+
+.title-card {
+  height: auto;
+  background-color: $twi-deep-blue;
+  .info .head {
+    margin-bottom: 0;
+    h2 {
+      color: #fff;
+      font-size: 25px;
+      a {
+        color: #fff;
+      }
+    }
+    .no-description {
+      height: auto;
+    }
+    .subhead h3 {
+      color: #fff;
+      margin-top: 20px;
+    }
+  }
+  .right {
+    .actions {
+      display: none;
+    }
+    .right-bottom {
+      border-top: none;
     }
   }
 }

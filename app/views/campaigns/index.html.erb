@@ -4,7 +4,7 @@
     <div>
     <% @campaigns.each do |campaign| %>
       <div style='position: relative; top: -120px' id=<%= "campaign-#{campaign.id}" %>></div>
-      <%= render 'campaign_card', campaign: campaign %>
+      <%= render 'campaign_card', campaign: campaign, title: false %>
     <% end %>
     </div>
   </div>
