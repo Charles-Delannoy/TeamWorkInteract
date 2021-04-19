@@ -17,20 +17,28 @@
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;
+  margin-right: -1px;
   border-radius: 5px;
   border: 1px solid $twi-gray;
   border-left: 4px solid $twi-blue;
   .info {
     flex-grow: 1;
     padding: 20px;
-    margin-right: 180px;
     padding-right: 40px;
     .head {
       h2 {
         font-size: 20px;
         margin-bottom: 0;
+        color: $twi-deep-blue;
+        a {
+          color: $twi-deep-blue;
+          &:hover {
+            color: $twi-blue-alt;
+            text-decoration: none;
+          }
+        }
       }
-      .team {
+      .subhead {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
@@ -52,6 +60,9 @@
           }
         }
       }
+      .no-description {
+        height: 130px;
+      }
     }
     p {
       color: $twi-blue;
@@ -61,16 +72,15 @@
     }
   }
   .right {
-    width: 200px;
-    height: 200px;
+    min-width: 200px;
     // border: 1px solid $twi-blue-alt;
     border-left: none;
     padding: 0;
     background-color: $twi-blue;
     color: white;
-    position: absolute;
-    right: 0;
-    top: 0;
+    // position: absolute;
+    // right: 0;
+    // top: 0;
     .actions {
       padding: 20px;
       text-align: right;

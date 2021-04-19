@@ -1,5 +1,32 @@
-<li class="campaign-card">
-  <%= render 'campaign_card_head', campaign: campaign %>
-  <h3><strong>Questionnaire :</strong> <%= campaign.survey.title %></h3>
-  <p class='campaign-date'>Du <%= campaign.start_date %> au <%= campaign.end_date %></p>
-</li>
+<div class="white-card">
+  <div class="info">
+    <div class="head">
+      <%= render 'campaign_card_head', campaign: campaign %>
+      <div class="subhead no-description">
+        <h3><strong>Questionnaire :</strong> <%= campaign.survey.title %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="actions">
+      <% if policy(campaign).edit? %>
+        <%= link_to '<i class="fas fa-pencil-alt"></i>'.html_safe, campaigns_path(id: campaign) %>
+      <% end %>
+      <% if policy(campaign).destroy? %>
+        <%= link_to('<i class="fas fa-trash"></i>'.html_safe, campaign_path(campaign), class:'no-scroll-btn',
+          method: :delete,
+          data: { confirm: "Etes vous sur de vouloir supprimer la campagne #{campaign.title} ?" },
+          remote: true)
+        %>
+      <% end %>
+    </div>
+    <div class="dates">
+      <p>
+        Du</br>
+        <%= l(campaign.start_date, format: '%d %B %Y', locale: 'fr') %></br>
+        Au</br>
+        <%= l(campaign.end_date, format: '%d %B %Y', locale: 'fr') %></br>
+      </p>
+    </div>
+  </div>
+</div>
