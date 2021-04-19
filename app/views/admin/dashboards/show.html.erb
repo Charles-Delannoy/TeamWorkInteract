@@ -1,7 +1,7 @@
 <h1>Campagnes en cours</h1>
 
-<div data-controller="accordion">
-  <% @ongoin_campaigns.each do |campaign| %>
+<% @ongoin_campaigns.each do |campaign| %>
+  <div data-controller="accordion">
     <div class='campaign-admin-dashboard'>
       <div class='dahsboard-campaign-header'>
         <h2><%= campaign.title %></h2>
@@ -33,5 +33,5 @@
         <% end %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
