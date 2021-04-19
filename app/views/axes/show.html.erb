@@ -1,13 +1,13 @@
 <h1>Axe <%= @axe.title.downcase %></h1>
 
 <div class='axe-show-grid'>
-  <ul class='survey-cards'>
+  <div class='survey-cards'>
     <% @axe.recommandations.each do |reco| %>
-      <li class="survey-card" id=<%= "reco-#{reco.id}" %> >
+      <div class="white-card small-card" id=<%= "reco-#{reco.id}" %> >
         <%= render 'recommandation_card', reco: reco %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
   <div class='twi-form sticky-form'>
     <%= render 'recommandations/form', axe: @axe, recommandation: @recommandation, label: 'Créer' %>
   </div>
