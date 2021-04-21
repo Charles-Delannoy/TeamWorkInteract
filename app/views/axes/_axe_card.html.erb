@@ -1,9 +1,11 @@
 <div class="main-card small-card">
   <div style='position: absolute; top: -120px' id=<%= "axe-#{axe.id}" %>></div>
-  <div class="info">
-    <%= render 'axe_card_head', axe: axe %>
-    <p><%= axe.description %></p>
-  </div>
+  <%= link_to axe_path(axe) do %>
+    <div class="info">
+      <%= render 'axe_card_head', axe: axe %>
+      <p><%= axe.description %></p>
+    </div>
+  <% end %>
   <div class="right">
     <div class="actions">
       <% if policy(axe).edit? %>
