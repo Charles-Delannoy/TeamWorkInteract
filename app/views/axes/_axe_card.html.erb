@@ -1,6 +1,6 @@
 <div class="main-card small-card">
   <div style='position: absolute; top: -120px' id=<%= "axe-#{axe.id}" %>></div>
-  <%= link_to axe_path(axe) do %>
+  <%= link_to axe_path(axe), class: 'card-link' do %>
     <div class="info">
       <%= render 'axe_card_head', axe: axe %>
       <p><%= axe.description %></p>

@@ -21,7 +21,7 @@
   border-radius: 5px;
   border: 1px solid $twi-gray;
   border-left: 4px solid $twi-blue;
-  a {
+  a.card-link {
     flex-grow: 1;
     border-left: 0px solid;
     transition: border .4s ease;
@@ -32,9 +32,6 @@
       .info {
         left: -4px;
       }
-      // .head h2 {
-      //   font-size: 21px;
-      // }
     }
   }
   .info {
@@ -100,6 +97,9 @@
         text-decoration: none; //A PLACER DANS UN CSS PLUS GLOBAL
         color: white;
         padding: 2px;
+        &:hover {
+          color: $twi-deep-blue;
+        }
       }
     }
     .right-bottom {
