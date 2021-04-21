@@ -11,7 +11,7 @@ class GroupsTest < ApplicationSystemTestCase
 
     green_bg("Visiting the group index")
 
-    assert_selector ".white-card", count: nb_group
+    assert_selector ".main-card", count: nb_group
     green("Group count OK => Chrystelle has #{nb_group} groups")
     # save_and_open_screenshot
   end
