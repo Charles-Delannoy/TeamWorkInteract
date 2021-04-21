@@ -1,6 +1,6 @@
 <div class="campaign-head">
   <% if policy(campaign).show? %>
-    <h2><%= link_to campaign.title, campaign_path(campaign) %></h2>
+    <h2><%= campaign.title %></h2>
   <% else %>
     <h2><%= campaign.title %></h2>
   <% end %>
