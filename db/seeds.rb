@@ -137,36 +137,36 @@ puts "SUCCESS"
 
 
 
-# FONTAWESOM ICONS SCRAPPING
+FONTAWESOM ICONS SCRAPPING
 
-# puts 'Scrap fontawesome Icons...'
+puts 'Scrap fontawesome Icons...'
 
-# ONLY SOME SPECIFICS
+ONLY SOME SPECIFICS
 
-# browser = Ferrum::Browser.new()
-# base_icon_links = "https://fontawesome.com"
-# icons_paths = ['/icons/hands-helping?style=solid', '/icons/volume-up?style=solid', '/icons/bullhorn?style=solid',
-#                '/icons/sitemap?style=solid', '/icons/poll-h?style=solid', '/icons/gift?style=solid',
-#                '/icons/thermometer-half?style=solid', '/icons/users?style=solid', '/icons/assistive-listening-systems?style=solid',
-#                '/icons/sad-tear?style=solid', '/icons/grin?style=solid', '/icons/meh?style=solid']
+browser = Ferrum::Browser.new()
+base_icon_links = "https://fontawesome.com"
+icons_paths = ['/icons/hands-helping?style=solid', '/icons/volume-up?style=solid', '/icons/bullhorn?style=solid',
+               '/icons/sitemap?style=solid', '/icons/poll-h?style=solid', '/icons/gift?style=solid',
+               '/icons/thermometer-half?style=solid', '/icons/users?style=solid', '/icons/assistive-listening-systems?style=solid',
+               '/icons/sad-tear?style=solid', '/icons/grin?style=solid', '/icons/meh?style=solid']
 
-# icons_number = 1
-# icons_paths.each do |icon_path|
-#   icon_link = base_icon_links + icon_path
-#   icon_html_doc = Nokogiri::HTML(open(icon_link).read)
-#   browser.goto icon_link
-#   icon_html_doc = Nokogiri.parse(browser.body)
-#   code = icon_html_doc.search('#page-top > div.view.flex.flex-column.min-vh-100.db-pr > div.flex-grow-1.flex-shrink-0.flex-basis-auto > div > div.ph6-l > div > section > header > div.bn.bb-l.bw2.b--gray1.mb4.pb3-l.flex.flex-column.flex-row-xl.justify-between-xl.items-end-xl.lh-copy > ul.flex.flex-wrap.flex-row-ns.items-center-ns.list.pa0.ma0.mb2.mb0-xl.pb2.pb0-xl.bb.bb-0-xl.bw2.bw1-l.b--gray1 > li.order-9-l.mt2.mt0-l.mr2-l.order-5.w-100.w-auto-l.order-6-l.pt2.pt0-l.bt.bt-0-l.bw1.b--gray1 > code').text
-#   if Icon.where(code: code).empty?
-#     name = icon_link.split('/')[4].split('?').first
-#     family = icon_html_doc.search('#page-top > div.view.flex.flex-column.min-vh-100.db-pr > div.flex-grow-1.flex-shrink-0.flex-basis-auto > div > div.ph6-l > div > section > header > div.bn.bb-l.bw2.b--gray1.mb4.pb3-l.flex.flex-column.flex-row-xl.justify-between-xl.items-end-xl.lh-copy > ul.ma0.list.pa0.flex.flex-column.flex-wrap.flex-row-ns.items-center-ns > li.mb2.mb0-ns.mr2-ns.pb2.pb0-ns.bb.bb-0-ns.bw1.b--gray1 > a').text
-#     Icon.create(name: name, family: family, code: code)
-#     icons_number += 1
-#     puts "#{icons_number} icons created"
-#   end
-# end
-# message = icons_number == 1 ? 'Specifics icons already there' : 'Specifics icons created'
-# puts message
+icons_number = 1
+icons_paths.each do |icon_path|
+  icon_link = base_icon_links + icon_path
+  icon_html_doc = Nokogiri::HTML(open(icon_link).read)
+  browser.goto icon_link
+  icon_html_doc = Nokogiri.parse(browser.body)
+  code = icon_html_doc.search('#page-top > div.view.flex.flex-column.min-vh-100.db-pr > div.flex-grow-1.flex-shrink-0.flex-basis-auto > div > div.ph6-l > div > section > header > div.bn.bb-l.bw2.b--gray1.mb4.pb3-l.flex.flex-column.flex-row-xl.justify-between-xl.items-end-xl.lh-copy > ul.flex.flex-wrap.flex-row-ns.items-center-ns.list.pa0.ma0.mb2.mb0-xl.pb2.pb0-xl.bb.bb-0-xl.bw2.bw1-l.b--gray1 > li.order-9-l.mt2.mt0-l.mr2-l.order-5.w-100.w-auto-l.order-6-l.pt2.pt0-l.bt.bt-0-l.bw1.b--gray1 > code').text
+  if Icon.where(code: code).empty?
+    name = icon_link.split('/')[4].split('?').first
+    family = icon_html_doc.search('#page-top > div.view.flex.flex-column.min-vh-100.db-pr > div.flex-grow-1.flex-shrink-0.flex-basis-auto > div > div.ph6-l > div > section > header > div.bn.bb-l.bw2.b--gray1.mb4.pb3-l.flex.flex-column.flex-row-xl.justify-between-xl.items-end-xl.lh-copy > ul.ma0.list.pa0.flex.flex-column.flex-wrap.flex-row-ns.items-center-ns > li.mb2.mb0-ns.mr2-ns.pb2.pb0-ns.bb.bb-0-ns.bw1.b--gray1 > a').text
+    Icon.create(name: name, family: family, code: code)
+    icons_number += 1
+    puts "#{icons_number} icons created"
+  end
+end
+message = icons_number == 1 ? 'Specifics icons already there' : 'Specifics icons created'
+puts message
 
 # LOTS OF ICONS
 
