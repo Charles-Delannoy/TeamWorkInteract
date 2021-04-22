@@ -68,7 +68,7 @@ for i in 0..4
   end
 end
 
-puts "-----------------------"
+puts "------------------------"
 
 puts 'create survey...'
 survey = Survey.create(title: "Dynamique d'équipe", description: "Analyse de la dynamique des équipes EWP", user: admin)
