@@ -137,11 +137,11 @@ puts "SUCCESS"
 
 
 
-FONTAWESOM ICONS SCRAPPING
+# FONTAWESOM ICONS SCRAPPING
 
 puts 'Scrap fontawesome Icons...'
 
-ONLY SOME SPECIFICS
+# ONLY SOME SPECIFICS
 
 browser = Ferrum::Browser.new()
 base_icon_links = "https://fontawesome.com"
