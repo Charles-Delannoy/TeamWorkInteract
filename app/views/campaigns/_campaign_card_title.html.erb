@@ -1,13 +1,11 @@
 <div class="main-card <% if title %> title-card <% end %>">
   <div class="info">
-    <%= link_to campaign_path(campaign) do %>
     <div class="head">
       <%= render 'campaign_card_head', campaign: campaign %>
       <div class="subhead no-description">
         <h3><strong>Questionnaire :</strong> <%= campaign.survey.title %></h3>
       </div>
     </div>
-    <% end %>
   </div>
   <div class="right">
     <div class="actions">
