@@ -26,7 +26,7 @@ require("@nathanvda/cocoon")
 // ----------------------------------------------------
 
 // External imports
-// import "bootstrap";
+import "bootstrap";
 
 // Internal imports, e.g:
 import { typed } from '../plugins/typed';
