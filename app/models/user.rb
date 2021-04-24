@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :groups
   has_many :project_groups, through: :user_groups, source: :group
 
-  has_many :managed_users, through: :groups, source: :users
+  has_many :managed_users, -> { distinct }, through: :groups, source: :users
   has_one_attached :photo
 
   pg_search_scope :search_by_first_last_name_and_email,

@@ -43,7 +43,7 @@ class AdminUsersController < ApplicationController
     @users = @users.search_by_first_last_name_and_email(params[:query]) if params[:query].present?
     @users = @users.includes(:user_groups).where(user_groups: { group_id: params[:groupe] }) if params[:groupe].present?
     @users = @users.includes(:user_groups).where(user_groups: { role: params[:role] }) if params[:role].present?
-    @users = @users.order(:first_name).uniq
+    @users = @users.order(:first_name)
   end
 
   def create_user
