@@ -18,7 +18,7 @@ class AxePolicy < ApplicationPolicy
   end
 
   def show?
-    owner?(record)
+    owner?(record) || record.user.managed_users.include?(user)
   end
 
   def destroy?

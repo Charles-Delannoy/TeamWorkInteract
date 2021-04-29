@@ -7,17 +7,21 @@
     </div>
   </div>
 </div>
-
-<div class='axe-show-grid'>
+<% if policy(Axe).create? %>
+  <div class='axe-show-grid'>
+<% end %>
   <div class='survey-cards'>
     <% @axe.recommandations.each do |reco| %>
       <div class="main-card small-card" id=<%= "reco-#{reco.id}" %> >
-        <%= render 'recommandation_card', reco: reco %>
+        <%= render 'recommandation_card', reco: reco, results: false %>
       </div>
     <% end %>
   </div>
-  <div class='twi-form sticky-form'>
-    <%= render 'recommandations/form', axe: @axe, recommandation: @recommandation, label: 'Créer' %>
+  <% if policy(Axe).create? %>
+    <div class='twi-form sticky-form'>
+      <%= render 'recommandations/form', axe: @axe, recommandation: @recommandation, label: 'Créer' %>
+    </div>
+  <% end %>
+<% if policy(Axe).create? %>
   </div>
-
-</div>
+<% end %>
