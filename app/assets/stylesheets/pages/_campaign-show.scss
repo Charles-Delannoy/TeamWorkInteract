@@ -7,22 +7,11 @@
 
 .campaign-show-grid {
   grid-template-columns: 1fr 1fr;
-  max-height: calc(100vh - 270px);
-  overflow: hidden
-}
-
-.campaign-groups-title {
-  // position: sticky;
-  // top: 20px;
-  // background-color: #FFFFFF;
-  // z-index: 1000;
-  margin-bottom: 15px !important;
-}
-
-.scroller {
-  // overflow-y: scroll;
-  // scrollbar-color: rebeccapurple green;
-  // scrollbar-width: thin;
-  height: calc(100vh - 40px - calc(80px + 40px) - calc(90px + 20px) - 100px);
-  overflow: auto;
+    h1 {
+      position: sticky;
+      top: 80px;
+      z-index: 1000;
+      background-color: $light-gray;
+      padding: 8px 0;
+    }
 }
