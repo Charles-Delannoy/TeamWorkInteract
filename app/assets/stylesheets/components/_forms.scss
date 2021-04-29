@@ -102,8 +102,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: color .6s ease, background-color .6s ease;
+    &:hover {
+      color: white;
+      background-color: $twi-blue;
+    }
   }
-  .icon-selector:checked + label {
+  .icon-selector:checked + label, {
     color: white;
     background-color: $twi-blue;
   }
