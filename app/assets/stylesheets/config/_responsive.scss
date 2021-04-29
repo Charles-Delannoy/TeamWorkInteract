@@ -1,0 +1,26 @@
+$smartphone-max: 414px;
+
+$tablette-max: 1024px;
+
+$desktopbis-max: 1126px;
+
+// Smartphone website
+@mixin phone {
+   @media (max-width: #{$smartphone-max}) {
+       @content;
+   }
+}
+
+// Tablette website
+@mixin tab {
+   @media (max-width: #{$tablette-max}) {
+       @content;
+   }
+}
+
+// Desktop bis website
+@mixin desk {
+   @media (max-width: #{$desktopbis-max}) {
+       @content;
+   }
+}
