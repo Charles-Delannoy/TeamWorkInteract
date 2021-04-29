@@ -8,6 +8,11 @@ class GroupCampaignsController < ApplicationController
     @survey_completed = @group_campaign.answered?
     @axes_labels = @group_campaign.score_calculation.keys.map(&:title)
     @scores = @group_campaign.score_calculation.values
+    @axes = @group_campaign.axes
+    best_axe_title = @group_campaign.score_calculation.key(@scores.max).title
+    @best_axe = @axes.where(title: best_axe_title).first
+    weakest_axe_title = @group_campaign.score_calculation.key(@scores.min).title
+    @weakest_axe = @axes.where(title: weakest_axe_title).first
   end
 
   def create

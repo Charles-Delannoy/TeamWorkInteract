@@ -7,6 +7,13 @@
 }
 
 .group_member {
+  a {
+    color: $twi-deep-blue;
+    &:hover {
+      color: $twi-blue;
+      text-decoration: none;
+    }
+  }
   padding: 5px;
   display: flex;
   align-items: center;
@@ -17,9 +24,11 @@
 }
 
 .member-display {
+  border-left: 4px solid $twi-blue;
+  border-radius: 5px;
   background-color: white;
   padding: 10px;
-  grid-column: 1 / 3;
+  // grid-column: 1 / 3;
   color: $twi-deep-blue-alt;
   h2 {
     font-size: 23px;
@@ -34,21 +43,40 @@
   width: 100%;
   // align-items: start;
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: 1fr 4fr;
   grid-gap: 20px;
 }
 
 .chart-container {
+  border-top: 4px solid $twi-blue;
+  border-bottom: 4px solid $twi-blue;
+  border-radius: 5px;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  grid-column: 3 / 10;
+  // grid-column: 3 / 10;
   background-color: white;
 }
 
 #radar-chartjs {
   max-width: 650px;
   max-height: 650px;
+}
+
+.green-label {
+  font-weight: 600;
+  color: green;
+  &:hover {
+    color: #5bc25b;
+  }
+}
+
+.red-label {
+  font-weight: 600;
+  color: red;
+  &:hover {
+    color: #ff6868;
+  }
 }
 
 .member-name {
@@ -61,4 +89,17 @@
   i.green {
     color: green;
   }
+}
+
+.recommandations-results {
+  h3 {
+    font-size: 18px;
+    color: #48687c;
+    font-weight: 100;
+  }
+}
+
+.axes-results {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
