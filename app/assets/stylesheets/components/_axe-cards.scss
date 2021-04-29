@@ -5,6 +5,10 @@
   grid-template-columns: 3fr 1fr;
   grid-gap: 16px;
   align-items: start;
+  @include phone {
+    display: flex;
+    flex-direction: column-reverse;
+  }
   li.axe-card {
     padding: 16px;
     text-decoration: none;

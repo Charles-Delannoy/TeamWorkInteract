@@ -32,6 +32,11 @@
 .sticky-form {
   position: sticky;
   top: 90px;
+  @include phone {
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
 }
 
 .sticky-form-search {

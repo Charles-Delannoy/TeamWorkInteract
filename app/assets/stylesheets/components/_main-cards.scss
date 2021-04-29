@@ -43,6 +43,9 @@
     transition: left .4s ease;
     .head {
       margin-bottom: 20px;
+      @include phone {
+        margin-bottom: 0px;
+      }
       h2 {
         font-size: 20px;
         margin-bottom: 0;
@@ -78,6 +81,14 @@
       height: 75px;
       overflow: hidden;
       font-size: 13px;
+      @include phone {
+        display: none;
+      }
+    }
+    @include phone {
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
   }
   .right {
@@ -115,6 +126,9 @@
   height: 120px;
   .right {
     min-width: auto;
+    @include phone {
+      min-width: 100px;
+    }
   }
 }
 
