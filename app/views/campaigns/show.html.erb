@@ -4,7 +4,7 @@
 
   <div>
     <h1>Mes groupes</h1>
-    <div class='group-cards scroller' id="target">
+    <div class='group-cards' id="target">
       <% @groups.each do |group| %>
           <div class='add-group-cards'>
             <%= render 'groups/group_card', group: group %>
@@ -24,7 +24,7 @@
 
   <div>
     <h1>Groupes affiliés à la campagne</h1>
-    <div class='group-cards scroller'>
+    <div class='group-cards'>
       <% @campaign_groups.each do |group| %>
         <% @gc_created = GroupCampaign.where(group: group, campaign: @campaign).first %>
         <div class='add-group-cards'>
