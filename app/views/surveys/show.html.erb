@@ -1,9 +1,9 @@
-<ul class="survey-cards">
+<div class="survey-cards">
   <%= render 'survey_card', survey: @survey %>
-</ul>
+</div>
 
-<ul class="question-cards">
+<div class="question-cards">
   <% @questions.each do |question| %>
     <%= render 'question_card', question: question, current_campaign: @current_campaign %>
   <% end %>
-</ul>
+</div>

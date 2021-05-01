@@ -1,4 +1,4 @@
-<div class="group-grid">
+<div class="main-cards-container">
 
   <div>
     <% @groups.each do |group| %>
@@ -6,6 +6,7 @@
       <%= render 'group_card', group: group %>
     <% end %>
   </div>
+
   <div class="twi-form sticky-form">
     <%= render "form", group: @group, label: @label %>
   </div>

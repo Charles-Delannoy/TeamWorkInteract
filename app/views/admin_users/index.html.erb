@@ -2,7 +2,7 @@
   <%= render 'search_bar' %>
 </div>
 
-<div class="admin-users-grid">
+<div class="main-cards-container">
   <div class='user-cards'>
     <% @users.each do |user| %>
       <%= render "user_card", chatrooms: @chatrooms, user: user %>

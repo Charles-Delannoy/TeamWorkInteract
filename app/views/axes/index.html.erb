@@ -1,8 +1,8 @@
-<div class="axe-cards">
-  <div class="axes-cards-container">
-  <% @axes.each do |axe| %>
-    <%= render 'axe_card', axe: axe %>
-  <% end %>
+<div class="main-cards-container">
+  <div>
+    <% @axes.each do |axe| %>
+      <%= render 'axe_card', axe: axe %>
+    <% end %>
   </div>
   <div class="twi-form sticky-form">
     <%= render "form", axe: @axe, label: @label %>

@@ -8,9 +8,9 @@
   </div>
 </div>
 <% if policy(Axe).create? %>
-  <div class='axe-show-grid'>
+  <div class='main-cards-container'>
 <% end %>
-  <div class='survey-cards'>
+  <div>
     <% @axe.recommandations.each do |reco| %>
       <div class="main-card small-card" id=<%= "reco-#{reco.id}" %> >
         <%= render 'recommandation_card', reco: reco, results: false %>
