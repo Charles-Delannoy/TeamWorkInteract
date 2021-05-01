@@ -1,7 +1,7 @@
 <% answer = question.answers.includes(:proposition).where(user: current_user, group_campaign: @group_campaign, propositions: {question: question}) %>
 <% @answer = answer.empty? ? Answer.new : answer.first %>
 
-<li class="question-card" id=<%= "question-#{question.id}" %> >
+<div class="question-card" id=<%= "question-#{question.id}" %> >
   <%= simple_form_for @answer do |f| %>
     <h5><%= question.title %></h5>
     <div class="radio-btn">
@@ -10,10 +10,10 @@
                  collection: question.propositions,
                  label: '' %>
     </div>
-    <% if @current_campaign && policy(Answer).create? %>
+    <% if @current_campaign && podivcy(Answer).create? %>
       <%= f.submit "Valider"%>
     <% else %>
       <%= f.submit "Valider", disabled: true%>
     <% end %>
   <% end %>
-</li>
+</div>

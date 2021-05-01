@@ -3,10 +3,17 @@
   width: 100%;
   padding: 0 5%;
   margin-top: 110px;
-
   h1 {
     color: $twi-blue;
     font-size: 25px;
     font-weight: 400;
   }
+}
+
+
+.main-cards-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 20px;
+  align-items: start;
 }
