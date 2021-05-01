@@ -22,6 +22,9 @@
     <% unless current_page?('/')%>
       <%= render 'shared/header' %>
       <%= render 'shared/twi-navbar' %>
+      <div class="phone-menu-container">
+        <%= render 'shared/phone-menu' %>
+      </div>
     <% end %>
     <% unless current_page?('/')%>
       <div class="twi-container">

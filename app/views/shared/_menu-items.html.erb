@@ -1,0 +1,67 @@
+<ul class="menu">
+
+    <% if current_user %>
+      <% if policy(User).index? %>
+        <li <% if request.path.match?(/\/admin_users.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Utilisateurs</p>
+            <%= link_to 'Utilisateurs', admin_users_path %>
+          </div>
+        </li>
+      <% end %>
+
+      <% if policy(Group).index? %>
+        <li <% if request.path.match?(/\/groups.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Groupes</p>
+            <%= link_to 'Groupes', groups_path %>
+        </li>
+      <% end %>
+
+      <% if policy(Campaign).index? %>
+        <li <% if request.path.match?(/\/campaigns.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Campagnes</p>
+            <%= link_to 'Campagnes', campaigns_path %>
+          </div>
+         </li>
+      <% end %>
+
+      <% if policy(Survey).index? %>
+        <li <% if request.path.match?(/\/surveys.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Questionnaires</p>
+            <%= link_to 'Questionnaires', surveys_path %>
+          </div>
+        </li>
+      <% end %>
+
+      <% if policy(Axe).index? %>
+        <li <% if request.path.match?(/\/axes.*/) %> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Axes</p>
+            <%= link_to 'Axes', axes_path %>
+          </div>
+        </li>
+      <% end %>
+
+      <% if @current_campaign && policy(@current_campaign.survey).show? %>
+        <li <% if request.path.match?(/\/surveys.*/)%> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Questionnaire</p>
+            <%= link_to 'Questionnaire', survey_path(@current_campaign.survey) %>
+          </div>
+        </li>
+      <% end %>
+
+      <% if @current_group_campaign && policy(@current_group_campaign).show? %>
+        <li <% if request.path.match?(/\/results.*/)%> class='activ-item' <% end %>>
+          <div class='item-content'>
+            <p>Resultats</p>
+            <%= link_to 'Resultats', result_path(@current_group_campaign) %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+  </ul>
