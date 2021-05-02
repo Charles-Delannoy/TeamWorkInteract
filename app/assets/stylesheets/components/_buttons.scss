@@ -44,6 +44,9 @@
 
 .main-cta-btn {
   width: 45vw;
+  @include phone {
+    width: 85%;
+  }
 }
 
 .add-icon {
