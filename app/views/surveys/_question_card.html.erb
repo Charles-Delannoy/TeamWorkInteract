@@ -2,7 +2,7 @@
 <% @answer = answer.empty? ? Answer.new : answer.first %>
 
 <div class="question-card" id=<%= "question-#{question.id}" %> >
-  <%= simple_form_for @answer do |f| %>
+  <%= simple_form_for @answer, remote: true do |f| %>
     <h5><%= question.title %></h5>
     <div class="radio-btn">
       <%= f.input :proposition_id,

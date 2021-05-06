@@ -26,6 +26,11 @@ class SurveysController < ApplicationController
 
   def show
     @questions = @survey.questions
+    if (params[:next_question])
+      @next_question = Question.find(params[:next_question].to_i)
+    else
+      @next_question = @questions.first
+    end
     @question = Question.new
     @group_campaign = GroupCampaign.where(campaign: @current_campaign, group: @current_group).first
   end

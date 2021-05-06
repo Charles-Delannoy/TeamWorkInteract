@@ -1,6 +1,7 @@
 class Answer < ApplicationRecord
   belongs_to :proposition
   has_one :question, through: :proposition
+  has_one :survey, through: :question
   has_one :axe, through: :question
   belongs_to :user
   belongs_to :group_campaign

@@ -8,7 +8,7 @@
     <div class="line"></div>
     <% @questions.each do |question| %>
       <div class="question-access answered
-                  <% if question == @questions.first %>
+                  <% if question == @next_question %>
                     active
                   <% end %>"
            data-question='question-<%= question.id %>'
@@ -22,7 +22,7 @@
     <div class="question-cards">
       <% @questions.each do |question| %>
         <div class='question-<%= question.id %>
-                    <% unless question === @questions.first %>
+                    <% unless question === @next_question %>
                       hidden-question
                     <% end %>'
         >
