@@ -65,6 +65,20 @@
   }
 }
 
-.hidden-question {
+.hidden-question, .hidden-button {
   display: none;
+}
+
+.navigation-buttons {
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  left: 0
+}
+
+.next {
+  position: absolute;
+  right: 0
 }
