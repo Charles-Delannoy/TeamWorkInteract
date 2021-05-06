@@ -10,15 +10,7 @@
   width: 100%;
   top: 40px;
   z-index: 1000;
-  .navbar-msg {
-    h2 {
-      font-size: 25px;
-      margin-left: 15px;
-      margin-bottom: 0;
-      font-weight: 400;
-    }
-  }
-  ul {
+  ul.menu {
     margin: 0;
     flex-grow: 1;
     display: flex;
@@ -45,6 +37,9 @@
           color: $twi-deep-blue;
         }
       }
+    }
+    @include phone {
+      display: none;
     }
   }
   .actions {
@@ -76,5 +71,11 @@
     font-weight: 400;
     color: #fff;
     height: calc(100% - 4px);
+  }
+}
+
+.logout-btn {
+  @include phone {
+    display: none;
   }
 }
