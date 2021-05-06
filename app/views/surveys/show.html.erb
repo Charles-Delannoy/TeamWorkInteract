@@ -2,8 +2,33 @@
   <%= render 'survey_card', survey: @survey %>
 </div>
 
-<div class="question-cards">
-  <% @questions.each do |question| %>
-    <%= render 'question_card', question: question, current_campaign: @current_campaign %>
-  <% end %>
+<div data-controller='survey-navigation'>
+  <div class="question-container">
+    <div class="questions-flow">
+    <div class="line"></div>
+    <% @questions.each do |question| %>
+      <div class="question-access answered
+                  <% if question == @questions.first %>
+                    active
+                  <% end %>"
+           data-question='question-<%= question.id %>'
+           data-action="click->survey-navigation#navigate"
+      >
+        <%= question.axe.icon.html_safe %>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="question-cards">
+      <% @questions.each do |question| %>
+        <div class='question-<%= question.id %>
+                    <% unless question === @questions.first %>
+                      hidden-question
+                    <% end %>'
+        >
+          <%= render 'question_card', question: question, current_campaign: @current_campaign %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
