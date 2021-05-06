@@ -12,13 +12,9 @@
   a.card-link {
     flex-grow: 1;
     border-left: 0px solid;
-    transition: border .4s ease;
     &:hover {
-      border-left: 4px solid $twi-blue;
-      text-decoration: none;
-      margin-right: 4px;
       .info {
-        left: -4px;
+        background-color: aliceblue;
       }
     }
   }
@@ -27,8 +23,7 @@
     flex-grow: 1;
     padding: 20px;
     padding-right: 40px;
-    left: 0px;
-    transition: left .4s ease;
+    transition: background-color .5s ease;
     .head {
       margin-bottom: 20px;
       @include phone {

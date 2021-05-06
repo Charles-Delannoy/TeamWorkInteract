@@ -10,7 +10,7 @@
                  collection: question.propositions,
                  label: '' %>
     </div>
-    <% if @current_campaign && podivcy(Answer).create? %>
+    <% if @current_campaign && policy(Answer).create? %>
       <%= f.submit "Valider"%>
     <% else %>
       <%= f.submit "Valider", disabled: true%>

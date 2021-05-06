@@ -43,25 +43,27 @@
   </div>
 </div>
 
-<div class='axes-results'>
-  <div class='results'>
-    <div class="member-display">
-      <% @axes.each do |axe| %>
-        <div class='group_member'>
-          <%= axe.icon.html_safe %>
-          <%= link_to axe_path(axe) do %>
-            <p class='member-name <% if axe == @best_axe %> green-label <% elsif axe == @weakest_axe %> red-label <% end %>'><%= axe.title %></p>
-          <% end %>
+<% if @survey_completed %>
+  <div class='axes-results'>
+    <div class='results'>
+      <div class="member-display">
+        <% @axes.each do |axe| %>
+          <div class='group_member'>
+            <%= axe.icon.html_safe %>
+            <%= link_to axe_path(axe) do %>
+              <p class='member-name <% if axe == @best_axe %> green-label <% elsif axe == @weakest_axe %> red-label <% end %>'><%= axe.title %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <% @weakest_axe.recommandations.each do |reco| %>
+        <div class="recommandations-results">
+          <h3><strong>Recommandations pour l'axe <%= @weakest_axe.title %></strong></h3>
+          <div class="main-card small-card" id=<%= "reco-#{reco.id}" %> >
+            <%= render 'axes/recommandation_card', reco: reco, results: true %>
+          </div>
         </div>
       <% end %>
     </div>
-    <% @weakest_axe.recommandations.each do |reco| %>
-      <div class="recommandations-results">
-        <h3><strong>Recommandations pour l'axe <%= @weakest_axe.title %></strong></h3>
-        <div class="main-card small-card" id=<%= "reco-#{reco.id}" %> >
-          <%= render 'axes/recommandation_card', reco: reco, results: true %>
-        </div>
-      </div>
-    <% end %>
   </div>
-</div>
+<% end %>
