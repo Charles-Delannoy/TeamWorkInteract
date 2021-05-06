@@ -7,7 +7,7 @@
     <div class="questions-flow">
     <div class="line"></div>
     <% @questions.each do |question| %>
-      <div class="question-access answered
+      <div class="question-access <% if question.answered?(current_user) %> answered <% end %>
                   <% if question == @next_question %>
                     active
                   <% end %>"
