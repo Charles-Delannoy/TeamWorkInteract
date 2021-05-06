@@ -57,7 +57,13 @@
   width: 100%;
   height: calc(100vh - 80px);
   overflow: hidden;
+  pointer-events: none;
 }
+
+.phone-menu-container.active {
+  pointer-events: auto;
+}
+
 
 .phone-menu {
   background-color: rgba(0,0,0,0.8);

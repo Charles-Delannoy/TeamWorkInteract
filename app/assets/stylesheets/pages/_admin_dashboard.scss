@@ -5,19 +5,30 @@
   width: 100%;
   border-left: 4px solid $twi-blue;
   border-radius: 5px;
+  z-index: 1;
   h2 {
     font-size: 20px;
     // margin-bottom: 40px;
     color: $twi-deep-blue;
+    margin-bottom: 0;
+    @include phone {
+      font-size: 18px;
+    }
   }
   h3 {
     font-size: 18px;
     color: #48687c;
+    @include phone {
+      font-size: 15px;
+    }
   }
   h4 {
     font-size: 14px;
     font-weight: 100;
     color: #48687c;
+    @include phone {
+      font-size: 10px;
+    }
   }
 }
 
@@ -35,6 +46,9 @@
   max-height: 0px;
   overflow: hidden;
   transition: max-height 1s ease;
+  @include phone {
+    display: block;
+  }
 }
 
 .group-section {
@@ -49,6 +63,11 @@
   margin-top: 10px;
   padding: 25px;
   border: 1px solid $twi-gray;
+  @include phone {
+    padding: 5px;
+    height: 200px;
+    width: 100%;
+  }
 }
 
 .dahsboard-campaign-header {
