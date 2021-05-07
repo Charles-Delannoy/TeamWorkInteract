@@ -27,10 +27,12 @@ class AnswersController < ApplicationController
       last_answer = Answer.where(user: current_user).last
       survey_started = current_user.completion_rate(@group_campaign) > 0
       last_question = Answer.where(user: current_user).last.question if survey_started
-      next_question = survey_started ? questions[questions.index(last_question) + 1] : nil
+      next_question = survey_started ? Question.find(question_id) : nil
       flash[:alert] = 'Vous devez selectionner une réponse'
     end
+    flash[:notice] = 'Vous avez répondu à toutes les questions' if current_user.completion_rate(@answer.group_campaign) == 100
     redirect_to survey_path(@current_campaign.survey, next_question: next_question)
+
   end
 
   def set_answer
@@ -40,5 +42,9 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:proposition_id)
+  end
+
+  def question_id
+    params.require(:answer).permit(:question_id)[:question_id].to_i
   end
 end

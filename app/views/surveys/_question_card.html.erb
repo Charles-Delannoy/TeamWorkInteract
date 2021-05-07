@@ -9,6 +9,7 @@
                  as: :radio_buttons,
                  collection: question.propositions,
                  label: '' %>
+      <%= f.input :question_id, as: :hidden, input_html: { value: question.id } %>
     </div>
     <% if @current_campaign && policy(Answer).create? %>
       <%= f.submit "Valider", class: 'twi-btn lblue-btn submit-btn'%>
