@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
       next_question = questions[questions.index(@answer.question) + 1]
     else
       last_answer = Answer.where(user: current_user).last
-      survey_started = current_user.completion_rate(@group_campaign) > 0
+      survey_started = current_user.completion_rate(@answer.group_campaign) > 0
       last_question = Answer.where(user: current_user).last.question if survey_started
       next_question = survey_started ? Question.find(question_id) : nil
       flash[:alert] = 'Vous devez selectionner une réponse'
