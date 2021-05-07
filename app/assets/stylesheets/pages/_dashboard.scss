@@ -1,0 +1,21 @@
+a.group-link, a.current-group {
+  .main-card {
+    transition: background-color .5s ease;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+a.group-link div {
+  opacity: 0.8;
+  &:hover {
+    .info {
+      background-color: aliceblue;
+    }
+  }
+}
+
+a.current-group {
+  opacity: 1;
+}

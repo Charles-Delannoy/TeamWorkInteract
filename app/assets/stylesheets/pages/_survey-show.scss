@@ -6,8 +6,10 @@
 }
 
 .radio-btn {
+  margin: 30px 0 20px 0;
   fieldset {
     display: flex;
+    margin-bottom: 0;
   }
   legend {
     display: none;
@@ -17,7 +19,6 @@
   }
 }
 
-
 .question-card {
   background-color: #fff;
   border: 1px solid $twi-gray;
@@ -25,4 +26,61 @@
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
+}
+
+.question-access {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1;
+  border: 2px solid $twi-blue;
+  color: $twi-blue;
+}
+
+
+.question-access.answered {
+  color: green;
+  border-color: green;
+}
+
+.question-access.active {
+  background-color: $twi-blue;
+  color: #fff;
+  border-color: $twi-blue;
+}
+
+.questions-flow {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin: 45px 0;
+  .line {
+    border-bottom: 2px solid $twi-blue;
+    width: 100%;
+    position: absolute;
+    top: calc(50% - 1px);
+  }
+}
+
+.hidden-question, .hidden-button {
+  display: none;
+}
+
+.navigation-buttons {
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  left: 0
+}
+
+.next {
+  position: absolute;
+  right: 0
 }

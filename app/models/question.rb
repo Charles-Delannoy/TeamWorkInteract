@@ -9,4 +9,11 @@ class Question < ApplicationRecord
 
   validates :title, presence: true, length: {minimum: 3}
   validates :coef, presence: true, :numericality => { :greater_than_or_equal_to => 0 }
+
+  def answered?(user)
+    propositions.each do |proposition|
+      return true unless Answer.where(proposition: proposition, user: user).empty?
+    end
+    return false
+  end
 end

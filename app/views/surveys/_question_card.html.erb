@@ -2,16 +2,17 @@
 <% @answer = answer.empty? ? Answer.new : answer.first %>
 
 <div class="question-card" id=<%= "question-#{question.id}" %> >
-  <%= simple_form_for @answer do |f| %>
+  <%= simple_form_for @answer, remote: true do |f| %>
     <h5><%= question.title %></h5>
     <div class="radio-btn">
       <%= f.input :proposition_id,
                  as: :radio_buttons,
                  collection: question.propositions,
                  label: '' %>
+      <%= f.input :question_id, as: :hidden, input_html: { value: question.id } %>
     </div>
-    <% if @current_campaign && podivcy(Answer).create? %>
-      <%= f.submit "Valider"%>
+    <% if @current_campaign && policy(Answer).create? %>
+      <%= f.submit "Valider", class: 'twi-btn lblue-btn submit-btn'%>
     <% else %>
       <%= f.submit "Valider", disabled: true%>
     <% end %>

@@ -1,7 +1,10 @@
 <h2>Groupes</h2>
 <ul class='group-cards'>
   <% @groups.each do |group| %>
-    <%= render 'group_card', group: group %>
+    <% link_class = @current_group == group ? 'current-group' : 'group-link' %>
+    <%= link_to access_groups_path(group: group), class: link_class, method: :put, remote: true do %>
+      <%= render 'groups/group_card', group: group %>
+    <% end %>
   <% end %>
 </ul>
 <% unless @chatrooms.empty? %>

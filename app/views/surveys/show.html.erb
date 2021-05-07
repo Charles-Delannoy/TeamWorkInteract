@@ -2,8 +2,39 @@
   <%= render 'survey_card', survey: @survey %>
 </div>
 
-<div class="question-cards">
-  <% @questions.each do |question| %>
-    <%= render 'question_card', question: question, current_campaign: @current_campaign %>
-  <% end %>
+<div data-controller='survey-navigation'>
+  <div class="question-container">
+    <div class="questions-flow">
+    <div class="line"></div>
+    <% @questions.each do |question| %>
+      <div class="question-access <% if question.answered?(current_user) %> answered <% end %>
+                  <% if question == @next_question %>
+                    active
+                  <% end %>"
+           data-question='question-<%= question.id %>'
+           data-action="click->survey-navigation#navigate"
+      >
+        <%= question.axe.icon.html_safe %>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="question-cards">
+      <% @questions.each do |question| %>
+        <div class='question-<%= question.id %>
+                    <% unless question === @next_question %>
+                      hidden-question
+                    <% end %>'
+        >
+          <%= render 'question_card', question: question, current_campaign: @current_campaign %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="navigation-buttons">
+    <% prev_class = @next_question == @questions.first ? 'lblue-btn twi-btn back hidden-button' : 'lblue-btn twi-btn back'%>
+    <% next_class = @next_question == @questions.last ? 'lblue-btn twi-btn next hidden-button' : 'lblue-btn twi-btn next'%>
+    <%= link_to 'Précédente', "#", class: prev_class, 'data-action': "click->survey-navigation#previous"%>
+    <%= link_to 'Passer', "#", class: next_class, 'data-action': "click->survey-navigation#next"%>
+  </div>
 </div>

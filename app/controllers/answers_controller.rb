@@ -8,18 +8,32 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     @answer.group_campaign = @group_campaign
     authorize @answer
-    @answer.save
-    redirect_to survey_path(@current_campaign.survey)
+    save_answer
   end
 
   def update
     answer_params[:proposition_id] = answer_params[:proposition_id].to_i
     @answer.update(answer_params)
-    @answer.save
-    redirect_to survey_path(@current_campaign.survey)
+    save_answer
   end
 
   private
+
+  def save_answer
+    questions = @answer.group_campaign.survey.questions
+    if @answer.save
+      next_question = questions[questions.index(@answer.question) + 1]
+    else
+      last_answer = Answer.where(user: current_user).last
+      survey_started = current_user.completion_rate(@group_campaign) > 0
+      last_question = Answer.where(user: current_user).last.question if survey_started
+      next_question = survey_started ? Question.find(question_id) : nil
+      flash[:alert] = 'Vous devez selectionner une réponse'
+    end
+    flash[:notice] = 'Vous avez répondu à toutes les questions' if current_user.completion_rate(@answer.group_campaign) == 100
+    redirect_to survey_path(@current_campaign.survey, next_question: next_question)
+
+  end
 
   def set_answer
     @answer = Answer.find(params[:id])
@@ -28,5 +42,9 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:proposition_id)
+  end
+
+  def question_id
+    params.require(:answer).permit(:question_id)[:question_id].to_i
   end
 end
