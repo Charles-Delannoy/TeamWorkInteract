@@ -35,6 +35,6 @@
     <% prev_class = @next_question == @questions.first ? 'lblue-btn twi-btn back hidden-button' : 'lblue-btn twi-btn back'%>
     <% next_class = @next_question == @questions.last ? 'lblue-btn twi-btn next hidden-button' : 'lblue-btn twi-btn next'%>
     <%= link_to 'Précédente', "#", class: prev_class, 'data-action': "click->survey-navigation#previous"%>
-    <%= link_to 'Suivante', "#", class: next_class, 'data-action': "click->survey-navigation#next"%>
+    <%= link_to 'Passer', "#", class: next_class, 'data-action': "click->survey-navigation#next"%>
   </div>
 </div>

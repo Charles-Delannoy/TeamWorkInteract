@@ -14,14 +14,13 @@ class AnswersController < ApplicationController
   def update
     answer_params[:proposition_id] = answer_params[:proposition_id].to_i
     @answer.update(answer_params)
-    questions = @group_campaign.survey.questions
     save_answer
   end
 
   private
 
   def save_answer
-    questions = @group_campaign.survey.questions
+    questions = @answer.group_campaign.survey.questions
     if @answer.save
       next_question = questions[questions.index(@answer.question) + 1]
     else
