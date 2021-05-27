@@ -41,6 +41,9 @@
 
 .sticky-form-search {
   top: 160px;
+  @include phone {
+    top: auto;
+  }
 }
 
 .search-bar-container {

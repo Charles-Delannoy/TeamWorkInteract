@@ -3,6 +3,9 @@
   color: $twi-deep-blue;
   grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
   grid-gap: 20px;
+  @include phone {
+    width: 100%
+  }
   .user-card {
     width: 280px;
     border: thin solid $twi-gray;
@@ -10,6 +13,9 @@
     background-color: #fff;
     position: relative;
     border-radius: 5px;
+    @include phone {
+      width: 100%
+    }
     img {
       width: 80px;
       height: 80px;
