@@ -14,6 +14,9 @@
     color: white;
     font-weight: 400;
     padding-top: 8px;
+    @include phone {
+      display: none;
+    }
   }
   a {
     margin-right: 7px;
@@ -21,6 +24,10 @@
 }
 .twi-logo {
   height: 20px;
+  margin-right: 10px;
+  @include phone {
+    margin-right: 0px;
+  }
 }
 
 .home-logo {

@@ -50,6 +50,9 @@
   position: sticky;
   top: 110px;
   z-index: 1000;
+  @include phone {
+    display: none;
+  }
 }
 
 .devise-form-container {
