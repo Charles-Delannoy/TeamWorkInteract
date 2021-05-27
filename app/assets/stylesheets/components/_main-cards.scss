@@ -76,6 +76,12 @@
   }
   .right {
     min-width: 200px;
+    @include phone {
+      min-width: auto;
+      p {
+        display: none;
+      }
+    }
     // border: 1px solid $twi-blue-alt;
     border-left: none;
     padding: 0;

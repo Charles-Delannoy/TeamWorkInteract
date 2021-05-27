@@ -12,6 +12,7 @@
   }
   input, textarea, .flatpickr-calendar, select  {
     border: thin solid $twi-gray;
+    width: 100%;
   }
   textarea {
     height: 80px;
