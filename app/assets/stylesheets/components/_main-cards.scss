@@ -131,6 +131,9 @@
 
 .add-group-cards {
   position: relative;
+  button {
+    padding: 0;
+  }
   .add-icon-btn {
     border: none;
     background-color: transparent;
@@ -140,6 +143,10 @@
     top: 10px;
     font-size: 35px;
     color: white;
+    @include phone {
+      right: 4px;
+      top: 0px;
+    }
   }
   .actions {
     height: 70px;

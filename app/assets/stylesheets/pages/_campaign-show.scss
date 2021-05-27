@@ -3,12 +3,20 @@
   grid-template-columns: 3fr 1fr;
   grid-gap: 20px;
   align-items: start;
+  @include phone {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .campaign-show-grid {
   grid-template-columns: 1fr 1fr;
   max-height: calc(100vh - 270px);
-  overflow: hidden
+  overflow: hidden;
+  @include phone {
+    max-height: none;
+    overflow: auto;
+  }
 }
 
 .campaign-groups-title {
@@ -25,4 +33,7 @@
   // scrollbar-width: thin;
   height: calc(100vh - 40px - calc(80px + 40px) - calc(90px + 20px) - 100px);
   overflow: auto;
+  @include phone {
+    height: auto;
+  }
 }
