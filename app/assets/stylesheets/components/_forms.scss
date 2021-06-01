@@ -6,12 +6,14 @@
   border-bottom: 5px solid $twi-blue;
   border-top: 5px solid $twi-blue;
   background-color: #fff;
+  max-width: 100%;
   .flatpickr-calendar {
     box-shadow: none;
     margin: 0 auto;
   }
   input, textarea, .flatpickr-calendar, select  {
     border: thin solid $twi-gray;
+    width: 100%;
   }
   textarea {
     height: 80px;
@@ -41,12 +43,18 @@
 
 .sticky-form-search {
   top: 160px;
+  @include phone {
+    top: auto;
+  }
 }
 
 .search-bar-container {
   position: sticky;
   top: 110px;
   z-index: 1000;
+  @include phone {
+    display: none;
+  }
 }
 
 .devise-form-container {

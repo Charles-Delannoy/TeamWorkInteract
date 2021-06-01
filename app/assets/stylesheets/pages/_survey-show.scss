@@ -10,6 +10,9 @@
   fieldset {
     display: flex;
     margin-bottom: 0;
+    @include phone {
+      display: block;
+    }
   }
   legend {
     display: none;
