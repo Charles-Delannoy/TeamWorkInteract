@@ -184,4 +184,15 @@
       border-top: none;
     }
   }
+  transition: opacity 1s ease;
+}
+
+
+.fade-card {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.no-display {
+  display: none;
 }
