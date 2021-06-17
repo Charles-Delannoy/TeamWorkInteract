@@ -9,7 +9,6 @@ const initFlatpicker = () => {
       plugins: [new rangePlugin({ input: "#range_end"})]
     });
     if (document.getElementById("range_start")) {
-      console.log('COUCOU')
       calendar.clear();
     }
 
