@@ -2,7 +2,10 @@
 <%= simple_form_for([group], remote: true) do |f| %>
   <%= f.input :name, label: "Nom du groupe" %>
   <%= f.input :description %>
-  <%= f.input :start_date, label: "Dates du projet", as: :string, required: false, input_html: {id: range_class, class: "d-none"} %>
+  <div style='position: relative;'>
+    <%= f.input :start_date, label: "Dates du projet", as: :string, required: false, input_html: {id: range_class, class: "d-none"} %>
+    <a id='reset-dates' href="#"><i class="fas fa-undo-alt"></i> Clear</a>
+  </div>
   <%= f.input :end_date, label: false, as: :string, required: false, input_html: {id: "range_end", class: "d-none"}  %>
   <%= f.submit label, class: 'twi-btn lblue-btn'%>
 <% end %>

@@ -2,23 +2,22 @@ import flatpickr from "flatpickr";
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
 const initFlatpicker = () => {
-  if (document.getElementById("range_start")) {
-    let calendar = flatpickr("#range_start", {
+  const resetBtn = document.getElementById('reset-dates');
+
+  if (document.getElementById("range_start") || document.getElementById("range_start_edit")) {
+
+    const calendarId = document.getElementById("range_start") ? '#range_start' : '#range_start_edit';
+
+    const calendar = flatpickr(calendarId, {
       altInput: true,
       inline: true,
       plugins: [new rangePlugin({ input: "#range_end"})]
     });
-    if (document.getElementById("range_start")) {
+
+    resetBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       calendar.clear();
-    }
-
-  } else if (document.getElementById("range_start_edit")) {
-    let calendar_edit = flatpickr("#range_start_edit", {
-      altInput: true,
-      inline: true,
-      plugins: [new rangePlugin({ input: "#range_end"})]
-    });
-
+    })
   }
 }
 
