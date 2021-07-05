@@ -20,7 +20,7 @@ class GroupPolicy < ApplicationPolicy
   end
 
   def destroy?
-    owner?(record)
+    owner?(record) && record.campaigns.empty?
   end
 
   class Scope < Scope

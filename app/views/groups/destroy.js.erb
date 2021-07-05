@@ -1,9 +1,9 @@
 // let card = document.getElementById(`group-${<%= @group.id %>}`);
-card = document.querySelector(`#group-${<%= @group.id %>} + .group-card`)
+card = document.querySelector(`#group-${<%= @group.id %>} + .main-card`)
 card.classList.add('fade-card');
 
 noDisplay = (element) => {
-  card.classList.add('no-diplay');
+  card.classList.add('no-display');
 }
 
 setTimeout(noDisplay, 1000);

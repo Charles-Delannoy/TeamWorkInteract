@@ -130,3 +130,14 @@
 .icon-item .radio_buttons {
   display: none;
 }
+
+#reset-dates {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $twi-blue;
+  font-size: 16px;
+  &:hover {
+    text-decoration: none;
+  }
+}
